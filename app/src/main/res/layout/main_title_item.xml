@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:layout_marginLeft="@dimen/w_20"
+    android:layout_marginRight="@dimen/w_20"
+    android:textColor="@color/main_title_normal"
+    android:textSize="@dimen/w_38" />

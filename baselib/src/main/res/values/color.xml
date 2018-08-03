@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- common-->
+
+    <color name="main_bg">#DEEBEFF2</color>
+    <!--<color name="main_bg">#EEF1F4</color>-->
+    <color name="main_title_normal">#969696</color>
+    <color name="main_title_focus">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
+    <color name="white_alpha_50">#7FFFFFFF</color>
+    <color name="white_alpha_70">#B2FFFFFF</color>
+    <color name="white_alpha_80">#CCFFFFFF</color>
+    <color name="bg_gray">#E6D2D2D2</color>
+    <color name="line_gray">#e6dadada</color>
+    <color name="gray">#ffa1a5aa</color>
+    <color name="text_black">#272727</color>
+    <color name="black">#000000</color>
+    <color name="black_text">#404040</color>
+
+    <color name="text_gray">#969696</color>
+    <color name="song_list_singer_name_focus">#80818B</color>
+    <color name="song_list_singer_name_normal">#949298</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent2">#B0000000</color>
+    <color name="transparent3">#80000000</color>
+    <color name="text_high_light">#52F0F6</color>
+    <color name="color_green">#5BFFE0</color>
+    <color name="green">#0EAF52</color>
+    <color name="yellow">#f3c61a</color>
+    <color name="seek_bar_gray">#B5B5B5</color>
+    <color name="seek_bar_bg">#FFFFFFFF</color>
+    <color name="seek_bar_text_gray">#A9A9A9</color>
+    <color name="singer_text_normal">#FF969696</color>
+    <color name="singer_text_select">#FF1C1C1C</color>
+    <color name="search_bg">#DEEBEFF2</color>
+    <color name="search_btn_bg">#FFE2E9EF</color>
+    <color name="search_hint">#FFC8C8C8</color>
+    <color name="search_separator">#FFD8D8D8</color>
+    <color name="search_song_singer_name">#FF949298</color>
+    <color name="main_sheet_item_type">#404040</color>
+    <color name="main_sheet_item_theme">#969696</color>
+
+    <color name="dialog_bg_gray_alpha_82">#D1272727</color>
+
+    <color name="green_search_btn_select">#11CFAB</color>
+
+    <!-- detail 页面 -->
+    <color name="detail_text_year">#AEAEAE</color>
+
+
+    <!-- Entry test colors -->
+    <color name="entry1_bg_normal">#ef617b</color>
+    <color name="entry2_bg_normal">#e8902f</color>
+    <color name="entry3_bg_normal">#39a7e2</color>
+    <color name="entry4_bg_normal">#e85b2f</color>
+    <color name="entry5_bg_normal">#8aba19</color>
+
+    <!-- 微频道 -->
+
+    <!-- 用户中心 -->
+    <color name="login_under_line">#31C27C</color>
+
+    <!-- 设置 -->
+
+    <!--视频清晰度选择-->
+    <color name="video_clarity_bg">#66000000</color>
+    <color name="play_list_bar_bg_start">#171717</color>
+    <color name="play_list_bar_bg_end">#3e3e3e</color>
+
+    <color name="play_status_bar_focus">#2A2A2A</color>
+    <color name="play_status_bar_normal">#06070C</color>
+    <!--音乐馆列表-->
+    <color name="music_hall_list_bg_start">#0a0a0a</color>
+    <color name="music_hall_list_bg_center">#161616</color>
+    <color name="music_hall_list_bg_end">#323232</color>
+    <!--设置背景色-->
+    <color name="setting_right_bg_end_color">#35977a</color>
+    <color name="setting_right_bg_start_color">#3f89ba</color>
+    <color name="setting_left_bg_start_color">#323232</color>
+    <color name="setting_left_bg_end_color">#0a0a0a</color>
+    <color name="setting_round_bg">#24FFFFFF</color>
+    <color name="setting_small_word">#80FFFFFF</color>
+
+    <color name="order_product_text_color">#2FFDC0</color>
+    <color name="main_reco_item_title">#FF969696</color>
+    <color name="main_reco_content_item_title">#FF404040</color>
+    <color name="main_reco_content_item_singer">#FF969696</color>
+    <color name="main_reco_content_item_listen_num_bg">#66000000</color>
+    <color name="color_dots_normal">#FFCCCCCC</color>
+    <color name="color_dots_choose">#FF121212</color>
+    <color name="banner_bg">#1758829C</color>
+    <color name="color_top_shadow">#38000000</color>
+    <color name="main_singer_name_item">#FF404040</color>
+    <color name="common_dialog_title_bg_color">#34C566</color>
+    <color name="personal_center_block_bg">#B3FFFFFF</color>
+    <color name="personal_center_block_text_color">#FF0EAF52</color>
+    <color name="order_text_color">#4A4A4A</color>
+    <!-- 2BEEF1F4 -->
+    <color name="order_dialog_bg">#FFEEF1F4</color>
+    <color name="order_dialog_choose_num">#0EAF52</color>
+</resources>
