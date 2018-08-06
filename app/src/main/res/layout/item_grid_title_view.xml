@@ -23,7 +23,7 @@
         <!-- 下划线 -->
         <View
             android:id="@+id/title_line_view"
-            android:layout_width="@dimen/w_80"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/h_2"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
