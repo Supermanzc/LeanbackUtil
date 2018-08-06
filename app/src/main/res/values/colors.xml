@@ -8,4 +8,5 @@
     <color name="title_select_color">#FFE55D30</color>
     <color name="title_none_color">#FF858484</color>
     <color name="clear_color">#00000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

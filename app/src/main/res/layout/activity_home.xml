@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v17.leanback.widget.HorizontalGridView
+        android:id="@+id/title_guide"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_80"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/h_20" />
+
+    <com.wt.leanbackutil.view.TvViewPager
+        android:id="@+id/tv_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_guide" />
+</RelativeLayout>
