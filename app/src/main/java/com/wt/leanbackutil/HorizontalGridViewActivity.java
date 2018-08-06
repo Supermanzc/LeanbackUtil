@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  *         HorizontalGridView 的使用
  */
 
-public class GridViewActivity extends FragmentActivity {
+public class HorizontalGridViewActivity extends FragmentActivity {
 
     private static final int VIEW_TYPE_ONE = 0;
     private static final int VIEW_TYPE_TWO = 1;
