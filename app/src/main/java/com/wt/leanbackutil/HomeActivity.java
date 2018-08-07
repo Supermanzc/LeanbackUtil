@@ -1,13 +1,10 @@
 package com.wt.leanbackutil;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v17.leanback.widget.HorizontalGridView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 
+import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
@@ -63,7 +60,7 @@ public class HomeActivity extends FragmentActivity {
                 tvViewPager.setCurrentItem(position);
             }
         });
-        titleGuide.setHorizontalSpacing(getResources().getDimensionPixelOffset(R.dimen.w_40));
+        titleGuide.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_40));
         titleGuide.setAdapter(titleGuideAdapter);
 
         //初始化Fragment
@@ -75,7 +72,7 @@ public class HomeActivity extends FragmentActivity {
             homeRecommendFragment.setArguments(bundle);
             pageAdapter.add(homeRecommendFragment);
         }
-        tvViewPager.setOffscreenPageLimit(3);
+        tvViewPager.setOffscreenPageLimit(0);
         tvViewPager.setAdapter(pageAdapter);
     }
 }

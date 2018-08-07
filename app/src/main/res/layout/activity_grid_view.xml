@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <android.support.v17.leanback.widget.HorizontalGridView
+    <com.open.leanback.widget.HorizontalGridView
         android:id="@+id/horizontal_grid"
         android:layout_width="@dimen/w_300"
         android:layout_height="@dimen/w_80" />

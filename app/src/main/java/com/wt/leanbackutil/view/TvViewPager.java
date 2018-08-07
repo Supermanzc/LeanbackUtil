@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 
 /**
  * Created by DELL on 2018/8/6.
+ *
  * @author 适用于TV端
  */
 
@@ -24,7 +25,7 @@ public class TvViewPager extends ViewPager {
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         //禁止左右滑动
-        if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT){
+        if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT) {
             return false;
         }
         return super.dispatchKeyEvent(event);
@@ -38,5 +39,10 @@ public class TvViewPager extends ViewPager {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return false;
+    }
+
+    @Override
+    public void setCurrentItem(int item) {
+        super.setCurrentItem(item, false);
     }
 }

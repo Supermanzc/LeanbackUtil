@@ -2,7 +2,6 @@ package com.wt.leanbackutil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v17.leanback.widget.HorizontalGridView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.open.leanback.widget.HorizontalGridView;
 
 import java.util.ArrayList;
 import java.util.List;
