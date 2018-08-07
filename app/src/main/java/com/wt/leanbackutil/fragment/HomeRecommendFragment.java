@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
+import com.open.leanback.widget.OnChildSelectedListener;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RecommendItemAdapter;
@@ -53,13 +54,9 @@ public class HomeRecommendFragment extends BaseFragment {
         recommendItemAdapter = new RecommendItemAdapter(this);
         recommendItemAdapter.setData(Arrays.asList(cardRows));
         verticalGridView.setAdapter(recommendItemAdapter);
-        verticalGridView.setOnKeyInterceptListener(new BaseGridView.OnKeyInterceptListener() {
-            @Override
-            public boolean onInterceptKeyEvent(KeyEvent event) {
-                LogUtil.d("setOnKeyInterceptListener---------event=" + event.getKeyCode());
-                return false;
-            }
-        });
+        //表示当前焦点是否可以移出去
+        verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
+        verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
     }
 
     @Override

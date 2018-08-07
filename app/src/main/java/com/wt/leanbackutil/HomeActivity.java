@@ -63,6 +63,7 @@ public class HomeActivity extends FragmentActivity {
         titleGuide.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_40));
         titleGuide.setAdapter(titleGuideAdapter);
 
+
         //初始化Fragment
         GuideFragmentPageAdapter pageAdapter = new GuideFragmentPageAdapter(getSupportFragmentManager());
         for (int i = 0; i < mainTabs.length; i++){
