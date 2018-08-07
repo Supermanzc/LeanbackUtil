@@ -15,12 +15,12 @@ import java.util.List;
  * Created by DELL on 2018/8/7.
  */
 
-public class RecommendItemAdapter extends RecyclerView.Adapter {
+public class RecommendItemCardAdapter extends RecyclerView.Adapter {
 
     private HomeRecommendFragment mFragment;
     private List<CardRow> cardRows;
 
-    public RecommendItemAdapter(HomeRecommendFragment fragment) {
+    public RecommendItemCardAdapter(HomeRecommendFragment fragment) {
         mFragment = fragment;
     }
 

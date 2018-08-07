@@ -56,7 +56,6 @@ public class CardItemAdapter extends RecyclerView.Adapter {
         cardItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                LogUtil.e("v------------------------getId=" + v.getId());
                 cardItemHolder.ivTextView.setTextColor(mFragment.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
                 ViewUtils.scaleView(v, hasFocus);
             }
