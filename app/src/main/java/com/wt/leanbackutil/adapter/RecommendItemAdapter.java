@@ -27,8 +27,6 @@ public class RecommendItemAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.item_recommend_horizontal, null);
-        view.setFocusable(true);
-        view.setFocusableInTouchMode(true);
         return new RecommendItemHolder(view);
     }
 
@@ -37,12 +35,9 @@ public class RecommendItemAdapter extends RecyclerView.Adapter {
         CardRow cardRow = cardRows.get(position);
         final RecommendItemHolder recommendItemHolder = (RecommendItemHolder) holder;
         recommendItemHolder.titleView.setText(cardRow.getTitle());
-        recommendItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                recommendItemHolder.titleView.setTextColor(mFragment.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
-            }
-        });
+        CardItemAdapter cardItemAdapter = new CardItemAdapter(mFragment);
+        cardItemAdapter.setData(cardRow.getCards());
+        recommendItemHolder.cardGridView.setAdapter(cardItemAdapter);
     }
 
     @Override

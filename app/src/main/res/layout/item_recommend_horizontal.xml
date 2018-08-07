@@ -7,13 +7,15 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/w_15" />
+        android:textSize="@dimen/w_45" />
 
-    <!--<android.support.v17.leanback.widget.HorizontalGridView
+    <com.open.leanback.widget.HorizontalGridView
         android:id="@+id/card_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/w_200"
+        android:layout_height="@dimen/h_260"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/h_20" />-->
+        android:layout_marginTop="@dimen/h_20"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 </RelativeLayout>

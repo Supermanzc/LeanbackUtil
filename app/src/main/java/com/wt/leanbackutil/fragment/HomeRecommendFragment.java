@@ -57,6 +57,7 @@ public class HomeRecommendFragment extends BaseFragment {
         //表示当前焦点是否可以移出去
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
+        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.h_20));
     }
 
     @Override
