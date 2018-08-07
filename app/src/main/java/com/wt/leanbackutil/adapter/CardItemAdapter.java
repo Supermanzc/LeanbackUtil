@@ -9,6 +9,7 @@ import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.CardItemHolder;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.model.Card;
+import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 
 import java.util.List;
@@ -55,6 +56,7 @@ public class CardItemAdapter extends RecyclerView.Adapter {
         cardItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                LogUtil.e("v------------------------getId=" + v.getId());
                 cardItemHolder.ivTextView.setTextColor(mFragment.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
                 ViewUtils.scaleView(v, hasFocus);
             }
