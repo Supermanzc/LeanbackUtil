@@ -37,6 +37,7 @@ public class RecommendItemAdapter extends RecyclerView.Adapter {
         recommendItemHolder.titleView.setText(cardRow.getTitle());
         CardItemAdapter cardItemAdapter = new CardItemAdapter(mFragment);
         cardItemAdapter.setData(cardRow.getCards());
+        recommendItemHolder.cardGridView.setHorizontalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.w_60));
         recommendItemHolder.cardGridView.setAdapter(cardItemAdapter);
     }
 
