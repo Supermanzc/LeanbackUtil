@@ -39,9 +39,6 @@ public class HomeRecommendFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
         ButterKnife.bind(this, view);
-        Bundle arguments = getArguments();
-        String titleStr = arguments.getString("title", "");
-        LogUtil.e("Fragment create " + titleStr);
         initData();
         return view;
     }

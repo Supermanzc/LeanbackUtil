@@ -10,6 +10,7 @@ import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
 import com.wt.leanbackutil.fragment.BaseFragment;
+import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
 import com.wt.leanbackutil.util.LogUtil;
@@ -63,12 +64,17 @@ public class HomeActivity extends FragmentActivity {
         //初始化Fragment
         GuideFragmentPageAdapter pageAdapter = new GuideFragmentPageAdapter(getSupportFragmentManager());
         for (int i = 0; i < mainTabs.length; i++) {
-            HomeRecommendFragment homeRecommendFragment = new HomeRecommendFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("title", getResources().getString(mainTabs[i]));
-            homeRecommendFragment.setArguments(bundle);
-            mBaseFragments.add(homeRecommendFragment);
-            pageAdapter.add(homeRecommendFragment);
+            BaseFragment fragment;
+            if(i == mainTabs.length - 1){
+                fragment = new HomeRadioFragment();
+            }else{
+                fragment =new HomeRecommendFragment();
+            }
+//            Bundle bundle = new Bundle();
+//            bundle.putString("title", getResources().getString(mainTabs[i]));
+//            homeRecommendFragment.setArguments(bundle);
+            mBaseFragments.add(fragment);
+            pageAdapter.add(fragment);
         }
         tvViewPager.setOffscreenPageLimit(0);
         tvViewPager.setAdapter(pageAdapter);
