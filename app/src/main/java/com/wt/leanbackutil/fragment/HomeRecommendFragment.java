@@ -70,4 +70,11 @@ public class HomeRecommendFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
     }
+
+    @Override
+    public void refreshRecyclerUi() {
+        if (verticalGridView != null) {
+            verticalGridView.scrollToPosition(0);
+        }
+    }
 }

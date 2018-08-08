@@ -3,14 +3,20 @@ package com.wt.leanbackutil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
+import android.view.View;
 
 import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
+import com.wt.leanbackutil.fragment.BaseFragment;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.view.TvViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +47,9 @@ public class HomeActivity extends FragmentActivity {
             R.string.main_tab_radio,
     };
 
+    private int mPosition = -1;
+    private List<BaseFragment> mBaseFragments;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +59,20 @@ public class HomeActivity extends FragmentActivity {
     }
 
     private void initData() {
+        mBaseFragments = new ArrayList<>();
+        //初始化Fragment
+        GuideFragmentPageAdapter pageAdapter = new GuideFragmentPageAdapter(getSupportFragmentManager());
+        for (int i = 0; i < mainTabs.length; i++) {
+            HomeRecommendFragment homeRecommendFragment = new HomeRecommendFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("title", getResources().getString(mainTabs[i]));
+            homeRecommendFragment.setArguments(bundle);
+            mBaseFragments.add(homeRecommendFragment);
+            pageAdapter.add(homeRecommendFragment);
+        }
+        tvViewPager.setOffscreenPageLimit(0);
+        tvViewPager.setAdapter(pageAdapter);
+
         //初始化title
         TitleGuideAdapter titleGuideAdapter = new TitleGuideAdapter(mainTabs, this);
         titleGuideAdapter.setAsycFocusListener(new AsyncFocusListener<Integer>() {
@@ -57,23 +80,38 @@ public class HomeActivity extends FragmentActivity {
             public void focusPosition(Integer position) {
                 //处理当前焦点的位置
                 LogUtil.e("position-------------" + position);
-                tvViewPager.setCurrentItem(position);
+                if (position == mPosition) {
+                    //回到首页
+                    BaseFragment baseFragment = mBaseFragments.get(position);
+                    baseFragment.refreshRecyclerUi();
+                } else {
+                    tvViewPager.setCurrentItem(position);
+                    mPosition = position;
+                }
             }
         });
         titleGuide.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_40));
         titleGuide.setAdapter(titleGuideAdapter);
+    }
 
-
-        //初始化Fragment
-        GuideFragmentPageAdapter pageAdapter = new GuideFragmentPageAdapter(getSupportFragmentManager());
-        for (int i = 0; i < mainTabs.length; i++){
-            HomeRecommendFragment homeRecommendFragment = new HomeRecommendFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("title", getResources().getString(mainTabs[i]));
-            homeRecommendFragment.setArguments(bundle);
-            pageAdapter.add(homeRecommendFragment);
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                View focusedChild = titleGuide.getFocusedChild();
+                if (focusedChild == null) {
+                    titleGuide.setSelectedPosition(mPosition);
+                    titleGuide.requestFocusFromTouch();
+                } else if (focusedChild != null && mPosition != 0) {
+                    titleGuide.setSelectedPosition(0);
+                    titleGuide.requestFocusFromTouch();
+                } else {
+                    finish();
+                }
+                return false;
+            }
         }
-        tvViewPager.setOffscreenPageLimit(0);
-        tvViewPager.setAdapter(pageAdapter);
+        return super.dispatchKeyEvent(event);
     }
 }

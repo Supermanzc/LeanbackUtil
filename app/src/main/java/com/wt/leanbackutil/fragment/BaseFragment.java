@@ -10,5 +10,11 @@ import android.support.v4.app.Fragment;
  */
 
 public abstract class BaseFragment extends Fragment {
-    
+
+    /**
+     * 刷新Fragment界面
+     */
+    public void refreshRecyclerUi(){
+
+    }
 }
