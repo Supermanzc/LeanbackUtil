@@ -58,7 +58,7 @@ public class HomeRecommendFragment extends BaseFragment {
         RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);
         RecommendItemInfoAdapter recommendItemInfoAdapter = new RecommendItemInfoAdapter(this);
         recommendItemInfoAdapter.setData(recommendResponse.getData().getReco_datas());
-        verticalGridView.setAdapter(recommendItemAdapter);
+        verticalGridView.setAdapter(recommendItemInfoAdapter);
 
         //表示当前焦点是否可以移出去
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);

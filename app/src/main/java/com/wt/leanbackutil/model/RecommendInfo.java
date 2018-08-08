@@ -8,6 +8,11 @@ import java.util.List;
 
 public class RecommendInfo {
 
+    public static final int TYPE_ONE = 1;
+    public static final int TYPE_TWO = 2;
+    public static final int TYPE_THREE = 3;
+    public static final int TYPE_FOUR = 4;
+
     private String name;
     private int type;
     private List<SingItem> list;
