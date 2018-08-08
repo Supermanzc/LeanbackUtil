@@ -47,15 +47,15 @@ public class RecommendItemInfoAdapter extends RecyclerView.Adapter {
                 break;
             case RecommendInfo.TYPE_TWO:
                 margin = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_40);
-                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_306);
+                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_320);
                 break;
             case RecommendInfo.TYPE_THREE:
                 margin = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_50);
-                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_340);
+                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_360);
                 break;
             case RecommendInfo.TYPE_FOUR:
                 margin = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_60);
-                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_340);
+                layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_360);
                 break;
             default:
                 margin = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_20);
