@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.decoration.SpaceItemDecoration;
@@ -25,6 +26,8 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
     private HomeRadioFragment mFragment;
     private List<RadioInfo> radioInfos;
 
+    private int mNumLine = 5;
+
     public RadioInfoAdapter(HomeRadioFragment fragment) {
         mFragment = fragment;
     }
@@ -45,10 +48,18 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
 //        int top = 50;
 //        int right = 60;
 //        radioInfoHolder.verticalGridView.addItemDecoration(new SpaceItemDecoration(right, top));
-        radioInfoHolder.verticalGridView.setNumColumns(5);
+
+        //对VerticalGridView 高度的测量
+        int line = (radioInfo.getRadios().size() + mNumLine - 1) / mNumLine;
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) radioInfoHolder.verticalGridView.getLayoutParams();
+        layoutParams.height = line * mFragment.getResources().getDimensionPixelOffset(R.dimen.h_368) - mFragment.getResources().getDimensionPixelOffset(R.dimen.h_50);
+        radioInfoHolder.verticalGridView.setLayoutParams(layoutParams);
+        radioInfoHolder.verticalGridView.setVerticalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.h_50));
+
+        radioInfoHolder.verticalGridView.setNumColumns(mNumLine);
         radioInfoHolder.verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         radioInfoHolder.verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
-        radioInfoHolder.verticalGridView.getBaseGridViewLayoutManager().setAutoMeasureEnabled(true);
+        radioInfoHolder.verticalGridView.setNestedScrollingEnabled(false);
 
         RadioItemAdapter radioItemAdapter = new RadioItemAdapter(mFragment);
         radioItemAdapter.setData(radioInfo.getRadios());

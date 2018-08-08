@@ -30,7 +30,7 @@ public class RadioItemAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.item_radio_view, null);
-//        View view = LayoutInflater.from(mFragment.getActivity()).inflate(R.layout.item_radio_view, parent, false);
+//        View view = LayoutInflater.from(mFragment.getActivity()).inflate(R.layout.item_radio_view, null);
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
         return new RadioItemHolder(view);

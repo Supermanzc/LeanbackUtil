@@ -24,5 +24,6 @@ public class RadioInfoHolder extends RecyclerView.ViewHolder {
     public RadioInfoHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+
     }
 }
