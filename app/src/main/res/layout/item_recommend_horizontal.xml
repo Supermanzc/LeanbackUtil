@@ -9,6 +9,8 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w_80"
+        android:layout_marginTop="@dimen/h_20"
         android:textSize="@dimen/w_45" />
 
     <com.open.leanback.widget.HorizontalGridView
@@ -17,6 +19,7 @@
         android:layout_height="@dimen/h_260"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/w_80"
         android:layout_marginTop="@dimen/h_20"
         android:clipChildren="false"
         android:clipToPadding="false" />

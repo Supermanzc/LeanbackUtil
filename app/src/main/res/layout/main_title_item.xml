@@ -4,10 +4,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerVertical="true"
+    android:layout_marginLeft="@dimen/w_20"
+    android:layout_marginRight="@dimen/w_20"
     android:clickable="true"
     android:focusable="true"
     android:gravity="center"
-    android:layout_marginLeft="@dimen/w_20"
-    android:layout_marginRight="@dimen/w_20"
     android:textColor="@color/main_title_normal"
     android:textSize="@dimen/w_38" />

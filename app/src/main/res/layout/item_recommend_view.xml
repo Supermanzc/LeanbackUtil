@@ -18,6 +18,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:singleLine="true"
+        android:textColor="@color/title_none_color"
         android:textSize="@dimen/h_33" />
 
     <TextView
@@ -27,5 +28,6 @@
         android:ellipsize="end"
         android:gravity="center"
         android:singleLine="true"
+        android:textColor="@color/title_none_color"
         android:textSize="@dimen/h_33" />
 </LinearLayout>
