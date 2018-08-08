@@ -10,7 +10,9 @@ import com.google.gson.Gson;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RecommendItemCardAdapter;
+import com.wt.leanbackutil.adapter.RecommendItemInfoAdapter;
 import com.wt.leanbackutil.model.CardRow;
+import com.wt.leanbackutil.model.RecommendResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
 
@@ -46,11 +48,18 @@ public class HomeRecommendFragment extends BaseFragment {
 
     private void initData() {
         //初始化Data
-        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.cards_data));
-        CardRow[] cardRows = new Gson().fromJson(json, CardRow[].class);
-        recommendItemAdapter = new RecommendItemCardAdapter(this);
-        recommendItemAdapter.setData(Arrays.asList(cardRows));
+//        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.cards_data));
+//        CardRow[] cardRows = new Gson().fromJson(json, CardRow[].class);
+//        recommendItemAdapter = new RecommendItemCardAdapter(this);
+//        recommendItemAdapter.setData(Arrays.asList(cardRows));
+//        verticalGridView.setAdapter(recommendItemAdapter);
+
+        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.recommend_data));
+        RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);
+        RecommendItemInfoAdapter recommendItemInfoAdapter = new RecommendItemInfoAdapter(this);
+        recommendItemInfoAdapter.setData(recommendResponse.getData().getReco_datas());
         verticalGridView.setAdapter(recommendItemAdapter);
+
         //表示当前焦点是否可以移出去
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
