@@ -13,8 +13,13 @@ import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RadioInfoAdapter;
 import com.wt.leanbackutil.adapter.SongSheetItemAdapter;
 import com.wt.leanbackutil.model.RadioResponse;
+import com.wt.leanbackutil.model.SongSheetItem;
 import com.wt.leanbackutil.model.SongSheetResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.LogUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +38,10 @@ public class HomeLoadMoreFragment extends BaseFragment {
     VerticalGridView verticalGridView;
 
     private Unbinder unbinder;
+    private SongSheetItemAdapter songSheetItemAdapter;
+    private SongSheetResponse songSheetResponse;
+
+    private List<SongSheetItem> mDataAlls;
 
     @Nullable
     @Override
@@ -44,17 +53,36 @@ public class HomeLoadMoreFragment extends BaseFragment {
     }
 
     private void initData() {
+        mDataAlls = new ArrayList<>();
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.song_sheet_data));
-        SongSheetResponse songSheetResponse = new Gson().fromJson(json, SongSheetResponse.class);
-        SongSheetItemAdapter songSheetItemAdapter = new SongSheetItemAdapter();
+        songSheetResponse = new Gson().fromJson(json, SongSheetResponse.class);
+        mDataAlls.addAll(songSheetResponse.getData());
+        songSheetItemAdapter = new SongSheetItemAdapter();
         songSheetItemAdapter.setContext(this);
-        songSheetItemAdapter.setData(songSheetResponse.getData());
+        songSheetItemAdapter.setData(mDataAlls);
 
         verticalGridView.setNumColumns(5);
         verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
         verticalGridView.setAdapter(songSheetItemAdapter);
+
+        verticalGridView.setOnLoadMoreListener(new VerticalGridView.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                LogUtil.e("onLoadMore-----------------position=" + verticalGridView.getSelectedPosition());
+                int position = verticalGridView.getSelectedPosition();
+                String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.song_sheet_data));
+                SongSheetResponse songResponse = new Gson().fromJson(json, SongSheetResponse.class);
+                List<SongSheetItem> tempData = new ArrayList<>();
+                tempData.addAll(mDataAlls);
+                mDataAlls.addAll(songSheetResponse.getData().size(), songResponse.getData());
+                songSheetItemAdapter.notifyItemChanged(position);
+//                songSheetItemAdapter.setData(mDataAlls);
+//                songSheetItemAdapter.notifyItemRangeInserted(tempData.size(), mDataAlls.size());
+                verticalGridView.endMoreRefreshComplete();
+            }
+        });
     }
 
     @Override

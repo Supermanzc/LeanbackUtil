@@ -156,22 +156,27 @@ public class VerticalGridView extends BaseGridView {
 
     }
 
-    // 加载更多结束调用.
+    /**
+     * 加载更多结束调用.
+     */
     public void endMoreRefreshComplete() {
         mMoreState = MORE_STATE_END;
     }
 
-    // 没有更多加载.
+    /**
+     * 没有更多加载.
+     */
     public void endRefreshingWithNoMoreData() {
         mMoreState = MORE_STATE_NO_DATA;
     }
 
     public int getLastVisiblePosition() {
         final int childCount = getChildCount();
-        if (childCount == 0)
+        if (childCount == 0) {
             return 0;
-        else
+        } else {
             return getChildAdapterPosition(getChildAt(childCount - 1));
+        }
     }
 
     @Override
