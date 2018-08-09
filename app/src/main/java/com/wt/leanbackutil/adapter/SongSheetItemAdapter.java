@@ -3,12 +3,14 @@ package com.wt.leanbackutil.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.bumptech.glide.Glide;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.SongSheetItemHolder;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.model.SongSheetItem;
+import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 import com.wt.leanbackutil.view.border.MainUpView;
 
@@ -39,12 +41,21 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 songSheetItemHolder.titleView.setTextColor(mContext.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
-//                if (hasFocus) {
-//                    mainUpView.setFocusView(v, 1.2f);
-//                } else {
-//                    mainUpView.setUnFocusView(v);
-//                }
+                LogUtil.d("----------onFocusChange");
+                if (hasFocus) {
+                    mainUpView.setFocusView(v, 1.2f);
+                } else {
+                    mainUpView.setUnFocusView(v);
+                }
+
                 ViewUtils.scaleView(v, hasFocus);
+            }
+        });
+
+        songSheetItemHolder.itemView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                LogUtil.d("----------onGlobalLayout");
             }
         });
     }
