@@ -16,7 +16,7 @@
     <com.open.leanback.widget.VerticalGridView
         android:id="@+id/vertical_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/h_320"
         android:layout_below="@+id/title"
         android:layout_marginLeft="@dimen/w_80"
         android:layout_marginTop="@dimen/h_20"

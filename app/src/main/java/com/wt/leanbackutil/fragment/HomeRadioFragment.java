@@ -14,8 +14,14 @@ import com.google.gson.Gson;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RadioInfoAdapter;
+import com.wt.leanbackutil.model.RadioInfo;
+import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.PagerUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +51,7 @@ public class HomeRadioFragment extends BaseFragment {
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.radio_data));
         RadioResponse radioResponse = new Gson().fromJson(json, RadioResponse.class);
         RadioInfoAdapter radioInfoAdapter = new RadioInfoAdapter(this);
-        radioInfoAdapter.setData(radioResponse.getData());
+        radioInfoAdapter.setData(getRadioInfos(radioResponse));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
 
@@ -59,8 +65,37 @@ public class HomeRadioFragment extends BaseFragment {
 
     @Override
     public void refreshRecyclerUi() {
-        if(verticalGridView != null){
+        if (verticalGridView != null) {
             verticalGridView.scrollToPosition(0);
         }
+    }
+
+    /**
+     * 数据整理
+     *
+     * @param radioResponse
+     * @return
+     */
+    private List<RadioInfo> getRadioInfos(RadioResponse radioResponse) {
+        List<RadioInfo> radioInfos = new ArrayList<>();
+        for (int i = 0; i < radioResponse.getData().size(); i++) {
+            RadioInfo radioInfo = radioResponse.getData().get(i);
+            PagerUtil<RadioItem> pagerUtil = PagerUtil.create(radioInfo.getRadios(), 5);
+            for (int j = 1; j <= pagerUtil.getTotalPage(); j++) {
+                RadioInfo copeRadioInfo = new RadioInfo();
+                copeRadioInfo.setId(radioInfo.getId());
+                copeRadioInfo.setRadio_group_name(radioInfo.getRadio_group_name());
+                if (j == 1) {
+                    copeRadioInfo.setType(1);
+                } else {
+                    copeRadioInfo.setType(0);
+                }
+                copeRadioInfo.setRadios(pagerUtil.getPagedList(j));
+                if(copeRadioInfo != null) {
+                    radioInfos.add(copeRadioInfo);
+                }
+            }
+        }
+        return radioInfos;
     }
 }

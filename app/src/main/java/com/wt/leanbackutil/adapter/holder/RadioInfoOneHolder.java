@@ -14,16 +14,15 @@ import butterknife.ButterKnife;
  * Created by DELL on 2018/8/8.
  */
 
-public class RadioInfoHolder extends RecyclerView.ViewHolder {
+public class RadioInfoOneHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.title)
     public TextView titleView;
     @BindView(R.id.vertical_grid_view)
     public VerticalGridView verticalGridView;
 
-    public RadioInfoHolder(View itemView) {
+    public RadioInfoOneHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-
     }
 }

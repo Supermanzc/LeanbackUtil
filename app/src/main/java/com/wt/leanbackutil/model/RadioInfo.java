@@ -10,6 +10,11 @@ public class RadioInfo {
 
     private String id;
     private String radio_group_name;
+    /**
+     * 设置类型处理
+
+     */
+    private int type;
     private List<RadioItem> radios;
 
     public String getId() {
@@ -34,5 +39,14 @@ public class RadioInfo {
 
     public void setRadios(List<RadioItem> radios) {
         this.radios = radios;
+    }
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }
