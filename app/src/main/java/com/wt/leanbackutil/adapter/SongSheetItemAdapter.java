@@ -10,6 +10,7 @@ import com.wt.leanbackutil.adapter.holder.SongSheetItemHolder;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.model.SongSheetItem;
 import com.wt.leanbackutil.util.ViewUtils;
+import com.wt.leanbackutil.view.border.MainUpView;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ import java.util.List;
  */
 
 public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeLoadMoreFragment> {
+
+    MainUpView mainUpView;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,6 +39,11 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 songSheetItemHolder.titleView.setTextColor(mContext.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
+//                if (hasFocus) {
+//                    mainUpView.setFocusView(v, 1.2f);
+//                } else {
+//                    mainUpView.setUnFocusView(v);
+//                }
                 ViewUtils.scaleView(v, hasFocus);
             }
         });
@@ -44,5 +52,9 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void setMainView(MainUpView mainUpView) {
+        this.mainUpView = mainUpView;
     }
 }

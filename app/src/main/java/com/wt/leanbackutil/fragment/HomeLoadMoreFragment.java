@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.open.leanback.widget.OnChildSelectedListener;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RadioInfoAdapter;
@@ -17,6 +18,7 @@ import com.wt.leanbackutil.model.SongSheetItem;
 import com.wt.leanbackutil.model.SongSheetResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.view.border.MainUpView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,8 @@ public class HomeLoadMoreFragment extends BaseFragment {
 
     @BindView(R.id.vertical_grid_view)
     VerticalGridView verticalGridView;
+    @BindView(R.id.mainUpView)
+    MainUpView mainUpView;
 
     private Unbinder unbinder;
     private SongSheetItemAdapter songSheetItemAdapter;
@@ -60,6 +64,7 @@ public class HomeLoadMoreFragment extends BaseFragment {
         songSheetItemAdapter = new SongSheetItemAdapter();
         songSheetItemAdapter.setContext(this);
         songSheetItemAdapter.setData(mDataAlls);
+        songSheetItemAdapter.setMainView(mainUpView);
 
         verticalGridView.setNumColumns(5);
         verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));

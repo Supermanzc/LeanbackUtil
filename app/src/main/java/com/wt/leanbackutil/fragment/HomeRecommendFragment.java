@@ -11,12 +11,8 @@ import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RecommendItemCardAdapter;
 import com.wt.leanbackutil.adapter.RecommendItemInfoAdapter;
-import com.wt.leanbackutil.model.CardRow;
 import com.wt.leanbackutil.model.RecommendResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
-import com.wt.leanbackutil.util.LogUtil;
-
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
