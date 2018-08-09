@@ -10,6 +10,7 @@ import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
 import com.wt.leanbackutil.fragment.BaseFragment;
+import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
@@ -65,10 +66,12 @@ public class HomeActivity extends FragmentActivity {
         GuideFragmentPageAdapter pageAdapter = new GuideFragmentPageAdapter(getSupportFragmentManager());
         for (int i = 0; i < mainTabs.length; i++) {
             BaseFragment fragment;
-            if(i == mainTabs.length - 1){
+            if (i == mainTabs.length - 1) {
                 fragment = new HomeRadioFragment();
-            }else{
-                fragment =new HomeRecommendFragment();
+            } else if (i == 1) {
+                fragment = new HomeLoadMoreFragment();
+            } else {
+                fragment = new HomeRecommendFragment();
             }
 //            Bundle bundle = new Bundle();
 //            bundle.putString("title", getResources().getString(mainTabs[i]));
