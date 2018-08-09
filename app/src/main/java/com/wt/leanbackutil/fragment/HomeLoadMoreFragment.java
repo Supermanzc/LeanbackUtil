@@ -44,15 +44,16 @@ public class HomeLoadMoreFragment extends BaseFragment {
     }
 
     private void initData() {
-        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.radio_data));
+        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.song_sheet_data));
         SongSheetResponse songSheetResponse = new Gson().fromJson(json, SongSheetResponse.class);
         SongSheetItemAdapter songSheetItemAdapter = new SongSheetItemAdapter();
         songSheetItemAdapter.setContext(this);
         songSheetItemAdapter.setData(songSheetResponse.getData());
 
+        verticalGridView.setNumColumns(5);
+        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
-
         verticalGridView.setAdapter(songSheetItemAdapter);
     }
 
@@ -60,5 +61,12 @@ public class HomeLoadMoreFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void refreshRecyclerUi() {
+        if (verticalGridView != null) {
+            verticalGridView.scrollToPosition(0);
+        }
     }
 }

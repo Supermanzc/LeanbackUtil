@@ -8,5 +8,10 @@
     <com.open.leanback.widget.VerticalGridView
         android:id="@+id/vertical_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/h_100"
+        android:layout_marginTop="@dimen/h_100"
+        android:layout_marginLeft="@dimen/h_80"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 </RelativeLayout>
