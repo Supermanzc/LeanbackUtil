@@ -67,7 +67,7 @@ public class HomeLoadMoreFragment extends BaseFragment {
         songSheetItemAdapter.setMainView(mainUpView);
 
         verticalGridView.setNumColumns(5);
-        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
+//        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
         verticalGridView.setAdapter(songSheetItemAdapter);
@@ -86,6 +86,13 @@ public class HomeLoadMoreFragment extends BaseFragment {
 //                songSheetItemAdapter.setData(mDataAlls);
 //                songSheetItemAdapter.notifyItemRangeInserted(tempData.size(), mDataAlls.size());
                 verticalGridView.endMoreRefreshComplete();
+            }
+        });
+
+        verticalGridView.getBaseGridViewLayoutManager().setOnChildSelectedListener(new OnChildSelectedListener() {
+            @Override
+            public void onChildSelected(ViewGroup parent, View view, int position, long id) {
+                LogUtil.d("onChildSelected---------------position=" + position + "   id=" + id);
             }
         });
     }

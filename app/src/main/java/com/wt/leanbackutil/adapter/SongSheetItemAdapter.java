@@ -32,7 +32,7 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         SongSheetItem songSheetItem = mData.get(position);
         final SongSheetItemHolder songSheetItemHolder = (SongSheetItemHolder) holder;
         songSheetItemHolder.titleView.setText(songSheetItem.getDiss_name());
@@ -41,21 +41,9 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 songSheetItemHolder.titleView.setTextColor(mContext.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
-                LogUtil.d("----------onFocusChange");
-                if (hasFocus) {
-                    mainUpView.setFocusView(v, 1.2f);
-                } else {
-                    mainUpView.setUnFocusView(v);
-                }
-
+                LogUtil.d("onBindViewHolder---------------position=" + position + "  hasFocus=" + hasFocus);
+                songSheetItemHolder.imageView.setBackgroundResource(hasFocus ? R.drawable.button_focus : R.drawable.button_normal);
                 ViewUtils.scaleView(v, hasFocus);
-            }
-        });
-
-        songSheetItemHolder.itemView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                LogUtil.d("----------onGlobalLayout");
             }
         });
     }
