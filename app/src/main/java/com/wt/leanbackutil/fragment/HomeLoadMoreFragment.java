@@ -67,7 +67,7 @@ public class HomeLoadMoreFragment extends BaseFragment {
         songSheetItemAdapter.setMainView(mainUpView);
 
         verticalGridView.setNumColumns(5);
-//        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
+//        horizontalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
         verticalGridView.setAdapter(songSheetItemAdapter);

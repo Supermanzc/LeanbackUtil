@@ -85,14 +85,14 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
 
 //        int top = 50;
 //        int right = 60;
-//        radioInfoHolder.verticalGridView.addItemDecoration(new SpaceItemDecoration(right, top));
+//        radioInfoHolder.horizontalGridView.addItemDecoration(new SpaceItemDecoration(right, top));
 
         //对VerticalGridView 高度的测量
 //        int line = (radioInfo.getRadios().size() + mNumLine - 1) / mNumLine;
-//        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) radioInfoHolder.verticalGridView.getLayoutParams();
+//        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) radioInfoHolder.horizontalGridView.getLayoutParams();
 //        layoutParams.height = line * mFragment.getResources().getDimensionPixelOffset(R.dimen.h_368) - mFragment.getResources().getDimensionPixelOffset(R.dimen.h_50);
-//        radioInfoHolder.verticalGridView.setLayoutParams(layoutParams);
-//        radioInfoHolder.verticalGridView.setVerticalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.h_50));
+//        radioInfoHolder.horizontalGridView.setLayoutParams(layoutParams);
+//        radioInfoHolder.horizontalGridView.setVerticalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.h_50));
     }
 
     @Override

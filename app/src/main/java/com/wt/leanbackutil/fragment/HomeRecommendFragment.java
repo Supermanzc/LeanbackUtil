@@ -45,7 +45,7 @@ public class HomeRecommendFragment extends BaseFragment {
 //        CardRow[] cardRows = new Gson().fromJson(json, CardRow[].class);
 //        recommendItemAdapter = new RecommendItemCardAdapter(this);
 //        recommendItemAdapter.setData(Arrays.asList(cardRows));
-//        verticalGridView.setAdapter(recommendItemAdapter);
+//        horizontalGridView.setAdapter(recommendItemAdapter);
 
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.recommend_data));
         RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);

@@ -13,7 +13,7 @@
         android:layout_marginTop="@dimen/h_20"
         android:textSize="@dimen/w_45" />
 
-    <com.open.leanback.widget.VerticalGridView
+    <RelativeLayout
         android:id="@+id/vertical_grid_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_320"
