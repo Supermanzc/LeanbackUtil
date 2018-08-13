@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.MvInfoAdapter;
@@ -17,6 +18,7 @@ import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.PagerUtil;
+import com.wt.leanbackutil.view.TvVerticalGridView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ import butterknife.ButterKnife;
 public class HomeMvFragment extends BaseFragment {
 
     @BindView(R.id.vertical_grid_view)
-    VerticalGridView verticalGridView;
+    TvVerticalGridView verticalGridView;
 
     @Nullable
     @Override
@@ -52,6 +54,9 @@ public class HomeMvFragment extends BaseFragment {
         mvInfoAdapter.setData(getRadioInfos(radioResponse));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
+
+        //设置焦点在屏幕中的位置
+        verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 
         verticalGridView.setAdapter(mvInfoAdapter);
     }
