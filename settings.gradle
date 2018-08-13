@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':leanback'
+include ':app', ':baselib', ':leanback', ':mzbanner'

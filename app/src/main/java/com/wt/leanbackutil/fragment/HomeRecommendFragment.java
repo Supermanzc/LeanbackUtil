@@ -11,8 +11,12 @@ import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RecommendItemCardAdapter;
 import com.wt.leanbackutil.adapter.RecommendItemInfoAdapter;
+import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.RecommendResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,17 +44,11 @@ public class HomeRecommendFragment extends BaseFragment {
     }
 
     private void initData() {
-        //初始化Data
-//        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.cards_data));
-//        CardRow[] cardRows = new Gson().fromJson(json, CardRow[].class);
-//        recommendItemAdapter = new RecommendItemCardAdapter(this);
-//        recommendItemAdapter.setData(Arrays.asList(cardRows));
-//        horizontalGridView.setAdapter(recommendItemAdapter);
-
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.recommend_data));
         RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);
         RecommendItemInfoAdapter recommendItemInfoAdapter = new RecommendItemInfoAdapter(this);
-        recommendItemInfoAdapter.setData(recommendResponse.getData().getReco_datas());
+        List<RecommendInfo> recommendInfos = recommendResponse.getData().getReco_datas().subList(1, recommendResponse.getData().getReco_datas().size());
+        recommendItemInfoAdapter.setData(recommendInfos);
         verticalGridView.setAdapter(recommendItemInfoAdapter);
 
         //表示当前焦点是否可以移出去

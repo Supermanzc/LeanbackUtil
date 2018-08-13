@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res"/><source path="D:\workspace\github\LeanbackUtil\mzbanner\build\generated\res\rs\debug"/><source path="D:\workspace\github\LeanbackUtil\mzbanner\build\generated\res\resValues\debug"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res"><file name="indicator_normal" path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\drawable\indicator_normal.xml" qualifiers="" type="drawable"/><file name="indicator_selected" path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\drawable\indicator_selected.xml" qualifiers="" type="drawable"/><file name="mz_banner_effect_layout" path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\layout\mz_banner_effect_layout.xml" qualifiers="" type="layout"/><file name="mz_banner_normal_layout" path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\layout\mz_banner_normal_layout.xml" qualifiers="" type="layout"/><file path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\values\attr.xml" qualifiers=""><declare-styleable name="MZBannerView">
+        <attr format="boolean" name="open_mz_mode"/>
+        <attr format="boolean" name="canLoop"/>
+        <attr format="dimension" name="indicatorPaddingLeft"/>
+        <attr format="dimension" name="indicatorPaddingRight"/>
+        <attr format="dimension" name="indicatorPaddingTop"/>
+        <attr format="dimension" name="indicatorPaddingBottom"/>
+        <attr name="indicatorAlign">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr format="boolean" name="middle_page_cover"/>
+    </declare-styleable></file><file path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\values\ids.xml" qualifiers=""><item name="mz_banner_item_tag" type="id"/></file><file path="D:\workspace\github\LeanbackUtil\mzbanner\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">MZBanner</string></file></source><source path="D:\workspace\github\LeanbackUtil\mzbanner\build\generated\res\rs\debug"/><source path="D:\workspace\github\LeanbackUtil\mzbanner\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="D:\workspace\github\LeanbackUtil\mzbanner\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="D:\workspace\github\LeanbackUtil\mzbanner\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="MZBannerView"><attr format="boolean" name="open_mz_mode"/><attr format="boolean" name="canLoop"/><attr format="dimension" name="indicatorPaddingLeft"/><attr format="dimension" name="indicatorPaddingRight"/><attr format="dimension" name="indicatorPaddingTop"/><attr format="dimension" name="indicatorPaddingBottom"/><attr name="indicatorAlign">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr><attr format="boolean" name="middle_page_cover"/></declare-styleable></configuration></mergedItems></merger>
