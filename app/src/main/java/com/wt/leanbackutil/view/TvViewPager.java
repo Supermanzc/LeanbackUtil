@@ -22,13 +22,19 @@ public class TvViewPager extends ViewPager {
         super(context, attrs);
     }
 
+//    @Override
+//    public boolean dispatchKeyEvent(KeyEvent event) {
+//        //禁止左右滑动
+//        if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT) {
+//            return false;
+//        }
+//        return super.dispatchKeyEvent(event);
+//    }
+
     @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        //禁止左右滑动
-        if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT) {
-            return false;
-        }
-        return super.dispatchKeyEvent(event);
+    public boolean executeKeyEvent(KeyEvent event) {
+        //屏蔽左右滑动
+        return false;
     }
 
     @Override

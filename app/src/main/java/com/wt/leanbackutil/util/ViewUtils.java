@@ -23,7 +23,7 @@ public class ViewUtils {
     }
 
     public static void scaleView(View view, float scale, boolean hasFocus) {
-        if(!hasFocus){
+        if (!hasFocus) {
             scale = 1.0f;
         }
         view.animate().scaleX(scale).scaleY(scale).setInterpolator(new AccelerateInterpolator()).setDuration(200);

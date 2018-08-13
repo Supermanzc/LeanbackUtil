@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.SparseArray;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class CustomViewPager extends ViewPager {
         init();
     }
 
-    private void init(){
+    private void init() {
         setClipToPadding(false);
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
@@ -64,4 +66,5 @@ public class CustomViewPager extends ViewPager {
         view.getLocationOnScreen(array);
         return array[0] + view.getWidth() / 2;
     }
+
 }
