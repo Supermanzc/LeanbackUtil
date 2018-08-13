@@ -48,7 +48,11 @@ public class HomeRecommendFragment extends BaseFragment {
         RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);
         RecommendItemInfoAdapter recommendItemInfoAdapter = new RecommendItemInfoAdapter(this);
         List<RecommendInfo> recommendInfos = recommendResponse.getData().getReco_datas().subList(1, recommendResponse.getData().getReco_datas().size());
-        recommendItemInfoAdapter.setData(recommendInfos);
+        recommendItemInfoAdapter.setData(recommendResponse.getData().getReco_datas());
+
+        //添加headerView
+//        View headerView = LayoutInflater.from(getActivity()).inflate(R.layout.item_header_recommend, verticalGridView, false);
+
         verticalGridView.setAdapter(recommendItemInfoAdapter);
 
         //表示当前焦点是否可以移出去

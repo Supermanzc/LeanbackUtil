@@ -22,6 +22,13 @@ public class ViewUtils {
         view.animate().scaleX(scale).scaleY(scale).setInterpolator(new AccelerateInterpolator()).setDuration(200);
     }
 
+    public static void scaleView(View view, float scale, boolean hasFocus) {
+        if(!hasFocus){
+            scale = 1.0f;
+        }
+        view.animate().scaleX(scale).scaleY(scale).setInterpolator(new AccelerateInterpolator()).setDuration(200);
+    }
+
     /**
      * 改变图片的颜色
      * 参考：https://www.jianshu.com/p/9cae2250d0ed

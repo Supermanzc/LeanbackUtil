@@ -3,17 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/h_428"
     android:clipChildren="false"
+    android:clipToPadding="false"
     android:orientation="vertical">
 
     <com.zhouwei.mzbanner.CustomViewPager
         android:id="@+id/mzbanner_vp"
         android:layout_width="@dimen/w_975"
         android:layout_height="@dimen/h_390"
-        android:layout_marginTop="@dimen/h_6"
+        android:layout_marginBottom="@dimen/h_20"
         android:layout_marginLeft="@dimen/w_443"
         android:layout_marginRight="@dimen/w_443"
-        android:layout_marginBottom="@dimen/h_20"
-        android:clipChildren="false">
+        android:layout_marginTop="@dimen/h_6"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
     </com.zhouwei.mzbanner.CustomViewPager>
 

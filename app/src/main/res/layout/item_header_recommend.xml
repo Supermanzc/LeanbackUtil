@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h_479"
+    android:background="@color/color_1A58829C"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.zhouwei.mzbanner.MZBannerView
+        android:id="@+id/banner_mz_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h_428"
+        android:layout_marginTop="@dimen/h_34"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:canLoop="true"
+        app:indicatorAlign="center"
+        app:middle_page_cover="false"
+        app:open_mz_mode="true">
+
+    </com.zhouwei.mzbanner.MZBannerView>
+
+</RelativeLayout>
