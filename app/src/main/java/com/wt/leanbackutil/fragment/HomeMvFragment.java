@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
-import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.MvInfoAdapter;
-import com.wt.leanbackutil.adapter.RadioInfoAdapter;
 import com.wt.leanbackutil.model.RadioInfo;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
