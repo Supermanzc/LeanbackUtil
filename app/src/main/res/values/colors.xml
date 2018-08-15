@@ -10,4 +10,5 @@
     <color name="clear_color">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="color_1A58829C">#1A58829C</color>
+    <color name="shimmer_color" >#FFFFFF</color>
 </resources>

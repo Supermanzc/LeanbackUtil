@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="ShimmerLayout">
+        <attr name="shimmerColor" format="color|reference" />
+        <attr name="shimmerDuration" format="integer|reference" />
+        <attr name="shimmerAutoStart" format="boolean|reference" />
+        <attr name="shimmerAngle" format="integer|reference" />
+        <attr name="shimmerMaskWidth" format="float|reference" />
+        <attr name="shimmerGradientCenterColorWidth" format="float|reference" />
+        <attr name="shimmerReverseAnimation" format="boolean|reference" />
+        <attr name="shimmerRepeatCount" format="integer" />
+    </declare-styleable>
+  
+</resources>
