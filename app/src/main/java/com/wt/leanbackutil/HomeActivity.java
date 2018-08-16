@@ -107,6 +107,8 @@ public class HomeActivity extends FragmentActivity {
         });
         titleGuide.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_40));
         titleGuide.setAdapter(titleGuideAdapter);
+
+        //兼容手机端
     }
 
     @Override
