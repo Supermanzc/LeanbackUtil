@@ -17,6 +17,7 @@ import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.PagerUtil;
 import com.wt.leanbackutil.view.TvVerticalGridView;
+import com.wt.leanbackutil.view.border.MainUpView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +36,15 @@ public class HomeMvFragment extends BaseFragment {
 
     @BindView(R.id.vertical_grid_view)
     TvVerticalGridView verticalGridView;
+    @BindView(R.id.main_up_view)
+    MainUpView mainUpView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mv_radio, container, false);
         ButterKnife.bind(this, view);
+
         initData();
         return view;
     }
@@ -92,11 +96,24 @@ public class HomeMvFragment extends BaseFragment {
                     copeRadioInfo.setType(0);
                 }
                 copeRadioInfo.setRadios(pagerUtil.getPagedList(j));
-                if(copeRadioInfo != null) {
+                if (copeRadioInfo != null) {
                     radioInfos.add(copeRadioInfo);
                 }
             }
         }
         return radioInfos;
+    }
+
+    public void setOnFocusChange(final View v, boolean hasFocus) {
+//        if (hasFocus) {
+//            v.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mainUpView.setFocusView(v, 1.2f);
+//                }
+//            }, 200);
+//        } else {
+//            mainUpView.setFocusView(v, 1.0f);
+//        }
     }
 }

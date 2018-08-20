@@ -72,4 +72,22 @@
         <attr name="cursorMarginBottom" format="dimension"></attr>
     </declare-styleable>
 
+
+    <!-- 移动边框 -->
+    <declare-styleable name="BorderView">
+        <attr name="bv_res" format="reference" />
+        <!-- 缩放比例 x -->
+        <attr name="bv_scale_x" format="float" />
+        <!-- 缩放比例 y -->
+        <attr name="bv_scale_y" format="float" />
+        <!-- 移动时间 -->
+        <attr name="bv_duration" format="integer" />
+        <!-- 是否可用 -->
+        <attr name="bv_enabled" format="boolean" />
+        <!-- 是否可见 -->
+        <attr name="bv_visible" format="boolean" />
+        <!-- 设置间距 -->
+        <attr name="bv_padding" format="dimension" />
+    </declare-styleable>
+
 </resources>

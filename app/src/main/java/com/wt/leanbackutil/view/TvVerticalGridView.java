@@ -1,6 +1,7 @@
 package com.wt.leanbackutil.view;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -14,6 +15,7 @@ import com.open.leanback.widget.VerticalGridView;
  */
 
 public class TvVerticalGridView extends VerticalGridView {
+
 
     public TvVerticalGridView(Context context) {
         super(context);

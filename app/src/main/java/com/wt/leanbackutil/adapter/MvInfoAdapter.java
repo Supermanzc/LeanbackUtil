@@ -63,7 +63,7 @@ public class MvInfoAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        LogUtil.d("onBindViewHolder---------------viewType=" + holder.getItemViewType() + " 当前的坐标="+ position + "  调用" + bindIndexHolder + "次");
+        LogUtil.d("onBindViewHolder---------------viewType=" + holder.getItemViewType() + " 当前的坐标=" + position + "  调用" + bindIndexHolder + "次");
         bindIndexHolder++;
 
         RadioInfo radioInfo = radioInfos.get(position);
@@ -128,11 +128,13 @@ public class MvInfoAdapter extends RecyclerView.Adapter {
         titleView.setText(radioItem.getRadio_name());
         Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(imageView);
         view.setFocusable(true);
+        view.setClickable(true);
         view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 TextView textView = v.findViewById(R.id.title_view);
                 textView.setTextColor(mFragment.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
+                mFragment.setOnFocusChange(v, hasFocus);
                 if (hasFocus) {
                     v.bringToFront();
                 }
