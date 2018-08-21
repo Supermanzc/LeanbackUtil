@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
@@ -15,6 +16,7 @@ import com.wt.leanbackutil.model.RadioInfo;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.PagerUtil;
 import com.wt.leanbackutil.view.TvVerticalGridView;
 import com.wt.leanbackutil.view.border.MainUpView;
@@ -61,6 +63,15 @@ public class HomeMvFragment extends BaseFragment {
         verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 
         verticalGridView.setAdapter(mvInfoAdapter);
+
+        verticalGridView.getViewTreeObserver().addOnGlobalFocusChangeListener(new ViewTreeObserver.OnGlobalFocusChangeListener() {
+            @Override
+            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+                LogUtil.e("onGlobalFocusChanged--------------------oldFocus=" + oldFocus);
+                LogUtil.e("onGlobalFocusChanged--------------------newFocus=" + newFocus);
+//                mainUpView.setFocusView(newFocus, oldFocus, 1.2f);
+            }
+        });
     }
 
     @Override
