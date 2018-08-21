@@ -29,11 +29,6 @@ public class RecommendItemInfoAdapter extends RecyclerView.Adapter {
     private static final int MZ_BANNER = 1;
     private static final int NORMAL = 2;
 
-    /**
-     * 优化垂直滚动
-     */
-    private RecyclerView.RecycledViewPool mRecycledViewPool = new RecyclerView.RecycledViewPool();
-
     public RecommendItemInfoAdapter(HomeRecommendFragment fragment) {
         mFragment = fragment;
     }
@@ -92,7 +87,6 @@ public class RecommendItemInfoAdapter extends RecyclerView.Adapter {
                     margin = mFragment.getResources().getDimensionPixelOffset(R.dimen.w_20);
                     break;
             }
-            recommendItemHolder.cardGridView.setRecycledViewPool(mRecycledViewPool);
             recommendItemHolder.cardGridView.setLayoutParams(layoutParams);
             recommendItemHolder.cardGridView.setHorizontalMargin(margin);
             recommendItemHolder.cardGridView.setAdapter(recommendSingAdapter);

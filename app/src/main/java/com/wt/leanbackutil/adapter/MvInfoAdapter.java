@@ -8,12 +8,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.MvInfoOneHolder;
 import com.wt.leanbackutil.adapter.holder.MvInfoTwoHolder;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.model.RadioInfo;
 import com.wt.leanbackutil.model.RadioItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 
@@ -123,10 +125,11 @@ public class MvInfoAdapter extends RecyclerView.Adapter {
 
     private View getItemView(ViewGroup parent, RadioItem radioItem) {
         View view = View.inflate(parent.getContext(), R.layout.item_mv_view, null);
-        ImageView imageView = view.findViewById(R.id.img_view);
+        SimpleDraweeView imageView = view.findViewById(R.id.img_view);
         TextView titleView = view.findViewById(R.id.title_view);
         titleView.setText(radioItem.getRadio_name());
-        Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(imageView);
+//        Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(imageView);
+        FrescoUtil.getInstance().loadImage(imageView, radioItem.getRadio_pic(), FrescoUtil.TYPE_ONE);
         view.setFocusable(true);
         view.setClickable(true);
         view.setOnFocusChangeListener(new View.OnFocusChangeListener() {

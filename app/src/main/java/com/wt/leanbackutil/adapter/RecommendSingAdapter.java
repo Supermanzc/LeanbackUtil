@@ -17,6 +17,7 @@ import com.wt.leanbackutil.adapter.holder.RecommendSingHolder;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.SingItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 
 /**
@@ -47,19 +48,23 @@ public class RecommendSingAdapter extends RecyclerView.Adapter {
         final RecommendSingHolder recommendSingHolder = (RecommendSingHolder) holder;
         switch (recommendInfo.getType()) {
             case RecommendInfo.TYPE_ONE:
-                Glide.with(mFragment.getActivity()).load(singItem.getPic()).into(recommendSingHolder.imageView);
+                FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getPic(), FrescoUtil.TYPE_ONE);
+//                Glide.with(mFragment.getActivity()).load(singItem.getPic()).into(recommendSingHolder.imageView);
                 break;
             case RecommendInfo.TYPE_TWO:
-                Glide.with(mFragment.getActivity()).load(singItem.getPic_url()).into(recommendSingHolder.imageView);
+                FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getPic_url(), FrescoUtil.TYPE_ONE);
+//                Glide.with(mFragment.getActivity()).load(singItem.getPic_url()).into(recommendSingHolder.imageView);
                 recommendSingHolder.descriptionView.setText(singItem.getDiss_name());
                 break;
             case RecommendInfo.TYPE_THREE:
-                Glide.with(mFragment.getActivity()).load(singItem.getAlbum_pic()).into(recommendSingHolder.imageView);
+                FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getAlbum_pic(), FrescoUtil.TYPE_ONE);
+//                Glide.with(mFragment.getActivity()).load(singItem.getAlbum_pic()).into(recommendSingHolder.imageView);
                 recommendSingHolder.titleView.setText(singItem.getSong_name());
                 recommendSingHolder.descriptionView.setText(singItem.getSinger_name());
                 break;
             case RecommendInfo.TYPE_FOUR:
-                Glide.with(mFragment.getActivity()).load(singItem.getMv_pic()).into(recommendSingHolder.imageView);
+                FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getMv_pic(), FrescoUtil.TYPE_ONE);
+//                Glide.with(mFragment.getActivity()).load(singItem.getMv_pic()).into(recommendSingHolder.imageView);
                 recommendSingHolder.titleView.setText(singItem.getMv_title());
                 recommendSingHolder.descriptionView.setText(singItem.getSinger_name());
                 break;

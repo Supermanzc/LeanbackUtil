@@ -8,8 +8,10 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.SingItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
@@ -20,7 +22,7 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 
 public class BannerItemViewHolder implements MZViewHolder<SingItem> {
 
-    private ImageView mImageView;
+    private SimpleDraweeView mImageView;
 
     @Override
     public View createView(final Context context) {
@@ -48,6 +50,7 @@ public class BannerItemViewHolder implements MZViewHolder<SingItem> {
 
     @Override
     public void onBind(Context context, int position, SingItem data) {
-        Glide.with(context).load(data.getPic()).into(mImageView);
+//        Glide.with(context).load(data.getPic()).into(mImageView);
+        FrescoUtil.getInstance().loadImage(mImageView, data.getPic(), FrescoUtil.TYPE_THREE);
     }
 }

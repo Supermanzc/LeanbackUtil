@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.view.ShimmerLayout;
 
 import butterknife.BindView;
@@ -28,7 +30,7 @@ import butterknife.Unbinder;
 public class ShimmerFragment extends BaseFragment {
 
     @BindView(R.id.image)
-    ImageView imageView;
+    SimpleDraweeView imageView;
     @BindView(R.id.shimmer)
     ShimmerLayout shimmerFrameLayout;
     Unbinder unbinder;
@@ -43,7 +45,8 @@ public class ShimmerFragment extends BaseFragment {
     }
 
     private void initView() {
-        Glide.with(getActivity()).load("http://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/310313.jpeg").into(imageView);
+        FrescoUtil.getInstance().loadImage(imageView, "http://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/310313.jpeg", FrescoUtil.TYPE_THREE);
+//        Glide.with(getActivity()).load("http://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/310313.jpeg").into(imageView);
         shimmerFrameLayout.setShimmerAngle(45);
         shimmerFrameLayout.startShimmerAnimation();
     }

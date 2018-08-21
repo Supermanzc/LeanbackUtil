@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.RecommendInfo;
 
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 public class RecommendSingHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_view)
-    public ImageView imageView;
+    public SimpleDraweeView imageView;
     @BindView(R.id.title_view)
     public TextView titleView;
     @BindView(R.id.description_view)

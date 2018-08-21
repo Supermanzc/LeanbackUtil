@@ -10,6 +10,7 @@ import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.SongSheetItemHolder;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.model.SongSheetItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 import com.wt.leanbackutil.view.border.MainUpView;
@@ -36,7 +37,9 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
         SongSheetItem songSheetItem = mData.get(position);
         final SongSheetItemHolder songSheetItemHolder = (SongSheetItemHolder) holder;
         songSheetItemHolder.titleView.setText(songSheetItem.getDiss_name());
-        Glide.with(mContext.getActivity()).load(songSheetItem.getPic_url()).into(songSheetItemHolder.imageView);
+        //数据量大的时候，界面会抖动
+        FrescoUtil.getInstance().loadImage(songSheetItemHolder.imageView, songSheetItem.getPic_url(), FrescoUtil.TYPE_ONE);
+//        Glide.with(mContext.getActivity()).load(songSheetItem.getPic_url()).into(songSheetItemHolder.imageView);
         songSheetItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

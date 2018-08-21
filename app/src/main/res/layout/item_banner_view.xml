@@ -7,7 +7,7 @@
     android:background="@drawable/shape_banner_corner"
     android:orientation="vertical">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/banner_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

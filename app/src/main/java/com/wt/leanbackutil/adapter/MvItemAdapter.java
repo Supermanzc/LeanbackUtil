@@ -11,6 +11,7 @@ import com.wt.leanbackutil.adapter.holder.RadioItemHolder;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.model.RadioItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 
 import java.util.List;
@@ -41,7 +42,8 @@ public class MvItemAdapter extends RecyclerView.Adapter {
         RadioItem radioItem = radioItems.get(position);
         final MvItemHolder mvItemHolder = (MvItemHolder) holder;
         mvItemHolder.titleView.setText(radioItem.getRadio_name());
-        Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(mvItemHolder.imageView);
+//        Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(mvItemHolder.imageView);
+        FrescoUtil.getInstance().loadImage(mvItemHolder.imageView, radioItem.getRadio_pic(), FrescoUtil.TYPE_ONE);
         mvItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
