@@ -3,17 +3,17 @@ package com.wt.leanbackutil.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.OnChildSelectedListener;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
-import com.wt.leanbackutil.adapter.RadioInfoAdapter;
 import com.wt.leanbackutil.adapter.SongSheetItemAdapter;
-import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.model.SongSheetItem;
 import com.wt.leanbackutil.model.SongSheetResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
@@ -93,6 +93,27 @@ public class HomeLoadMoreFragment extends BaseFragment {
             @Override
             public void onChildSelected(ViewGroup parent, View view, int position, long id) {
                 LogUtil.d("onChildSelected---------------position=" + position + "   id=" + id);
+            }
+        });
+
+        verticalGridView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    recyclerView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Fresco.getImagePipeline().resume();
+                        }
+                    }, 100);
+                }else {
+                    Fresco.getImagePipeline().pause();
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
             }
         });
     }

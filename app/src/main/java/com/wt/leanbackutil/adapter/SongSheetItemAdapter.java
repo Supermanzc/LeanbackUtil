@@ -3,9 +3,7 @@ package com.wt.leanbackutil.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
-import com.bumptech.glide.Glide;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.SongSheetItemHolder;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
@@ -38,7 +36,7 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
         final SongSheetItemHolder songSheetItemHolder = (SongSheetItemHolder) holder;
         songSheetItemHolder.titleView.setText(songSheetItem.getDiss_name());
         //数据量大的时候，界面会抖动
-        FrescoUtil.getInstance().loadImage(songSheetItemHolder.imageView, songSheetItem.getPic_url(), FrescoUtil.TYPE_ONE);
+        FrescoUtil.getInstance().loadImage(songSheetItemHolder.imageView, songSheetItem.getPic_url(), FrescoUtil.TYPE_DEFAULT);
 //        Glide.with(mContext.getActivity()).load(songSheetItem.getPic_url()).into(songSheetItemHolder.imageView);
         songSheetItemHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
