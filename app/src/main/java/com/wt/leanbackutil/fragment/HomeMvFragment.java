@@ -63,15 +63,6 @@ public class HomeMvFragment extends BaseFragment {
         verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 
         verticalGridView.setAdapter(mvInfoAdapter);
-
-        verticalGridView.getViewTreeObserver().addOnGlobalFocusChangeListener(new ViewTreeObserver.OnGlobalFocusChangeListener() {
-            @Override
-            public void onGlobalFocusChanged(View oldFocus, View newFocus) {
-                LogUtil.e("onGlobalFocusChanged--------------------oldFocus=" + oldFocus);
-                LogUtil.e("onGlobalFocusChanged--------------------newFocus=" + newFocus);
-//                mainUpView.setFocusView(newFocus, oldFocus, 1.2f);
-            }
-        });
     }
 
     @Override

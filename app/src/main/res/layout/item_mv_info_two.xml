@@ -5,11 +5,10 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <RelativeLayout
+    <com.wt.leanbackutil.view.TvRelativeLayout
         android:id="@+id/vertical_grid_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_320"
-        android:layout_below="@+id/title"
         android:layout_marginLeft="@dimen/w_80"
         android:layout_marginTop="@dimen/h_20"
         android:clipChildren="false"

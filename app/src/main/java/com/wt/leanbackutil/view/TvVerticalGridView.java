@@ -1,21 +1,25 @@
 package com.wt.leanbackutil.view;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 
 import com.open.leanback.widget.VerticalGridView;
+import com.wt.leanbackutil.util.LogUtil;
 
 /**
  * Created by DELL on 2018/8/13.
  *
  * @author junyan
- *         主要是解决外交焦点框问题
+ *         实现到边界值抖动效果
  */
 
 public class TvVerticalGridView extends VerticalGridView {
-
 
     public TvVerticalGridView(Context context) {
         super(context);
@@ -30,7 +34,13 @@ public class TvVerticalGridView extends VerticalGridView {
     }
 
     @Override
-    public void requestChildFocus(View child, View focused) {
-        super.requestChildFocus(child, focused);
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (KeyEvent.ACTION_DOWN == event.getAction()) {
+            View view = getFocusedChild();
+            LogUtil.e("dispatchKeyEvent---------view=" + view);
+        }
+        return super.dispatchKeyEvent(event);
     }
+
+
 }
