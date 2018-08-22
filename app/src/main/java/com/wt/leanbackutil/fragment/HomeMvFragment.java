@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
 import com.wt.leanbackutil.R;
@@ -68,6 +69,10 @@ public class HomeMvFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

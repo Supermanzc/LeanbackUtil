@@ -67,11 +67,11 @@ public class App extends Application {
                 //文件夹名
                 .setBaseDirectoryName(getString(R.string.app_name))
                 //默认缓存的最大大小。
-                .setMaxCacheSize(20 * ByteConstants.MB)
+                .setMaxCacheSize(40 * ByteConstants.MB)
                 //缓存的最大大小,使用设备时低磁盘空间。
-                .setMaxCacheSizeOnLowDiskSpace(10 * ByteConstants.MB)
+                .setMaxCacheSizeOnLowDiskSpace(20 * ByteConstants.MB)
                 //缓存的最大大小,当设备极低磁盘空间
-                .setMaxCacheSizeOnVeryLowDiskSpace(5 * ByteConstants.MB)
+                .setMaxCacheSizeOnVeryLowDiskSpace(10 * ByteConstants.MB)
                 .build();
 
         ImagePipelineConfig config = OkHttpImagePipelineConfigFactory.newBuilder(this, okHttpClient)
@@ -81,12 +81,12 @@ public class App extends Application {
                 //对网络图片进行resize处理,减少内存消耗
                 .setResizeAndRotateEnabledForNetwork(true)
                 //处理android 5.0以上的机子不能肆意使用匿名内存区域
-                .setBitmapMemoryCacheParamsSupplier(new LolipopBitmapMemoryCacheSupplier((ActivityManager) getSystemService(ACTIVITY_SERVICE)))
+//                .setBitmapMemoryCacheParamsSupplier(new LolipopBitmapMemoryCacheSupplier((ActivityManager) getSystemService(ACTIVITY_SERVICE)))
                 //内存紧张的时候处理模式
                 .setMemoryTrimmableRegistry(memoryTrimmableRegistry)
                 //设置小图片的内存空间
                 .setSmallImageDiskCacheConfig(diskSmallCacheConfig)
-                .setBitmapsConfig(Bitmap.Config.ARGB_8888)
+                .setBitmapsConfig(Bitmap.Config.RGB_565)
                 .build();
 
         Fresco.initialize(this, config);

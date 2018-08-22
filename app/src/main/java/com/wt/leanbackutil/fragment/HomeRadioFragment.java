@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.OnChildSelectedListener;
 import com.open.leanback.widget.VerticalGridView;
@@ -63,6 +64,10 @@ public class HomeRadioFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

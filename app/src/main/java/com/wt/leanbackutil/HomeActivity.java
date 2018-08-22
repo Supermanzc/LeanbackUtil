@@ -1,5 +1,8 @@
 package com.wt.leanbackutil;
 
+import android.Manifest;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +21,7 @@ import com.wt.leanbackutil.fragment.LeanBackFragment;
 import com.wt.leanbackutil.fragment.ShimmerFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.util.PermissionHelper;
 import com.wt.leanbackutil.view.TvViewPager;
 
 import java.util.ArrayList;
@@ -54,12 +58,14 @@ public class HomeActivity extends FragmentActivity {
 
     private int mPosition = -1;
     private List<BaseFragment> mBaseFragments;
+    private PermissionHelper permissionHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        initConfigUi();
         initData();
     }
 
@@ -88,7 +94,7 @@ public class HomeActivity extends FragmentActivity {
             mBaseFragments.add(fragment);
             pageAdapter.add(fragment);
         }
-        tvViewPager.setOffscreenPageLimit(0);
+        tvViewPager.setOffscreenPageLimit(1);
         tvViewPager.setAdapter(pageAdapter);
 
         //初始化title
@@ -133,5 +139,41 @@ public class HomeActivity extends FragmentActivity {
             }
         }
         return super.dispatchKeyEvent(event);
+    }
+
+    protected void initConfigUi() {
+        permissionHelper = new PermissionHelper(this, new PermissionHelper.PermissionModel[]{
+                new PermissionHelper.PermissionModel("存储空间", Manifest.permission.WRITE_EXTERNAL_STORAGE, "我们需要读写存储卡权限以方便我们临时保存一些数据", PermissionHelper.WRITE_EXTERNAL_STORAGE_CODE)
+        });
+        permissionHelper.setOnApplyPermissionListener(new PermissionHelper.OnApplyPermissionListener() {
+            @Override
+            public void onAfterApplyAllPermission() {
+            }
+
+            @Override
+            public void onApplyError(String error) {
+                finish();
+            }
+        });
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        } else {
+            if (permissionHelper.isAllRequestedPermissionGranted()) {
+            } else {
+                permissionHelper.applyPermissions();
+            }
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        permissionHelper.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

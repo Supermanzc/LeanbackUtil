@@ -1,7 +1,9 @@
 package com.wt.leanbackutil.util;
 
+import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.TypedValue;
 
@@ -97,23 +99,12 @@ public class FrescoUtil {
     }
 
     private ImageRequest getImageRequest(Uri uri, SimpleDraweeView simpleDraweeView) {
-        int width;
-        int height;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            width = simpleDraweeView.getWidth();
-            height = simpleDraweeView.getHeight();
-        } else {
-            width = simpleDraweeView.getMeasuredWidth();
-            height = simpleDraweeView.getMeasuredHeight();
-        }
 
         //根据请求路径生成ImageRequest的构造者
         ImageRequestBuilder builder = ImageRequestBuilder.newBuilderWithSource(uri);
-        builder.setResizeOptions(new ResizeOptions(dp2px(140), dp2px(90)));
+        builder.setResizeOptions(new ResizeOptions(App.getInstance().getResources().getDimensionPixelOffset(R.dimen.w_303),
+        App.getInstance().getResources().getDimensionPixelOffset(R.dimen.h_303)));
         //调整解码图片的大小(结合setDownsampleEnabled配置使用)
-//        if (width > 0 && height > 0) {
-//            builder.setResizeOptions(new ResizeOptions(width, height));
-//        }
         return builder.build();
     }
 

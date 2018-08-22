@@ -100,14 +100,15 @@ public class HomeLoadMoreFragment extends BaseFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    recyclerView.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
+//                    recyclerView.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
                             Fresco.getImagePipeline().resume();
-                        }
-                    }, 100);
+//                        }
+//                    }, 100);
                 }else {
                     Fresco.getImagePipeline().pause();
+                    Fresco.getImagePipeline().clearMemoryCaches();
                 }
             }
 
@@ -119,9 +120,20 @@ public class HomeLoadMoreFragment extends BaseFragment {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogUtil.d("setUserVisibleHint-----------------" + isVisibleToUser);
+//        Fresco.getImagePipeline().clearMemoryCaches();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

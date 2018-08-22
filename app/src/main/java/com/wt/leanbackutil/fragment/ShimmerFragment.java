@@ -11,9 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.util.FrescoUtil;
+import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.view.ShimmerLayout;
 
 import butterknife.BindView;
@@ -56,5 +58,9 @@ public class ShimmerFragment extends BaseFragment {
         super.onDestroyView();
         shimmerFrameLayout.stopShimmerAnimation();
         unbinder.unbind();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 }

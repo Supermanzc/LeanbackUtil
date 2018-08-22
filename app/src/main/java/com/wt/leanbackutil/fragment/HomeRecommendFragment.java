@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
@@ -14,6 +15,7 @@ import com.wt.leanbackutil.adapter.RecommendItemInfoAdapter;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.RecommendResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.LogUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,6 +66,10 @@ public class HomeRecommendFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

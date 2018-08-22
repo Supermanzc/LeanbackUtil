@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.ArrayObjectAdapter;
 import com.open.leanback.widget.HorizontalGridView;
@@ -19,6 +20,7 @@ import com.wt.leanbackutil.leankback.presenter.RadioCardPresenter;
 import com.wt.leanbackutil.leankback.seletor.CardPresenterSelector;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.LogUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,5 +69,9 @@ public class LeanBackFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        LogUtil.e("onDestroyView---------------------");
+//        Fresco.getImagePipeline().clearMemoryCaches();
+//        Fresco.getImagePipeline().clearDiskCaches();
+//        Fresco.getImagePipeline().clearCaches();
     }
 }
