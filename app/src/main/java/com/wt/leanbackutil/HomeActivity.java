@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
@@ -60,11 +62,24 @@ public class HomeActivity extends FragmentActivity {
     private List<BaseFragment> mBaseFragments;
     private PermissionHelper permissionHelper;
 
+    private static int FRAGMENT_DELAYED = 100;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == FRAGMENT_DELAYED) {
+                tvViewPager.setCurrentItem(mPosition);
+                BaseFragment fragment = mBaseFragments.get(mPosition);
+                fragment.refreshRecyclerUi();
+            }
+        }
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        App.getRefWatcher(getApplicationContext());
         initConfigUi();
         initData();
     }
@@ -104,13 +119,15 @@ public class HomeActivity extends FragmentActivity {
             public void focusPosition(Integer position) {
                 //处理当前焦点的位置
                 LogUtil.e("position-------------" + position);
-                if (position == mPosition) {
+                int currentItem = tvViewPager.getCurrentItem();
+                if (position == currentItem) {
                     //回到首页
-                    BaseFragment baseFragment = mBaseFragments.get(position);
+                    BaseFragment baseFragment = mBaseFragments.get(currentItem);
                     baseFragment.refreshRecyclerUi();
                 } else {
-                    tvViewPager.setCurrentItem(position);
                     mPosition = position;
+                    mHandler.removeMessages(FRAGMENT_DELAYED);
+                    mHandler.sendEmptyMessageDelayed(FRAGMENT_DELAYED, 200);
                 }
             }
         });
@@ -175,5 +192,11 @@ public class HomeActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         permissionHelper.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mHandler.removeMessages(FRAGMENT_DELAYED);
     }
 }
