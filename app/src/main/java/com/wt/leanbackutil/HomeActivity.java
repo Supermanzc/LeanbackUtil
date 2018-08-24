@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
@@ -22,6 +23,7 @@ import com.wt.leanbackutil.fragment.HomeRecommendFragment;
 import com.wt.leanbackutil.fragment.LeanBackFragment;
 import com.wt.leanbackutil.fragment.ShimmerFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
+import com.wt.leanbackutil.util.ImagePipelineConfigUtils;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.PermissionHelper;
 import com.wt.leanbackutil.view.TvViewPager;
@@ -198,5 +200,18 @@ public class HomeActivity extends FragmentActivity {
     protected void onStop() {
         super.onStop();
         mHandler.removeMessages(FRAGMENT_DELAYED);
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        LogUtil.e("onTrimMemory------------------level=" + level);
+        ImagePipelineConfigUtils.trimMemory(level);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Fresco.getImagePipeline().clearMemoryCaches();
     }
 }

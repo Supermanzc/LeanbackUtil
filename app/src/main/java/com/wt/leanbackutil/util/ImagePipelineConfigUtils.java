@@ -1,5 +1,6 @@
 package com.wt.leanbackutil.util;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
@@ -9,6 +10,7 @@ import com.facebook.common.disk.NoOpDiskTrimmableRegistry;
 import com.facebook.common.internal.Supplier;
 import com.facebook.common.memory.MemoryTrimType;
 import com.facebook.common.memory.MemoryTrimmable;
+import com.facebook.common.memory.MemoryTrimmableRegistry;
 import com.facebook.common.memory.NoOpMemoryTrimmableRegistry;
 import com.facebook.common.util.ByteConstants;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
@@ -19,10 +21,13 @@ import com.facebook.imagepipeline.listener.RequestListener;
 import com.facebook.imagepipeline.listener.RequestLoggingListener;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import okhttp3.OkHttpClient;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 public class ImagePipelineConfigUtils {
 
@@ -70,6 +75,8 @@ public class ImagePipelineConfigUtils {
      * 默认图所放路径的文件夹名
      */
     private static final String IMAGE_PIPELINE_CACHE_DIR = "ImagePipelineCacheDefault";
+
+    private static ArrayList<MemoryTrimmable> mMemoryTimmable;
 
     public static ImagePipelineConfig getDefaultImagePipelineConfig(Context context) {
 
@@ -125,6 +132,8 @@ public class ImagePipelineConfigUtils {
         Set<RequestListener> listeners = new HashSet<>();
         listeners.add(new RequestLoggingListener());
 
+        mMemoryTimmable = new ArrayList();
+
         //缓存图片配置
         ImagePipelineConfig.Builder configBuilder = OkHttpImagePipelineConfigFactory.newBuilder(context, new OkHttpClient())
 //        ImagePipelineConfig.Builder configBuilder = ImagePipelineConfig.newBuilder(context)
@@ -135,7 +144,21 @@ public class ImagePipelineConfigUtils {
                 .setBitmapMemoryCacheParamsSupplier(mSupplierMemoryCacheParams)
                 .setSmallImageDiskCacheConfig(diskSmallCacheConfig)
                 .setMainDiskCacheConfig(diskCacheConfig)
-                .setMemoryTrimmableRegistry(NoOpMemoryTrimmableRegistry.getInstance())
+//                .setMemoryTrimmableRegistry(NoOpMemoryTrimmableRegistry.getInstance())
+                //处理android 5.0以上的机子不能肆意使用匿名内存区域
+                .setBitmapMemoryCacheParamsSupplier(new LolipopBitmapMemoryCacheSupplier((ActivityManager) context.getApplicationContext().getSystemService(ACTIVITY_SERVICE)))
+                .setMemoryTrimmableRegistry(new MemoryTrimmableRegistry() {
+                    @Override
+                    public void registerMemoryTrimmable(MemoryTrimmable trimmable) {
+                        mMemoryTimmable.add(trimmable);
+                        LogUtil.e("Fresco  registerMemoryTrimmable------------size=" + mMemoryTimmable.size());
+                    }
+
+                    @Override
+                    public void unregisterMemoryTrimmable(MemoryTrimmable trimmable) {
+
+                    }
+                })
                 .setResizeAndRotateEnabledForNetwork(true);
 
         // 就是这段代码，用于清理缓存
@@ -170,7 +193,15 @@ public class ImagePipelineConfigUtils {
         } else {
             cachePath = context.getCacheDir().getPath();
         }
-//        LogUtil.e("getDiskCacheDir-------------------" + cachePath);
         return cachePath;
+    }
+
+    public static void trimMemory(int level) {
+        if (mMemoryTimmable != null) {
+            for (MemoryTrimmable trimmable : mMemoryTimmable) {
+                trimmable.trim(MemoryTrimType.OnSystemLowMemoryWhileAppInBackground);
+            }
+            mMemoryTimmable.clear();
+        }
     }
 }

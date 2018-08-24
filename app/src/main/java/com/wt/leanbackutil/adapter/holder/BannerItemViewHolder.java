@@ -26,7 +26,6 @@ public class BannerItemViewHolder implements MZViewHolder<SingItem> {
 
     @Override
     public View createView(final Context context) {
-        LogUtil.d("createView--------------");
         View view = LayoutInflater.from(context).inflate(R.layout.item_banner_view, null);
         mImageView = view.findViewById(R.id.banner_image);
         view.setFocusableInTouchMode(true);
