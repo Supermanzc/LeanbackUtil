@@ -38,11 +38,14 @@ public class LeanBackFragment extends BaseFragment {
     @BindView(R.id.horizontal_grid_view)
     HorizontalGridView horizontalGridView;
     private Unbinder unbinder;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_leanback, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_leanback, container, false);
+        }
         unbinder = ButterKnife.bind(this, view);
         initView();
         LogUtil.d("onCreateView-----------------" + LeanBackFragment.class.getSimpleName());
@@ -65,13 +68,12 @@ public class LeanBackFragment extends BaseFragment {
         horizontalGridView.setAdapter(itemBridgeAdapter);
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-//        Fresco.getImagePipeline().clearMemoryCaches();
-//        Fresco.getImagePipeline().clearDiskCaches();
-//        Fresco.getImagePipeline().clearCaches();
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
     }
 }

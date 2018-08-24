@@ -35,11 +35,14 @@ public class HomeRecommendFragment extends BaseFragment {
     @BindView(R.id.vertical_grid_view)
     VerticalGridView verticalGridView;
     private RecommendItemCardAdapter recommendItemAdapter;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
+        }
         ButterKnife.bind(this, view);
         initData();
         LogUtil.d("onCreateView-----------------" + HomeRecommendFragment.class.getSimpleName());
@@ -68,6 +71,14 @@ public class HomeRecommendFragment extends BaseFragment {
     public void refreshRecyclerUi() {
         if (verticalGridView != null) {
             verticalGridView.scrollToPosition(0);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
         }
     }
 }

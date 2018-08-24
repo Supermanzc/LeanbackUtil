@@ -41,11 +41,14 @@ public class HomeMvFragment extends BaseFragment {
     TvVerticalGridView verticalGridView;
     @BindView(R.id.main_up_view)
     MainUpView mainUpView;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mv_radio, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_mv_radio, container, false);
+        }
         ButterKnife.bind(this, view);
 
         initData();
@@ -101,6 +104,14 @@ public class HomeMvFragment extends BaseFragment {
             }
         }
         return radioInfos;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
     }
 
     public void setOnFocusChange(final View v, boolean hasFocus) {

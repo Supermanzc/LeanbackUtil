@@ -47,10 +47,14 @@ public class HomeLoadMoreFragment extends BaseFragment {
 
     private List<SongSheetItem> mDataAlls;
 
+    private View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_load_more, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_load_more, container, false);
+        }
         unbinder = ButterKnife.bind(this, view);
         initData();
         LogUtil.d("onCreateView-----------------" + HomeLoadMoreFragment.class.getSimpleName());
@@ -104,10 +108,10 @@ public class HomeLoadMoreFragment extends BaseFragment {
 //                    recyclerView.postDelayed(new Runnable() {
 //                        @Override
 //                        public void run() {
-                            Fresco.getImagePipeline().resume();
+                    Fresco.getImagePipeline().resume();
 //                        }
 //                    }, 100);
-                }else {
+                } else {
                     Fresco.getImagePipeline().pause();
                     Fresco.getImagePipeline().clearMemoryCaches();
                 }
@@ -118,6 +122,14 @@ public class HomeLoadMoreFragment extends BaseFragment {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
     }
 
     @Override

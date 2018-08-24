@@ -41,10 +41,14 @@ public class HomeRadioFragment extends BaseFragment {
     @BindView(R.id.vertical_grid_view)
     VerticalGridView verticalGridView;
 
+    private View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_radio, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_home_radio, container, false);
+        }
         ButterKnife.bind(this, view);
         initData();
         LogUtil.d("onCreateView-----------------" + HomeRadioFragment.class.getSimpleName());
@@ -90,11 +94,19 @@ public class HomeRadioFragment extends BaseFragment {
                     copeRadioInfo.setType(0);
                 }
                 copeRadioInfo.setRadios(pagerUtil.getPagedList(j));
-                if(copeRadioInfo != null) {
+                if (copeRadioInfo != null) {
                     radioInfos.add(copeRadioInfo);
                 }
             }
         }
         return radioInfos;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
     }
 }
