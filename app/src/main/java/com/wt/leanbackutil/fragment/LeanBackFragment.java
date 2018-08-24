@@ -45,6 +45,7 @@ public class LeanBackFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_leanback, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        LogUtil.d("onCreateView-----------------" + LeanBackFragment.class.getSimpleName());
         return view;
     }
 
@@ -69,7 +70,6 @@ public class LeanBackFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        LogUtil.e("onDestroyView---------------------");
 //        Fresco.getImagePipeline().clearMemoryCaches();
 //        Fresco.getImagePipeline().clearDiskCaches();
 //        Fresco.getImagePipeline().clearCaches();

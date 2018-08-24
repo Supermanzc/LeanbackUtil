@@ -1,6 +1,12 @@
 package com.wt.leanbackutil.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.wt.leanbackutil.util.LogUtil;
 
@@ -17,6 +23,19 @@ public abstract class BaseFragment extends Fragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         LogUtil.e("onHiddenChanged------------------" + hidden);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LogUtil.e("onDestroyView---------------------" + this.getClass().getSimpleName());
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogUtil.d("setUserVisibleHint-----------------" + isVisibleToUser + "   fragment=" + this.getClass().getSimpleName());
+//        Fresco.getImagePipeline().clearMemoryCaches();
     }
 
     /**

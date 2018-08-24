@@ -53,6 +53,7 @@ public class HomeLoadMoreFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_load_more, container, false);
         unbinder = ButterKnife.bind(this, view);
         initData();
+        LogUtil.d("onCreateView-----------------" + HomeLoadMoreFragment.class.getSimpleName());
         return view;
     }
 
@@ -117,23 +118,6 @@ public class HomeLoadMoreFragment extends BaseFragment {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        LogUtil.d("setUserVisibleHint-----------------" + isVisibleToUser);
-//        Fresco.getImagePipeline().clearMemoryCaches();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-        LogUtil.e("onDestroyView---------------------");
-//        Fresco.getImagePipeline().clearMemoryCaches();
-//        Fresco.getImagePipeline().clearDiskCaches();
-//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

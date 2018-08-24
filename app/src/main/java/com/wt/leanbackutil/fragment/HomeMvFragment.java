@@ -49,6 +49,7 @@ public class HomeMvFragment extends BaseFragment {
         ButterKnife.bind(this, view);
 
         initData();
+        LogUtil.d("onCreateView-----------------" + HomeMvFragment.class.getSimpleName());
         return view;
     }
 
@@ -64,15 +65,6 @@ public class HomeMvFragment extends BaseFragment {
         verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 
         verticalGridView.setAdapter(mvInfoAdapter);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        LogUtil.e("onDestroyView---------------------");
-//        Fresco.getImagePipeline().clearMemoryCaches();
-//        Fresco.getImagePipeline().clearDiskCaches();
-//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

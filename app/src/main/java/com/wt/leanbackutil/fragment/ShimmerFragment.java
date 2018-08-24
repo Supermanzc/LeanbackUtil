@@ -43,6 +43,7 @@ public class ShimmerFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_shimmer, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        LogUtil.d("onCreateView-----------------" + ShimmerFragment.class.getSimpleName());
         return view;
     }
 
@@ -58,7 +59,6 @@ public class ShimmerFragment extends BaseFragment {
         super.onDestroyView();
         shimmerFrameLayout.stopShimmerAnimation();
         unbinder.unbind();
-        LogUtil.e("onDestroyView---------------------");
 //        Fresco.getImagePipeline().clearMemoryCaches();
 //        Fresco.getImagePipeline().clearDiskCaches();
 //        Fresco.getImagePipeline().clearCaches();

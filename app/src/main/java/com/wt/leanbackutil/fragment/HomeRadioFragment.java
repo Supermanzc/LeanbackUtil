@@ -47,6 +47,7 @@ public class HomeRadioFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_home_radio, container, false);
         ButterKnife.bind(this, view);
         initData();
+        LogUtil.d("onCreateView-----------------" + HomeRadioFragment.class.getSimpleName());
         return view;
     }
 
@@ -59,15 +60,6 @@ public class HomeRadioFragment extends BaseFragment {
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
 
         verticalGridView.setAdapter(radioInfoAdapter);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        LogUtil.e("onDestroyView---------------------");
-//        Fresco.getImagePipeline().clearMemoryCaches();
-//        Fresco.getImagePipeline().clearDiskCaches();
-//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override

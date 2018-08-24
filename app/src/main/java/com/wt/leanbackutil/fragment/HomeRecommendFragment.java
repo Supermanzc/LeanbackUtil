@@ -42,6 +42,7 @@ public class HomeRecommendFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
         ButterKnife.bind(this, view);
         initData();
+        LogUtil.d("onCreateView-----------------" + HomeRecommendFragment.class.getSimpleName());
         return view;
     }
 
@@ -61,15 +62,6 @@ public class HomeRecommendFragment extends BaseFragment {
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
         verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.h_20));
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        LogUtil.e("onDestroyView---------------------");
-//        Fresco.getImagePipeline().clearMemoryCaches();
-//        Fresco.getImagePipeline().clearDiskCaches();
-//        Fresco.getImagePipeline().clearCaches();
     }
 
     @Override
