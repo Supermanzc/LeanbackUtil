@@ -39,7 +39,7 @@ public class RadioCardPresenter extends Presenter {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, Object item) {
         RadioItem radioItem = (RadioItem) item;
-        SimpleDraweeView imageView = viewHolder.view.findViewById(R.id.img_view);
+        final SimpleDraweeView imageView = viewHolder.view.findViewById(R.id.img_view);
         TextView textView = viewHolder.view.findViewById(R.id.title_view);
         textView.setText(radioItem.getRadio_name());
 //        Glide.with(mContext).load(radioItem.getRadio_pic()).into(imageView);
@@ -47,6 +47,7 @@ public class RadioCardPresenter extends Presenter {
         viewHolder.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                imageView.setBackgroundResource(hasFocus ? R.drawable.button_focus : R.drawable.button_normal);
                 ViewUtils.scaleView(v, hasFocus);
             }
         });
