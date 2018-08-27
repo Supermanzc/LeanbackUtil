@@ -135,6 +135,8 @@ public class HomeActivity extends FragmentActivity {
         });
         titleGuide.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_40));
         titleGuide.setAdapter(titleGuideAdapter);
+        titleGuide.setSelectedPosition(0);
+        mPosition = 0;
 
         //兼容手机端
     }

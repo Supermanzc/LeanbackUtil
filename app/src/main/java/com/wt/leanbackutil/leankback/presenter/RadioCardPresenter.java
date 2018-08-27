@@ -46,7 +46,6 @@ public class RadioCardPresenter extends Presenter {
         viewHolder.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                imageView.setBackgroundResource(hasFocus ? R.drawable.button_focus : R.drawable.button_normal);
                 ViewUtils.scaleView(v, hasFocus);
             }
         });
