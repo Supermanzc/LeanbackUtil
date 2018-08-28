@@ -43,12 +43,12 @@ public class RadioCardPresenter extends Presenter {
         TextView textView = viewHolder.view.findViewById(R.id.title_view);
         textView.setText(radioItem.getRadio_name());
         Glide.with(mContext).load(radioItem.getRadio_pic()).into(imageView);
-        viewHolder.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                ViewUtils.scaleView(v, hasFocus);
-            }
-        });
+//        viewHolder.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                ViewUtils.scaleView(v, hasFocus);
+//            }
+//        });
     }
 
     @Override
