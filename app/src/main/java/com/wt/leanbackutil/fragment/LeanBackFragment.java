@@ -22,6 +22,7 @@ import com.wt.leanbackutil.leankback.seletor.CardPresenterSelector;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.view.TvHorizontalGridView;
 import com.wt.leanbackutil.view.border.MainUpView;
 
 import butterknife.BindView;
@@ -38,7 +39,7 @@ import butterknife.Unbinder;
 public class LeanBackFragment extends BaseFragment {
 
     @BindView(R.id.horizontal_grid_view)
-    HorizontalGridView horizontalGridView;
+    TvHorizontalGridView horizontalGridView;
     private Unbinder unbinder;
     private View view;
     @BindView(R.id.mainUpView)

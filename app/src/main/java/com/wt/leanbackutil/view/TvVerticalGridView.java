@@ -3,6 +3,7 @@ package com.wt.leanbackutil.view;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Point;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -32,15 +33,4 @@ public class TvVerticalGridView extends VerticalGridView {
     public TvVerticalGridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (KeyEvent.ACTION_DOWN == event.getAction()) {
-            View view = getFocusedChild();
-            LogUtil.e("dispatchKeyEvent---------view=" + view);
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
-
 }

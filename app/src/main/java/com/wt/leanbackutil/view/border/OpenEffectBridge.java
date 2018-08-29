@@ -3,9 +3,23 @@ package com.wt.leanbackutil.view.border;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.graphics.Canvas;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.RelativeLayout;
+
+import com.wt.leanbackutil.App;
+import com.wt.leanbackutil.R;
+import com.zhouwei.mzbanner.CustomViewPager;
+
+import java.lang.ref.WeakReference;
+
+import hk.reco.baselib.util.Logger;
 
 public class OpenEffectBridge extends BaseEffectBridgeWrapper {
 
@@ -114,14 +128,13 @@ public class OpenEffectBridge extends BaseEffectBridgeWrapper {
         if (focusView != null) {
             focusView.setScaleY(scaleY);
             focusView.setScaleX(scaleX);
-//            ((ViewGroup) focusView.getParent()).invalidate();
 //			focusView.animate().scaleX(scaleX).scaleY(scaleY).setDuration(mTranDurAnimTime).start(); // 放大焦点VIEW的动画.
-            runTranslateAnimation(focusView, scaleX, scaleY); // 移动边框的动画。
+            runTranslateAnimation(focusView, scaleX, scaleY);
         }
     }
 
     @Override
-    public void onFocusScaleView(View focusView, float scaleX, float scaleY){
+    public void onFocusScaleView(View focusView, float scaleX, float scaleY) {
         if (!mAnimEnabled)
             return;
         if (focusView != null) {
@@ -179,15 +192,6 @@ public class OpenEffectBridge extends BaseEffectBridgeWrapper {
             getMainUpView().setVisibility(View.VISIBLE);
 //            getMainUpView().scrollTo(toRect.left, toRect.top);
         }
-//        getMainUpView().scrollTo(newX, newY);
-//		isInDraw = true;
-//        newWidth = (int) (focusView.getMeasuredWidth() * scaleX);
-//        newHeight = (int) (focusView.getMeasuredHeight() * scaleY);
-//        getMainUpView().getLayoutParams().width = newWidth;
-//        getMainUpView().getLayoutParams().height = newHeight;
-//        getMainUpView().setLayoutParams(new RelativeLayout.LayoutParams(newWidth, newHeight));
-//        getMainUpView().scrollTo((int)newX, (int)newY);
-//        getMainUpView().invalidate();
 
 
         // 取消之前的动画.
@@ -255,6 +259,127 @@ public class OpenEffectBridge extends BaseEffectBridgeWrapper {
 //        });
 //        mAnimatorSet.start();
 //        mCurrentAnimatorSet = mAnimatorSet;
+    }
+
+    private RecyclerViewScrollListener mRecyclerViewScrollListener;
+    private WeakReference<RecyclerView> mWeakRecyclerView;
+    private boolean mReAnim = false;
+
+    protected Rect findOffsetDescendantRectToMyCoords(View descendant) {
+        final ViewGroup root = (ViewGroup) getMainUpView().getParent();
+        final Rect rect = new Rect();
+        mReAnim = false;
+        if (descendant == root) {
+            return rect;
+        }
+
+        final View srcDescendant = descendant;
+
+        ViewParent theParent = descendant.getParent();
+        Object tag;
+        Point point;
+
+        // search and offset up to the parent
+        while ((theParent != null)
+                && (theParent instanceof View)
+                && (theParent != root)) {
+            Log.d("tt", "theParent---------------------------theParent=" + theParent.getClass().getSimpleName());
+//            if (descendant instanceof ViewPager || theParent instanceof ViewPager) {
+//                rect.offset(0, descendant.getTop() - descendant.getScrollY());
+//            } else {
+//                rect.offset(descendant.getLeft() - descendant.getScrollX(),
+//                        descendant.getTop() - descendant.getScrollY());
+//            }
+
+            if (descendant instanceof ViewPager || theParent instanceof ViewPager || theParent instanceof CustomViewPager || descendant instanceof CustomViewPager) {
+                rect.offset(0, descendant.getTop() - descendant.getScrollY());
+                if (theParent instanceof ViewPager) {
+                    rect.offset(App.getInstance().getResources().getDimensionPixelSize(R.dimen.w_443), descendant.getTop() - descendant.getScrollY());
+                }
+            } else {
+                rect.offset(descendant.getLeft() - descendant.getScrollX(),
+                        descendant.getTop() - descendant.getScrollY());
+            }
+
+            //兼容TvRecyclerView
+            if (theParent instanceof RecyclerView) {
+                final RecyclerView rv = (RecyclerView) theParent;
+                registerScrollListener(rv);
+                tag = rv.getTag();
+                if (null != tag && tag instanceof Point) {
+                    point = (Point) tag;
+                    rect.offset(-point.x, -point.y);
+                }
+                if (null == tag && rv.getScrollState() != RecyclerView.SCROLL_STATE_IDLE
+                        && (mRecyclerViewScrollListener.mScrolledX != 0 || mRecyclerViewScrollListener.mScrolledY != 0)) {
+                    mReAnim = true;
+                }
+            }
+            descendant = (View) theParent;
+            theParent = descendant.getParent();
+        }
+
+        // now that we are up to this view, need to offset one more time
+        // to get into our coordinate space
+        if (theParent == root) {
+            rect.offset(descendant.getLeft() - descendant.getScrollX(),
+                    descendant.getTop() - descendant.getScrollY());
+        }
+
+        rect.right = rect.left + srcDescendant.getMeasuredWidth();
+        rect.bottom = rect.top + srcDescendant.getMeasuredHeight();
+
+        return rect;
+    }
+
+    private void registerScrollListener(RecyclerView recyclerView) {
+        if (null != mWeakRecyclerView && mWeakRecyclerView.get() == recyclerView) {
+            return;
+        }
+
+        if (null == mRecyclerViewScrollListener) {
+            mRecyclerViewScrollListener = new RecyclerViewScrollListener(this);
+        }
+
+        if (null != mWeakRecyclerView && null != mWeakRecyclerView.get()) {
+            mWeakRecyclerView.get().removeOnScrollListener(mRecyclerViewScrollListener);
+            mWeakRecyclerView.clear();
+        }
+
+        recyclerView.removeOnScrollListener(mRecyclerViewScrollListener);
+        recyclerView.addOnScrollListener(mRecyclerViewScrollListener);
+        mWeakRecyclerView = new WeakReference<>(recyclerView);
+    }
+
+    private static class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
+        private WeakReference<OpenEffectBridge> mFocusBorder;
+        private int mScrolledX = 0, mScrolledY = 0;
+
+        public RecyclerViewScrollListener(OpenEffectBridge border) {
+            mFocusBorder = new WeakReference<>(border);
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            mScrolledX = Math.abs(dx) == 1 ? 0 : dx;
+            mScrolledY = Math.abs(dy) == 1 ? 0 : dy;
+//            Logger.i(TAG, "onScrolled...dx=" + dx + " dy=" + dy);
+        }
+
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                final OpenEffectBridge border = mFocusBorder.get();
+                final View focused = recyclerView.getFocusedChild();
+                if (null != border && null != focused) {
+                    if (border.mReAnim || mScrolledX != 0 || mScrolledY != 0) {
+                        Log.i("onScrollStateChanged", "onScrollStateChanged...scaleX = " + border.mScaleX + " scaleY = " + border.mScaleY);
+                        border.flyWhiteBorder(focused, border.getMainUpView(), border.mScaleX, border.mScaleY);
+                    }
+                }
+                mScrolledX = mScrolledY = 0;
+            }
+        }
     }
 
     /**
