@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.ArrayObjectAdapter;
+import com.open.leanback.widget.FocusHighlightHandler;
 import com.open.leanback.widget.HorizontalGridView;
 import com.open.leanback.widget.ItemBridgeAdapter;
 import com.open.leanback.widget.ListRow;
@@ -21,6 +22,7 @@ import com.wt.leanbackutil.leankback.seletor.CardPresenterSelector;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.view.border.MainUpView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +41,8 @@ public class LeanBackFragment extends BaseFragment {
     HorizontalGridView horizontalGridView;
     private Unbinder unbinder;
     private View view;
+    @BindView(R.id.mainUpView)
+    MainUpView mainUpView;
 
     @Nullable
     @Override
@@ -64,6 +68,18 @@ public class LeanBackFragment extends BaseFragment {
 
         //桥接
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(listRowAdapter);
+        itemBridgeAdapter.setFocusHighlight(new FocusHighlightHandler() {
+            @Override
+            public void onItemFocused(View view, boolean hasFocus) {
+                LogUtil.e("onItemFocused----------------view=" + view.getClass().getSimpleName() + "   hasFocus=" + hasFocus);
+//                mainUpView.setFocusView(view, 1.2f);
+            }
+
+            @Override
+            public void onInitializeView(View view) {
+
+            }
+        });
         horizontalGridView.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         horizontalGridView.setAdapter(itemBridgeAdapter);
     }
