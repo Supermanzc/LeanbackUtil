@@ -9,20 +9,12 @@
     <FrameLayout
         android:layout_width="@dimen/w_273"
         android:layout_height="@dimen/h_273"
-        android:clipChildren="false"
-        android:clipToPadding="false"
         android:duplicateParentState="true">
 
         <ImageView
             android:id="@+id/img_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/h_n_20"
-            android:layout_marginLeft="@dimen/w_n_20"
-            android:layout_marginRight="@dimen/w_n_20"
-            android:layout_marginTop="@dimen/h_n_20"
-            android:background="@drawable/shape_button_selector"
-            android:duplicateParentState="true"
             android:scaleType="fitXY" />
     </FrameLayout>
 

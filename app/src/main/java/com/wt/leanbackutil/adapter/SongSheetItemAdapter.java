@@ -44,6 +44,7 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
                 songSheetItemHolder.titleView.setTextColor(mContext.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
                 LogUtil.d("onBindViewHolder---------------position=" + position + "  hasFocus=" + hasFocus);
 //                songSheetItemHolder.imageView.setBackgroundResource(hasFocus ? R.drawable.button_focus : R.drawable.button_normal);
+                ViewUtils.onFocus(songSheetItemHolder.imageView, hasFocus);
                 ViewUtils.scaleView(v, hasFocus);
             }
         });

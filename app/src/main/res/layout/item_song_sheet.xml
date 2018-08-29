@@ -4,27 +4,24 @@
     android:layout_width="@dimen/w_303"
     android:layout_height="wrap_content"
     android:clickable="false"
+    android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/img_view"
+
+    <FrameLayout
         android:layout_width="@dimen/w_303"
-        android:layout_height="@dimen/h_303"
-        android:duplicateParentState="true"
-        fresco:actualImageScaleType="fitXY"
-        android:layout_marginBottom="-20px"
-        android:layout_marginLeft="-20px"
-        android:layout_marginRight="-20px"
-        android:layout_marginTop="-20px"
-        android:paddingLeft="20px"
-        android:paddingRight="20px"
-        android:paddingTop="20px"
-        android:paddingBottom="20px"
-        android:background="@drawable/shape_botton_bg_comm"
-        fresco:placeholderImage="@drawable/ic_launcher_background"
-        fresco:placeholderImageScaleType="centerCrop"
-        fresco:roundedCornerRadius="@dimen/h_8" />
+        android:layout_height="@dimen/h_303">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            fresco:actualImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/ic_launcher_background"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundedCornerRadius="@dimen/h_8" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/title_view"
