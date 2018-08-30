@@ -75,7 +75,7 @@ public class FrescoUtil {
                 break;
         }
 
-        hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.FIT_XY);
+        hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.CENTER_CROP);
 
         //设置圆角
         RoundingParams roundingParams = RoundingParams.fromCornersRadii(

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.RecommendInfo;
+import com.wt.leanbackutil.util.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +24,8 @@ import butterknife.ButterKnife;
 
 public class RecommendSingHolder extends RecyclerView.ViewHolder {
 
+    @BindView(R.id.frame_img)
+    FrameLayout frameLayout;
     @BindView(R.id.img_view)
     public SimpleDraweeView imageView;
     @BindView(R.id.title_view)
@@ -36,13 +40,13 @@ public class RecommendSingHolder extends RecyclerView.ViewHolder {
         LinearLayout.LayoutParams titleLayoutParams;
         switch (type) {
             case RecommendInfo.TYPE_ONE:
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_975),
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_975),
                         context.getResources().getDimensionPixelOffset(R.dimen.h_390)));
                 titleView.setVisibility(View.GONE);
                 descriptionView.setVisibility(View.GONE);
                 break;
             case RecommendInfo.TYPE_TWO:
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_273),
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_273),
                         context.getResources().getDimensionPixelOffset(R.dimen.h_273)));
                 titleView.setVisibility(View.GONE);
                 descriptionLayoutParams = (LinearLayout.LayoutParams) descriptionView.getLayoutParams();
@@ -51,7 +55,7 @@ public class RecommendSingHolder extends RecyclerView.ViewHolder {
                 descriptionView.setVisibility(View.VISIBLE);
                 break;
             case RecommendInfo.TYPE_THREE:
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_480),
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_480),
                         context.getResources().getDimensionPixelOffset(R.dimen.h_274)));
                 descriptionLayoutParams = (LinearLayout.LayoutParams) descriptionView.getLayoutParams();
                 descriptionLayoutParams.width = context.getResources().getDimensionPixelOffset(R.dimen.w_480);
@@ -63,7 +67,7 @@ public class RecommendSingHolder extends RecyclerView.ViewHolder {
                 descriptionView.setVisibility(View.VISIBLE);
                 break;
             case RecommendInfo.TYPE_FOUR:
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_274),
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_274),
                         context.getResources().getDimensionPixelOffset(R.dimen.h_274)));
                 descriptionLayoutParams = (LinearLayout.LayoutParams) descriptionView.getLayoutParams();
                 descriptionLayoutParams.width = context.getResources().getDimensionPixelOffset(R.dimen.w_274);
@@ -77,5 +81,6 @@ public class RecommendSingHolder extends RecyclerView.ViewHolder {
             default:
                 break;
         }
+        ViewUtils.onFocus(imageView);
     }
 }
