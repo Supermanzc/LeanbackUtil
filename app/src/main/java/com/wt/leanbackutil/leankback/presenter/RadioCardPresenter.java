@@ -32,6 +32,8 @@ public class RadioCardPresenter extends Presenter {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent) {
         View view = View.inflate(parent.getContext(), R.layout.item_radio_card_view, null);
+        ImageView imageView = view.findViewById(R.id.img_view);
+        ViewUtils.onFocus(imageView);
         view.setFocusable(true);
         return new ViewHolder(view);
     }
@@ -39,14 +41,13 @@ public class RadioCardPresenter extends Presenter {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, Object item) {
         RadioItem radioItem = (RadioItem) item;
-        final ImageView imageView = viewHolder.view.findViewById(R.id.img_view);
+        ImageView imageView = viewHolder.view.findViewById(R.id.img_view);
         TextView textView = viewHolder.view.findViewById(R.id.title_view);
         textView.setText(radioItem.getRadio_name());
         Glide.with(mContext).load(radioItem.getRadio_pic()).into(imageView);
         viewHolder.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                ViewUtils.onFocus(imageView, hasFocus);
                 ViewUtils.scaleView(v, hasFocus);
             }
         });

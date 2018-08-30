@@ -125,9 +125,10 @@ public class MvInfoAdapter extends RecyclerView.Adapter {
 
     private View getItemView(ViewGroup parent, RadioItem radioItem) {
         View view = View.inflate(parent.getContext(), R.layout.item_mv_view, null);
-        SimpleDraweeView imageView = view.findViewById(R.id.img_view);
+        final SimpleDraweeView imageView = view.findViewById(R.id.img_view);
         TextView titleView = view.findViewById(R.id.title_view);
         titleView.setText(radioItem.getRadio_name());
+        ViewUtils.onFocus(imageView);
 //        Glide.with(mFragment.getActivity()).load(radioItem.getRadio_pic()).into(imageView);
         FrescoUtil.getInstance().loadImage(imageView, radioItem.getRadio_pic(), FrescoUtil.TYPE_ONE);
         view.setFocusable(true);

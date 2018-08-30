@@ -48,8 +48,7 @@ public class RadioItemAdapter extends RecyclerView.Adapter {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 radioItemHolder.titleView.setTextColor(mFragment.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
-                ViewUtils.onFocus(radioItemHolder.imageView, hasFocus);
-//                ViewUtils.scaleView(v, hasFocus);
+                ViewUtils.scaleView(v, hasFocus);
             }
         });
     }

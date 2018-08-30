@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wt.leanbackutil.App;
 import com.wt.leanbackutil.R;
+import com.wt.leanbackutil.util.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,9 +27,6 @@ public class SongSheetItemHolder extends RecyclerView.ViewHolder {
     public SongSheetItemHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-//        imageView.setPadding(-itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.w_20),
-//                -itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.h_20),
-//                -itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.w_20),
-//                -itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.h_20));
+        ViewUtils.onFocus(imageView);
     }
 }

@@ -11,13 +11,16 @@
 
     <FrameLayout
         android:layout_width="@dimen/w_303"
-        android:layout_height="@dimen/h_303">
+        android:layout_height="@dimen/h_303"
+        android:duplicateParentState="true">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             fresco:actualImageScaleType="fitXY"
+            android:duplicateParentState="true"
+            android:background="@drawable/shape_botton_bg_comm"
             fresco:placeholderImage="@drawable/ic_launcher_background"
             fresco:placeholderImageScaleType="centerCrop"
             fresco:roundedCornerRadius="@dimen/h_8" />
