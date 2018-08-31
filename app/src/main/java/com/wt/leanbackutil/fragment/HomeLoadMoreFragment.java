@@ -84,10 +84,11 @@ public class HomeLoadMoreFragment extends BaseFragment {
                 int position = verticalGridView.getSelectedPosition();
                 String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.song_sheet_data));
                 SongSheetResponse songResponse = new Gson().fromJson(json, SongSheetResponse.class);
-                List<SongSheetItem> tempData = new ArrayList<>();
-                tempData.addAll(mDataAlls);
-                mDataAlls.addAll(songSheetResponse.getData().size(), songResponse.getData());
-                songSheetItemAdapter.notifyItemChanged(position);
+//                List<SongSheetItem> tempData = new ArrayList<>();
+//                tempData.addAll(mDataAlls);
+//                mDataAlls.addAll(songSheetResponse.getData().size(), songResponse.getData());
+//                songSheetItemAdapter.notifyItemChanged(position);
+                songSheetItemAdapter.appendData(songResponse.getData());
 //                songSheetItemAdapter.setData(mDataAlls);
 //                songSheetItemAdapter.notifyItemRangeInserted(tempData.size(), mDataAlls.size());
                 verticalGridView.endMoreRefreshComplete();

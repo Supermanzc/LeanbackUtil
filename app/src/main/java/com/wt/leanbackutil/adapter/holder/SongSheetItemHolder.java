@@ -1,23 +1,19 @@
 package com.wt.leanbackutil.adapter.holder;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wt.leanbackutil.App;
 import com.wt.leanbackutil.R;
-import com.wt.leanbackutil.util.ViewUtils;
+import com.wt.leanbackutil.adapter.BaseHolder;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by DELL on 2018/8/9.
  */
 
-public class SongSheetItemHolder extends RecyclerView.ViewHolder {
+public class SongSheetItemHolder extends BaseHolder {
 
     @BindView(R.id.img_view)
     public SimpleDraweeView imageView;
@@ -26,7 +22,6 @@ public class SongSheetItemHolder extends RecyclerView.ViewHolder {
 
     public SongSheetItemHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
-        ViewUtils.onFocus(imageView);
+        initFocus(imageView);
     }
 }

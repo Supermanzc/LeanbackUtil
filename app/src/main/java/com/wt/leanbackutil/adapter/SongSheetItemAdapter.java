@@ -19,14 +19,13 @@ import java.util.List;
  * Created by DELL on 2018/8/9.
  */
 
-public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeLoadMoreFragment> {
+public class SongSheetItemAdapter extends BaseAdapter<SongSheetItem, HomeLoadMoreFragment> {
 
     MainUpView mainUpView;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.item_song_sheet, null);
-        view.setFocusable(true);
         return new SongSheetItemHolder(view);
     }
 
@@ -45,11 +44,6 @@ public class SongSheetItemAdapter extends BaseAdapter<List<SongSheetItem>, HomeL
                 ViewUtils.scaleView(v, hasFocus);
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return mData.size();
     }
 
     public void setMainView(MainUpView mainUpView) {
