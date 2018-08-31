@@ -2,6 +2,7 @@ package com.wt.leanbackutil.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.open.leanback.widget.GridLayoutManager;
 import com.wt.leanbackutil.R;
@@ -39,7 +40,9 @@ public class SongListAdapter extends BaseAdapter<RadioInfo, HomeSongFragment> {
         songListHolder.tvFocusGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         GridLayoutManager gridLayoutManager = songListHolder.tvFocusGridView.getBaseGridViewLayoutManager();
 //        gridLayoutManager.generateLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
+        int height = mContext.getResources().getDimensionPixelOffset(R.dimen.h_318) * (radioInfo.getRadios().size() + 4) / 5;
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) songListHolder.tvFocusGridView.getLayoutParams();
+        layoutParams.height = height;
         songListHolder.tvFocusGridView.setAdapter(new SongItemAdapter(radioInfo.getRadios(), mContext));
     }
 }

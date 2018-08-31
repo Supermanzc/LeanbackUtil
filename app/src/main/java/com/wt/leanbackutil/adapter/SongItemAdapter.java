@@ -27,7 +27,7 @@ public class SongItemAdapter extends BaseAdapter<RadioItem, HomeSongFragment> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SongSheetItemHolder(getInflateView(mContext.getContext(), R.layout.item_radio_view, null));
+        return new SongSheetItemHolder(getInflateView(mContext.getContext(), R.layout.item_radio_view, parent));
     }
 
     @Override
