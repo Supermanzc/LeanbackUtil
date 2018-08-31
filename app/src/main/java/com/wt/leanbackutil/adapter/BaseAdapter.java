@@ -1,7 +1,13 @@
 package com.wt.leanbackutil.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
 
 import java.util.List;
 
@@ -17,10 +23,11 @@ public abstract class BaseAdapter<T, B> extends RecyclerView.Adapter {
     protected List<T> mData;
     protected B mContext;
 
-    public BaseAdapter() {
+    public BaseAdapter(){
+
     }
 
-    public BaseAdapter(B context, List<T> data) {
+    public BaseAdapter(List<T> data, B context) {
         mContext = context;
         this.mData = data;
     }
@@ -60,5 +67,17 @@ public abstract class BaseAdapter<T, B> extends RecyclerView.Adapter {
         int size = mData.size();
         mData.addAll(size, data);
         notifyItemRangeInserted(size, mData.size());
+    }
+
+    /**
+     * 初始化view
+     *
+     * @param context
+     * @param layoutId
+     * @param container
+     * @return
+     */
+    public View getInflateView(Context context, int layoutId, @Nullable ViewGroup container) {
+        return LayoutInflater.from(context).inflate(layoutId, container, false);
     }
 }

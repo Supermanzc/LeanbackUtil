@@ -20,6 +20,7 @@ import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
+import com.wt.leanbackutil.fragment.HomeSongFragment;
 import com.wt.leanbackutil.fragment.LeanBackFragment;
 import com.wt.leanbackutil.fragment.ShimmerFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
@@ -102,6 +103,8 @@ public class HomeActivity extends FragmentActivity {
                 fragment = new ShimmerFragment();
             } else if (i == 4) {
                 fragment = new HomeMvFragment();
+            } else if (i == 5) {
+                fragment = new HomeSongFragment();
             } else {
                 fragment = new HomeRecommendFragment();
             }
