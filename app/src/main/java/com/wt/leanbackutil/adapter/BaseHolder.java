@@ -16,7 +16,7 @@ public class BaseHolder extends RecyclerView.ViewHolder {
     public BaseHolder(View view) {
         super(view);
         ButterKnife.bind(this, view);
-        view.setFocusable(true);
+        itemView.setFocusable(true);
     }
 
     public void initFocus(View view) {

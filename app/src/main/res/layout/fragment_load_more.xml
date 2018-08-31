@@ -2,13 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <com.open.leanback.widget.VerticalGridView
         android:id="@+id/vertical_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/h_80"/>
+        android:layout_marginLeft="@dimen/h_80"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 
     <com.wt.leanbackutil.view.border.MainUpView
         android:id="@+id/mainUpView"
