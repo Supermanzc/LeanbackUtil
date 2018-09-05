@@ -22,7 +22,11 @@ import java.util.List;
 public class SongSheetItemAdapter extends BaseAdapter<SongSheetItem, HomeLoadMoreFragment> {
 
     MainUpView mainUpView;
-    
+
+    public SongSheetItemAdapter(List<SongSheetItem> data, HomeLoadMoreFragment context) {
+        super(data, context);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.item_song_sheet, null);

@@ -66,7 +66,7 @@ public class HomeLoadMoreFragment extends BaseFragment {
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.song_sheet_data));
         songSheetResponse = new Gson().fromJson(json, SongSheetResponse.class);
         mDataAlls.addAll(songSheetResponse.getData());
-        songSheetItemAdapter = new SongSheetItemAdapter();
+        songSheetItemAdapter = new SongSheetItemAdapter(mDataAlls, this);
         songSheetItemAdapter.setContext(this);
         songSheetItemAdapter.setData(mDataAlls);
         songSheetItemAdapter.setMainView(mainUpView);

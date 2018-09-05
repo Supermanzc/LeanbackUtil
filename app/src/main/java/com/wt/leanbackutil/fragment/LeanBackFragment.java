@@ -3,27 +3,25 @@ package com.wt.leanbackutil.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 import com.open.leanback.widget.ArrayObjectAdapter;
 import com.open.leanback.widget.FocusHighlightHandler;
-import com.open.leanback.widget.HorizontalGridView;
 import com.open.leanback.widget.ItemBridgeAdapter;
-import com.open.leanback.widget.ListRow;
-import com.open.leanback.widget.ListRowPresenter;
-import com.open.leanback.widget.PresenterSelector;
 import com.wt.leanbackutil.R;
+import com.wt.leanbackutil.adapter.RadioRecycleAdapter;
 import com.wt.leanbackutil.leankback.presenter.RadioCardPresenter;
-import com.wt.leanbackutil.leankback.seletor.CardPresenterSelector;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.view.TvHorizontalGridView;
-import com.wt.leanbackutil.view.border.MainUpView;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,10 +38,10 @@ public class LeanBackFragment extends BaseFragment {
 
     @BindView(R.id.horizontal_grid_view)
     TvHorizontalGridView horizontalGridView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
     private Unbinder unbinder;
     private View view;
-    @BindView(R.id.mainUpView)
-    MainUpView mainUpView;
 
     @Nullable
     @Override
@@ -73,7 +71,6 @@ public class LeanBackFragment extends BaseFragment {
             @Override
             public void onItemFocused(View view, boolean hasFocus) {
                 LogUtil.e("onItemFocused----------------view=" + view.getClass().getSimpleName() + "   hasFocus=" + hasFocus);
-//                mainUpView.setFocusView(view, 1.2f);
             }
 
             @Override
@@ -83,6 +80,14 @@ public class LeanBackFragment extends BaseFragment {
         });
         horizontalGridView.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         horizontalGridView.setAdapter(itemBridgeAdapter);
+
+        //recycleView
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        RadioRecycleAdapter radioRecycleAdapter = new RadioRecycleAdapter(Arrays.asList(rows), this);
+        recyclerView.setAdapter(radioRecycleAdapter);
     }
 
     @Override

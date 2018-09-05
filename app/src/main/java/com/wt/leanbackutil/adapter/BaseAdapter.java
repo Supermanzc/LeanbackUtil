@@ -23,10 +23,6 @@ public abstract class BaseAdapter<T, B> extends RecyclerView.Adapter {
     protected List<T> mData;
     protected B mContext;
 
-    public BaseAdapter(){
-
-    }
-
     public BaseAdapter(List<T> data, B context) {
         mContext = context;
         this.mData = data;
