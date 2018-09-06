@@ -788,7 +788,9 @@ public abstract class BaseGridView extends RecyclerView {
      */
     @Override
     public void onRtlPropertiesChanged(int layoutDirection) {
-        mLayoutManager.onRtlPropertiesChanged(layoutDirection);
+        if(mLayoutManager != null) {
+            mLayoutManager.onRtlPropertiesChanged(layoutDirection);
+        }
     }
 
     @Override

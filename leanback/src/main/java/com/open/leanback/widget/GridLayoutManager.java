@@ -3428,4 +3428,40 @@ public final class GridLayoutManager extends RecyclerView.LayoutManager {
         info.setCollectionInfo(collectionInfo);
         leaveContext();
     }
+
+    @Override
+    public int computeHorizontalScrollOffset(State state) {
+        Log.e(TAG, "computeHorizontalScrollOffset------------" + state);
+        return super.computeHorizontalScrollOffset(state);
+    }
+
+    @Override
+    public int computeHorizontalScrollExtent(State state) {
+        Log.e(TAG, "computeHorizontalScrollExtent------------" + state);
+        return super.computeHorizontalScrollExtent(state);
+    }
+
+    @Override
+    public int computeHorizontalScrollRange(State state) {
+        Log.e(TAG, "computeHorizontalScrollRange------------" + state);
+        return super.computeHorizontalScrollRange(state);
+    }
+
+    @Override
+    public int computeVerticalScrollOffset(RecyclerView.State state) {
+        Log.e(TAG, "computeVerticalScrollOffset------------" + state);
+        return super.computeVerticalScrollOffset(state);
+    }
+
+    @Override
+    public int computeVerticalScrollExtent(RecyclerView.State state) {
+        Log.e(TAG, "computeVerticalScrollExtent------------" + state);
+        return super.computeVerticalScrollExtent(state);
+    }
+
+    @Override
+    public int computeVerticalScrollRange(RecyclerView.State state) {
+        Log.e(TAG, "computeVerticalScrollRange------------" + state);
+        return super.computeVerticalScrollRange(state);
+    }
 }

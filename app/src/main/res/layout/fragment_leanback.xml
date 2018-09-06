@@ -18,13 +18,15 @@
         android:scrollbarSize="@dimen/w_5"
         android:scrollbarStyle="outsideInset"
         android:scrollbarThumbHorizontal="@drawable/list_scroller_shape"
-        android:scrollbarTrackHorizontal="@android:color/transparent" />
+        android:scrollbarTrackHorizontal="@android:color/transparent"
+        android:scrollbars="horizontal"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_318"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/h_100"
         android:scrollbarSize="@dimen/w_5"
         android:clipChildren="false"
         android:clipToPadding="false"
