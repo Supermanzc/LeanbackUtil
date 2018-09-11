@@ -30,6 +30,7 @@ public class SongSheetItemAdapter extends BaseAdapter<SongSheetItem, HomeLoadMor
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.item_song_sheet, null);
+        view.setFocusable(true);
         return new SongSheetItemHolder(view);
     }
 

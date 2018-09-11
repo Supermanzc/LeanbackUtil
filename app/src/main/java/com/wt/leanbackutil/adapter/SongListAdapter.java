@@ -16,7 +16,7 @@ import java.util.List;
  * Created by DELL on 2018/8/31.
  *
  * @author junyan
- *         歌曲列表
+ *         歌曲列表 (有问题的)
  */
 
 public class SongListAdapter extends BaseAdapter<RadioInfo, HomeSongFragment> {
@@ -44,5 +44,6 @@ public class SongListAdapter extends BaseAdapter<RadioInfo, HomeSongFragment> {
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) songListHolder.tvFocusGridView.getLayoutParams();
         layoutParams.height = height;
         songListHolder.tvFocusGridView.setAdapter(new SongItemAdapter(radioInfo.getRadios(), mContext));
+        songListHolder.tvFocusGridView.setScrollEnabled(false);
     }
 }
