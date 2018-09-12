@@ -6,5 +6,7 @@
     <com.wt.leanbackutil.view.TvFocusGridView
         android:id="@+id/tv_focus_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 </RelativeLayout>

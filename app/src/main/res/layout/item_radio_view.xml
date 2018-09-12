@@ -9,7 +9,9 @@
     <FrameLayout
         android:layout_width="@dimen/w_273"
         android:layout_height="@dimen/h_273"
-        android:duplicateParentState="true">
+        android:duplicateParentState="true"
+        android:clipToPadding="false"
+        android:clipChildren="false">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img_view"

@@ -6,14 +6,23 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.SongListAdapter;
+import com.wt.leanbackutil.adapter.SongListDecorationAdapter;
+import com.wt.leanbackutil.model.RadioCategory;
+import com.wt.leanbackutil.model.RadioInfo;
+import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
+import com.wt.leanbackutil.model.RadioSubcategory;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.view.TvFocusGridView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,10 +52,16 @@ public class HomeSongFragment extends BaseFragment {
     private void initData() {
         String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.radio_data));
         RadioResponse radioResponse = new Gson().fromJson(json, RadioResponse.class);
+        RadioResponse radioResponse1 = getRadioResponse(radioResponse);
+//        SongListAdapter songListAdapter = new SongListAdapter(radioResponse.getData(), this);
 
-        SongListAdapter songListAdapter = new SongListAdapter(radioResponse.getData(), this);
+        SongListDecorationAdapter songListAdapter = new SongListDecorationAdapter(radioResponse1.getSubcategoryList(), this);
+        songListAdapter.setCategoryTitles(radioResponse1.getCategoryList());
+
         tvFocusGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         tvFocusGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
+        tvFocusGridView.setNumColumns(5);
+        tvFocusGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         tvFocusGridView.getBaseGridViewLayoutManager().setAutoMeasureEnabled(true);
 
         //设置焦点在屏幕中的位置
@@ -55,11 +70,66 @@ public class HomeSongFragment extends BaseFragment {
         tvFocusGridView.setAdapter(songListAdapter);
     }
 
+    /**
+     * 数据整理
+     *
+     * @param response
+     * @return
+     */
+    private RadioResponse getRadioResponse(RadioResponse response) {
+        List<RadioSubcategory> subcategoryList = new ArrayList<>();
+        List<RadioCategory> categoryList = new ArrayList<>();
+        if (response.getData() != null && !response.getData().isEmpty()) {
+            List<RadioInfo> categoryBeans = response.getData();
+            for (int i = 0; i < categoryBeans.size(); i++) {
+                RadioInfo radioGroup = categoryBeans.get(i);
+                RadioCategory category = new RadioCategory();
+                category.setTitle(radioGroup.getRadio_group_name());
+                categoryList.add(category);
+
+                List<RadioItem> topListTops = radioGroup.getRadios();
+                if (topListTops != null && !topListTops.isEmpty()) {
+                    for (RadioItem radiosBean : topListTops) {
+                        RadioSubcategory subcategory = new RadioSubcategory();
+                        subcategory.setRadio_id(radiosBean.getRadio_id());
+                        subcategory.setRadio_name(radiosBean.getRadio_name());
+                        subcategory.setRadio_pic(radiosBean.getRadio_pic());
+                        subcategory.setListen_num(radiosBean.getListen_num());
+                        subcategory.setSectionIndex(i);
+                        subcategory.setRealEntity(true);
+
+                        subcategoryList.add(subcategory);
+                    }
+                    if (topListTops.size() % 5 != 0) {
+                        int leftCount = 5 - topListTops.size() % 5;
+                        for (int j = 0; j < leftCount; j++) {
+                            RadioSubcategory radioSubcategory = new RadioSubcategory();
+                            radioSubcategory.setRealEntity(false);
+                            radioSubcategory.setSectionIndex(i);
+                            subcategoryList.add(radioSubcategory);
+                        }
+                    }
+                }
+            }
+        }
+        response.setData(null);
+        response.setCategoryList(categoryList);
+        response.setSubcategoryList(subcategoryList);
+        return response;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
+        }
+    }
+
+    @Override
+    public void refreshRecyclerUi() {
+        if (tvFocusGridView != null) {
+            tvFocusGridView.scrollToPosition(0);
         }
     }
 }
