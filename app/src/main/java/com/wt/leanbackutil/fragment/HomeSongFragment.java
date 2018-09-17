@@ -3,6 +3,7 @@ package com.wt.leanbackutil.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.model.RadioSubcategory;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.view.MetroTitleDecoration;
 import com.wt.leanbackutil.view.TvFocusGridView;
 
 import java.util.ArrayList;
@@ -66,6 +68,12 @@ public class HomeSongFragment extends BaseFragment {
 
         //设置焦点在屏幕中的位置
         tvFocusGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
+        tvFocusGridView.addItemDecoration(new MetroTitleDecoration(new MetroTitleDecoration.MetroTitleListener() {
+            @Override
+            public View getTitleView(int index, RecyclerView parent) {
+                return null;
+            }
+        }));
 
         tvFocusGridView.setAdapter(songListAdapter);
     }

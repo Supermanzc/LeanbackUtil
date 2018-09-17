@@ -51,7 +51,7 @@ import static android.support.v7.widget.RecyclerView.VERTICAL;
  *  HorizontalGridview | VerticalGridView 都在 LayoutManger.
  */
 @SuppressWarnings("WrongConstant")
-public final class GridLayoutManager extends RecyclerView.LayoutManager {
+public class GridLayoutManager extends RecyclerView.LayoutManager {
 
      /*
       * LayoutParams for {@link HorizontalGridView} and {@link VerticalGridView}.
