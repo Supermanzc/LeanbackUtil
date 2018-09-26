@@ -68,12 +68,12 @@ public class HomeSongFragment extends BaseFragment {
 
         //设置焦点在屏幕中的位置
         tvFocusGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
-        tvFocusGridView.addItemDecoration(new MetroTitleDecoration(new MetroTitleDecoration.MetroTitleListener() {
-            @Override
-            public View getTitleView(int index, RecyclerView parent) {
-                return null;
-            }
-        }));
+//        tvFocusGridView.addItemDecoration(new MetroTitleDecoration(new MetroTitleDecoration.MetroTitleListener() {
+//            @Override
+//            public View getTitleView(int index, RecyclerView parent) {
+//                return null;
+//            }
+//        }));
 
         tvFocusGridView.setAdapter(songListAdapter);
     }

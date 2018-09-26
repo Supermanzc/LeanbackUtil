@@ -3,10 +3,14 @@ package com.wt.leanbackutil.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
@@ -68,6 +72,43 @@ public class HomeMvFragment extends BaseFragment {
         verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 
         verticalGridView.setAdapter(mvInfoAdapter);
+        verticalGridView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                LogUtil.e("------------------v=" + v.getClass().getSimpleName());
+                LogUtil.e("------------------keyCode=" + keyCode);
+                LogUtil.e("------------------getKeyCode=" + event.getKeyCode());
+                return false;
+            }
+        });
+        verticalGridView.setOnKeyInterceptListener(new BaseGridView.OnKeyInterceptListener() {
+            @Override
+            public boolean onInterceptKeyEvent(KeyEvent event) {
+//                LogUtil.e("------------event------getAction=" + event.getAction());
+//                LogUtil.e("------------event------getKeyCode=" + event.getKeyCode());
+//                if(event.getAction() == KeyEvent.ACTION_UP && event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN){
+//                    View focusedChild = verticalGridView.getFocusedChild();
+//                    LogUtil.e("focusedChild--------" + focusedChild);
+//                    View childAt = verticalGridView.getChildAt(0);
+//                    if(focusedChild != null && focusedChild == childAt){
+//                        LogUtil.e("getChildAt--------" + childAt);
+//                        if(childAt instanceof RelativeLayout){
+//                            RelativeLayout viewGroup = (RelativeLayout) ((RelativeLayout) childAt).getChildAt(1);
+//                            viewGroup.getChildAt(0).requestFocus();
+//                            viewGroup.getChildAt(0).requestLayout();
+//                        }
+//                    }
+//                }
+                return false;
+            }
+        });
+
+        verticalGridView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                LogUtil.e("v---------------------" + v.getClass().getSimpleName() + "   hasFocus=" + hasFocus);
+            }
+        });
     }
 
     @Override

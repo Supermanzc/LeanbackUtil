@@ -12,6 +12,7 @@ import android.view.animation.LinearInterpolator;
 
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.util.ShakeAnimatorUtil;
 
 /**
  * Created by DELL on 2018/8/13.
@@ -32,5 +33,10 @@ public class TvVerticalGridView extends VerticalGridView {
 
     public TvVerticalGridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return super.dispatchKeyEvent(event);
     }
 }
