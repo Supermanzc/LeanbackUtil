@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.BaseGridView;
+import com.owen.tvrecyclerview.TwoWayLayoutManager;
+import com.owen.tvrecyclerview.widget.MetroGridLayoutManager;
+import com.owen.tvrecyclerview.widget.TvRecyclerView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.SongListAdapter;
 import com.wt.leanbackutil.adapter.SongListDecorationAdapter;
@@ -66,6 +70,10 @@ public class HomeSongFragment extends BaseFragment {
         tvFocusGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         tvFocusGridView.getBaseGridViewLayoutManager().setAutoMeasureEnabled(true);
 
+//        MetroGridLayoutManager layoutManager = new MetroGridLayoutManager
+//                (TwoWayLayoutManager.Orientation.VERTICAL, 5);
+//        tvFocusGridView.setLayoutManager(layoutManager);
+
         //设置焦点在屏幕中的位置
         tvFocusGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
 //        tvFocusGridView.addItemDecoration(new MetroTitleDecoration(new MetroTitleDecoration.MetroTitleListener() {
@@ -74,6 +82,14 @@ public class HomeSongFragment extends BaseFragment {
 //                return null;
 //            }
 //        }));
+
+        tvFocusGridView.setOnInBorderKeyEventListener(new TvFocusGridView.OnInBorderKeyEventListener() {
+            @Override
+            public boolean onInBorderKeyEvent(int direction, int keyCode, KeyEvent event) {
+                return direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT;
+            }
+        });
+
 
         tvFocusGridView.setAdapter(songListAdapter);
     }
