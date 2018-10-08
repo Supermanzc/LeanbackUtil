@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by DELL on 2018/9/11.
+ * @author junyan
  * list列表价Decoration类型的处理
  */
 
@@ -47,6 +47,12 @@ public class SongListDecorationAdapter extends BaseAdapter<RadioSubcategory, Hom
                 public void onFocusChange(View v, boolean hasFocus) {
                     radioItemHolder.titleView.setTextColor(mContext.getResources().getColor(hasFocus ? R.color.title_select_color : R.color.title_none_color));
                     ViewUtils.scaleView(v, hasFocus);
+                }
+            });
+            radioItemHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
                 }
             });
         }

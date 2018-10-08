@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.anggrayudi.hiddenapi.InternalAccessor;
+import com.anggrayudi.hiddenapi.r.Rc;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
@@ -141,7 +143,14 @@ public class HomeActivity extends FragmentActivity {
         titleGuide.setSelectedPosition(0);
         mPosition = 0;
 
-        //兼容手机端
+
+        String accept = InternalAccessor.getString(Rc.string.accept);
+        float sbar_height = InternalAccessor.getDimension(Rc.dimen.status_bar_height);
+        int notif_color = InternalAccessor.getColor("config_defaultNotificationColor");
+
+        LogUtil.e("accept-------" + accept);
+        LogUtil.e("sbar_height-------" + sbar_height);
+        LogUtil.e("notif_color-------" + notif_color);
     }
 
     @Override

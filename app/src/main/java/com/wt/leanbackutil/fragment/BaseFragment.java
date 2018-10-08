@@ -28,13 +28,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        LogUtil.e("onDestroyView---------------------" + this.getClass().getSimpleName());
+//        LogUtil.e("onDestroyView---------------------" + this.getClass().getSimpleName());
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        LogUtil.d("setUserVisibleHint-----------------" + isVisibleToUser + "   fragment=" + this.getClass().getSimpleName());
+//        LogUtil.d("setUserVisibleHint-----------------" + isVisibleToUser + "   fragment=" + this.getClass().getSimpleName());
 //        Fresco.getImagePipeline().clearMemoryCaches();
     }
 

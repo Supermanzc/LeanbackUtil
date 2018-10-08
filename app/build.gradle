@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,6 +18,10 @@ android {
         }
     }
     buildToolsVersion '26.0.2'
+
+    dexOptions {
+        jumboMode true
+    }
 }
 
 dependencies {
@@ -49,4 +54,9 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
     implementation project(':tvrecyclerview')
+    //获取系统的属性()String accept = InternalAccessor.getString(Rc.string.accept);
+    //float sbar_height = InternalAccessor.getDimension(Rc.dimen.status_bar_height);
+    //int notif_color = InternalAccessor.getColor("config_defaultNotificationColor");
+    compile 'com.anggrayudi:android-hidden-api:0.0.7'
+    compile 'com.android.support:multidex:1.0.0'
 }

@@ -8,27 +8,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.open.leanback.bring.BringToFrontHelper;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ShakeAnimatorUtil;
 
 import java.util.ArrayList;
 
 /**
- * Created by DELL on 2018/8/21.
+ * @author junyan
+ * tv
  */
 
 public class TvRelativeLayout extends RelativeLayout {
 
     public TvRelativeLayout(Context context) {
         super(context);
+        init();
     }
 
     public TvRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public TvRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
+        setWillNotDraw(true);
+        setChildrenDrawingOrderEnabled(true);
     }
 
 
@@ -44,13 +54,24 @@ public class TvRelativeLayout extends RelativeLayout {
     }
 
     @Override
+    public boolean requestFocus(int direction, Rect previouslyFocusedRect) {
+        LogUtil.e("requestFocus-----------------direction=" + previouslyFocusedRect);
+        return super.requestFocus(direction, previouslyFocusedRect);
+    }
+
+    @Override
+    protected boolean onRequestFocusInDescendants(int direction, Rect previouslyFocusedRect) {
+        LogUtil.e("onRequestFocusInDescendants-----------------direction=" + previouslyFocusedRect);
+        return super.onRequestFocusInDescendants(direction, previouslyFocusedRect);
+    }
+
+    @Override
     protected boolean dispatchGenericFocusedEvent(MotionEvent event) {
         return super.dispatchGenericFocusedEvent(event);
     }
 
     @Override
     public View focusSearch(View focused, int direction) {
-        LogUtil.e("focusSearch----------" + focused + "      dr=" + direction);
         return super.focusSearch(focused, direction);
     }
 
@@ -61,7 +82,6 @@ public class TvRelativeLayout extends RelativeLayout {
 
     @Override
     public View focusSearch(int direction) {
-        LogUtil.e("focusSearch----------" + direction);
         return super.focusSearch(direction);
     }
 
@@ -78,5 +98,17 @@ public class TvRelativeLayout extends RelativeLayout {
     @Override
     public void focusableViewAvailable(View v) {
         super.focusableViewAvailable(v);
+    }
+
+    @Override
+    public void addFocusables(ArrayList<View> views, int direction, int focusableMode) {
+        LogUtil.e("addFocusables-----------direction=" + direction + "   focusableMode=" + focusableMode);
+        super.addFocusables(views, direction, focusableMode);
+    }
+
+    @Override
+    protected int getChildDrawingOrder(int childCount, int i) {
+        LogUtil.e("getChildDrawingOrder------------childCount=" + childCount + "   i=" + i);
+        return super.getChildDrawingOrder(childCount, i);
     }
 }

@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.logging.FLog;
@@ -32,7 +34,7 @@ import okhttp3.OkHttpClient;
  * Created by DELL on 2018/8/21.
  */
 
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     private static App INSTANCE;
 
@@ -42,6 +44,13 @@ public class App extends Application {
         App application = (App) context.getApplicationContext();
         return application.mRefWatcher;
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
     @Override
     public void onCreate() {
