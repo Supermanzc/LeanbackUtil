@@ -1,6 +1,7 @@
 package com.wt.leanbackutil.leankback.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.open.leanback.widget.Presenter;
+import com.wt.leanbackutil.PlayMvActivity;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FrescoUtil;
@@ -49,6 +51,13 @@ public class RadioCardPresenter extends Presenter {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 ViewUtils.scaleView(v, hasFocus);
+            }
+        });
+
+        viewHolder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, PlayMvActivity.class));
             }
         });
     }

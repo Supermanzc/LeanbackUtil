@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- common -->
+    <dimen name="common_round">@dimen/w_6</dimen>
+
+    <!-- dialog 720-->
+    <dimen name="update_dialog_msg_drawable_padding">@dimen/w_15</dimen>
+
+    <!-- toast -->
+    <dimen name="network_error_icon_margin_left">@dimen/w_45</dimen>
+    <dimen name="network_error_title_margin_left">@dimen/w_22</dimen>
+    <dimen name="network_error_msg_text_size">@dimen/w_38</dimen>
+    <dimen name="toast_msg_text_size">@dimen/w_48</dimen>
+    <dimen name="toast_msg_text_padding_left">@dimen/w_30</dimen>
+    <dimen name="toast_msg_text_padding_right">@dimen/w_30</dimen>
+
+    <!-- Play Activity -->
+    <dimen name="play_loading_label_text_size">@dimen/w_26</dimen>
+    <dimen name="play_loading_radius">@dimen/w_75</dimen>
+    <dimen name="play_loading_ring_width">@dimen/w_5</dimen>
+
+    <!-- Search Activity -->
+
+
+    <!-- Main Activity -->
+
+    <!-- TopBar-->
+
+</resources>

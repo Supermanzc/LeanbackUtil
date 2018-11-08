@@ -11,4 +11,8 @@
     <color name="white">#FFFFFF</color>
     <color name="color_1A58829C">#1A58829C</color>
     <color name="shimmer_color" >#FFFFFF</color>
+
+
+    <color name="color_green">#5BFFE0</color>
+    <color name="green">#0EAF52</color>
 </resources>

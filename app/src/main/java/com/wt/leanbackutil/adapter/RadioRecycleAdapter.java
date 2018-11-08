@@ -31,7 +31,7 @@ public class RadioRecycleAdapter extends BaseAdapter<RadioItem, LeanBackFragment
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         RadioItem radioItem = mData.get(position);
         final RadioItemHolder radioItemHolder = (RadioItemHolder) holder;
         radioItemHolder.titleView.setText(radioItem.getRadio_name());

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <declare-styleable name="ShimmerLayout">
         <attr name="shimmerColor" format="color|reference" />
         <attr name="shimmerDuration" format="integer|reference" />
@@ -10,5 +11,31 @@
         <attr name="shimmerReverseAnimation" format="boolean|reference" />
         <attr name="shimmerRepeatCount" format="integer" />
     </declare-styleable>
-  
+
+    <!-- 视频缓冲自定义属性 -->
+    <declare-styleable name="buffer">
+        <!-- 圆的的颜色 -->
+        <attr name="circleColor" format="color" />
+        <!-- 圆的半径 -->
+        <attr name="circleRadius" format="dimension" />
+        <!-- 外圆周的宽度 -->
+        <attr name="ringWidth" format="dimension" />
+        <!-- 外圆周的颜色 -->
+        <attr name="ringColor" format="color" />
+        <!-- 圆上当前网速文字颜色 -->
+        <attr name="speedTextColor" format="color" />
+        <!-- 圆上当前网速文字大小 -->
+        <attr name="speedTextSize" format="dimension" />
+        <!-- 进度缓冲颜色 -->
+        <attr name="innerColor" format="color" />
+        <!-- 加载提示Label颜色 -->
+        <attr name="loadLabelTextColor" format="color" />
+        <!-- 加载提示Label文字大小 -->
+        <attr name="loadLabelTextSize" format="dimension" />
+        <!-- 加载内容提示颜色 -->
+        <attr name="loadTextColor" format="color" />
+        <!-- 进度内容文字大小 -->
+        <attr name="loadTextSize" format="dimension" />
+    </declare-styleable>
+
 </resources>
