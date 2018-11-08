@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.open.leanback.bring.BringToFrontHelper;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ShakeAnimatorUtil;
 
@@ -16,10 +15,12 @@ import java.util.ArrayList;
 
 /**
  * @author junyan
- * tv
+ *         tv
  */
 
 public class TvRelativeLayout extends RelativeLayout {
+
+    private View defaultView;
 
     public TvRelativeLayout(Context context) {
         super(context);

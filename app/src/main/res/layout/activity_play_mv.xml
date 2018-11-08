@@ -22,4 +22,11 @@
         app:radius="@dimen/play_loading_radius"
         app:ringColor="@color/color_green"
         app:ringWidth="@dimen/play_loading_ring_width" />
+
+    <com.wt.leanbackutil.view.FastForwardRewindView
+        android:id="@+id/fast_forward_rewind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 </FrameLayout>
