@@ -34,6 +34,7 @@ public class PlayMvActivity extends Activity implements SurfaceHolder.Callback {
 
     private PlayMvManager playMvManager;
     private boolean isLongPressKey = false;
+    private long firstBackTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -181,6 +182,25 @@ public class PlayMvActivity extends Activity implements SurfaceHolder.Callback {
                 playMvManager.delaySeekProgress(fastView.getCurrentProgress());
                 fastView.setSeekTime(0);
                 fastView.setVisibility(View.GONE);
+            }
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+            if (!playMvManager.isSeekFinished()) {
+                return true;
+            }
+            boolean iconState = playMvManager.setPlayOrPause();
+            //暂停
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_BACK) {
+            long nowTime = System.currentTimeMillis();
+            if ((nowTime - firstBackTime) > 4000) {
+                firstBackTime = nowTime;
+                Toast.makeText(PlayMvActivity.this, "再次点击“返回”可以退出MV播放", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                if (!isFinishing()) {
+                    finish();
+                }
+                return true;
             }
         }
         return super.onKeyUp(keyCode, event);
