@@ -1,14 +1,17 @@
 package com.wt.leanbackutil.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.open.leanback.widget.BaseGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.RadioInfoOneHolder;
 import com.wt.leanbackutil.adapter.holder.RadioInfoTwoHolder;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.model.RadioInfo;
+import com.wt.leanbackutil.util.LogUtil;
 
 import java.util.List;
 
@@ -39,6 +42,7 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
         if (viewType == VIEW_TYPE_ONE) {
             view = View.inflate(parent.getContext(), R.layout.item_radio_info_one, null);
             holder = new RadioInfoOneHolder(view);
+//            holder.setIsRecyclable(false);
         } else if (viewType == VIEW_TYPE_TWO) {
             view = View.inflate(parent.getContext(), R.layout.item_radio_info_two, null);
             holder = new RadioInfoTwoHolder(view);
@@ -66,6 +70,8 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
                 radioItemAdapter = new RadioItemAdapter(mFragment);
                 radioItemAdapter.setData(radioInfo.getRadios());
                 radioInfoHolder.verticalGridView.setAdapter(radioItemAdapter);
+                LogUtil.e("onBindViewHolder-------------------position=" + position);
+                radioInfoHolder.verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
                 break;
             case VIEW_TYPE_TWO:
                 RadioInfoTwoHolder radioInfoTwoHolder = (RadioInfoTwoHolder) holder;
@@ -76,6 +82,7 @@ public class RadioInfoAdapter extends RecyclerView.Adapter {
 
                 radioItemAdapter = new RadioItemAdapter(mFragment);
                 radioItemAdapter.setData(radioInfo.getRadios());
+                radioInfoTwoHolder.verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
                 radioInfoTwoHolder.verticalGridView.setAdapter(radioItemAdapter);
                 break;
             default:

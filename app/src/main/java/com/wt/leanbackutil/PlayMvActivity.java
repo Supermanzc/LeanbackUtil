@@ -81,7 +81,7 @@ public class PlayMvActivity extends Activity implements SurfaceHolder.Callback {
         //创建surfaceCreated
         playMvManager.setDisplayHolder(holder);
         playMvManager.setSeekFinished(true);
-        playMvManager.setDataSourceToEngine("");
+        playMvManager.setDataSourceToEngine("http://opsstream.live.otvcloud.com/otv/xjgg/live/channel08/700.m3u8");
     }
 
     @Override

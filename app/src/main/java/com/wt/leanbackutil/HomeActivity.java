@@ -107,7 +107,9 @@ public class HomeActivity extends FragmentActivity {
                 fragment = new HomeMvFragment();
             } else if (i == 5) {
                 fragment = new HomeSongFragment();
-            } else {
+            } else if(i == 6){
+                fragment = new HomeRadioFragment();
+            }else {
                 fragment = new HomeRecommendFragment();
             }
 //            Bundle bundle = new Bundle();

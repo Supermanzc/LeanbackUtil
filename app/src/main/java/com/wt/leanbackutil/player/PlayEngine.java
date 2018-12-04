@@ -110,6 +110,8 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
     public synchronized void release() {
         if (mediaPlayer != null) {
             Logger.d(TAG, "release");
+            this.holder = null;
+            mediaPlayer.setDisplay(null);
             mediaPlayer.release();
             mediaPlayer = null;
             setPlayState(PlayState.END);
