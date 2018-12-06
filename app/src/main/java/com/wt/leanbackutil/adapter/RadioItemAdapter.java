@@ -1,14 +1,12 @@
 package com.wt.leanbackutil.adapter;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.RadioItemHolder;
-import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.ViewUtils;
@@ -21,10 +19,10 @@ import java.util.List;
 
 public class RadioItemAdapter extends RecyclerView.Adapter {
 
-    private HomeRadioFragment mFragment;
+    private Fragment mFragment;
     private List<RadioItem> radioItems;
 
-    public RadioItemAdapter(HomeRadioFragment fragment){
+    public RadioItemAdapter(Fragment fragment){
         mFragment = fragment;
     }
 
