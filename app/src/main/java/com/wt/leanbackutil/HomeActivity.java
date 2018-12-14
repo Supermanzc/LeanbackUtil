@@ -18,6 +18,7 @@ import com.open.leanback.widget.HorizontalGridView;
 import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
 import com.wt.leanbackutil.fragment.BaseFragment;
+import com.wt.leanbackutil.fragment.CategoryFragment;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
@@ -53,6 +54,7 @@ public class HomeActivity extends FragmentActivity {
     TvViewPager tvViewPager;
 
     private int[] mainTabs = new int[]{
+            R.string.main_tab_test,
             R.string.main_tab_home,
             R.string.main_tab_latest_music,
             R.string.main_tab_rank,
@@ -97,7 +99,8 @@ public class HomeActivity extends FragmentActivity {
         for (int i = 0; i < mainTabs.length; i++) {
             BaseFragment fragment;
             if (i == 0) {
-                fragment = new LeanBackFragment();
+//                fragment = new LeanBackFragment();
+                fragment = new CategoryFragment();
             } else if (i == 1) {
                 fragment = new HomeRadioFragment();
             } else if (i == 2) {
