@@ -43,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/button4"
             android:focusable="true"
-            android:src="@drawable/icon_close" />
+            android:src="@drawable/icon_close"
+            android:visibility="gone" />
     </com.wt.leanbackutil.view.FocusRelativeLayout>
 
     <com.wt.leanbackutil.view.FocusRelativeLayout

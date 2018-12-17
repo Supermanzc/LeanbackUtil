@@ -13,6 +13,7 @@
  */
 package com.open.leanback.widget;
 
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,8 +22,16 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 
 import com.open.leanback.R;
+import com.open.leanback.util.ThreadPoolManager;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
+import static android.view.KeyEvent.KEYCODE_DPAD_DOWN;
 
 
 /**
@@ -181,12 +190,13 @@ public class VerticalGridView extends BaseGridView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return false; // 禁止滑动翻页
+        // 禁止滑动翻页
+        return false;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        return false;// 禁止滑动翻页
+        // 禁止滑动翻页
+        return false;
     }
-
 }
