@@ -16,6 +16,7 @@ import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.model.RadioResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.PagerUtil;
+import com.wt.leanbackutil.view.FocusVerticalGridView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,8 @@ import butterknife.ButterKnife;
 
 public class HomeVerticalGridViewFragment extends BaseFragment {
 
-    @BindView(R.id.vertical_grid_view)
-    VerticalGridView verticalGridView;
+    @BindView(R.id.hrecy_view)
+    FocusVerticalGridView verticalGridView;
 
     private View view;
 
@@ -39,7 +40,7 @@ public class HomeVerticalGridViewFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_home_radio, container, false);
+            view = inflater.inflate(R.layout.fragment_home_vertical, container, false);
         }
         ButterKnife.bind(this, view);
         initView();

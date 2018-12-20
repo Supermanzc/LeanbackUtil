@@ -48,18 +48,18 @@ public class VerticalRadioInfoAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         RadioInfo radioInfo = radioInfos.get(position);
-        RadioItemAdapter radioItemAdapter = new RadioItemAdapter(mFragment);
+        VerticalRadioAdapter radioItemAdapter = new VerticalRadioAdapter(mFragment);
         radioItemAdapter.setData(radioInfo.getRadios());
         if (holder.getItemViewType() == VIEW_TYPE_ONE) {
             VerticalRadioHolderOne verticalRadioHolderOne = (VerticalRadioHolderOne) holder;
             verticalRadioHolderOne.textView.setText(radioInfo.getRadio_group_name());
             verticalRadioHolderOne.horizontalGridView.setHorizontalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.w_40));
-            verticalRadioHolderOne.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+//            verticalRadioHolderOne.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
             verticalRadioHolderOne.horizontalGridView.setAdapter(radioItemAdapter);
         } else {
             VerticalRadioHolderTwo holderTwo = (VerticalRadioHolderTwo) holder;
             holderTwo.horizontalGridView.setHorizontalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.w_40));
-            holderTwo.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+//            holderTwo.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
             holderTwo.horizontalGridView.setAdapter(radioItemAdapter);
         }
     }

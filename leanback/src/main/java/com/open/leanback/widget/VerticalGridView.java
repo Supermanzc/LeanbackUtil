@@ -188,15 +188,15 @@ public class VerticalGridView extends BaseGridView {
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        // 禁止滑动翻页
-        return false;
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        // 禁止滑动翻页
-        return false;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        // 禁止滑动翻页
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent event) {
+//        // 禁止滑动翻页
+//        return false;
+//    }
 }
