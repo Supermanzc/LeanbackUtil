@@ -19,6 +19,7 @@ import com.wt.leanbackutil.leankback.presenter.RadioCardPresenter;
 import com.wt.leanbackutil.model.RadioItem;
 import com.wt.leanbackutil.util.FileJsonUtils;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.view.FocusRecyclerView;
 import com.wt.leanbackutil.view.TvHorizontalGridView;
 
 import java.util.Arrays;
@@ -39,7 +40,7 @@ public class LeanBackFragment extends BaseFragment {
     @BindView(R.id.horizontal_grid_view)
     TvHorizontalGridView horizontalGridView;
     @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    FocusRecyclerView recyclerView;
     private Unbinder unbinder;
     private View view;
 
