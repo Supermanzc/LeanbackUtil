@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.open.leanback.widget.RowContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:descendantFocusability="beforeDescendants">
+    android:orientation="vertical">
 
-    <com.open.leanback.widget.NonOverlappingLinearLayout
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:descendantFocusability="beforeDescendants">
+        android:layout_marginLeft="@dimen/w_80"
+        android:textSize="@dimen/w_45" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/w_80"
-            android:textSize="@dimen/w_45" />
-    </com.open.leanback.widget.NonOverlappingLinearLayout>
 
-    <com.open.leanback.widget.ListRowView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:descendantFocusability="afterDescendants">
-
-        <com.open.leanback.widget.HorizontalGridView
-            android:id="@+id/horizontal_grid_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/h_340"
-            android:layout_below="@+id/title"
-            android:layout_marginLeft="@dimen/w_80"
-            android:layout_marginTop="@dimen/h_40"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:descendantFocusability="afterDescendants"
-            android:textSize="@dimen/w_45" />
-    </com.open.leanback.widget.ListRowView>
-</com.open.leanback.widget.RowContainerView>
+    <com.open.leanback.widget.HorizontalGridView
+        android:id="@+id/horizontal_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h_340"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="@dimen/w_80"
+        android:layout_marginTop="@dimen/h_40"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:descendantFocusability="afterDescendants"
+        android:textSize="@dimen/w_45" />
+</RelativeLayout>

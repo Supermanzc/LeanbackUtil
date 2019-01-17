@@ -54,12 +54,12 @@ public class VerticalRadioInfoAdapter extends RecyclerView.Adapter {
             VerticalRadioHolderOne verticalRadioHolderOne = (VerticalRadioHolderOne) holder;
             verticalRadioHolderOne.textView.setText(radioInfo.getRadio_group_name());
             verticalRadioHolderOne.horizontalGridView.setHorizontalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.w_40));
-//            verticalRadioHolderOne.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+            verticalRadioHolderOne.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
             verticalRadioHolderOne.horizontalGridView.setAdapter(radioItemAdapter);
         } else {
             VerticalRadioHolderTwo holderTwo = (VerticalRadioHolderTwo) holder;
             holderTwo.horizontalGridView.setHorizontalMargin(mFragment.getResources().getDimensionPixelOffset(R.dimen.w_40));
-//            holderTwo.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+            holderTwo.horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
             holderTwo.horizontalGridView.setAdapter(radioItemAdapter);
         }
     }

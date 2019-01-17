@@ -16,6 +16,18 @@ public class RecommendInfo {
     private String name;
     private int type;
     private List<SingItem> list;
+    /**
+     * 保存当前的位置
+     */
+    private int currentIndex;
+
+    public int getCurrentIndex() {
+        return currentIndex;
+    }
+
+    public void setCurrentIndex(int currentIndex) {
+        this.currentIndex = currentIndex;
+    }
 
     public String getName() {
         return name;

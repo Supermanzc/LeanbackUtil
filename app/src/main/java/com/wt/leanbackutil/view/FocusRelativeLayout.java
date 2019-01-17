@@ -63,26 +63,26 @@ public class FocusRelativeLayout extends RelativeLayout {
      * @param direction
      * @return
      */
-    @Override
-    public View focusSearch(View focused, int direction) {
-        View focusView = super.focusSearch(focused, direction);
-        if ((focusView == null) && (direction == View.FOCUS_RIGHT)) {
-            // 到达最右边，焦点下移.(注意:建议放到Executors的Runnable里面执行哈，这里简化代码)
-            ThreadPoolManager.getInstance().execute(new Runnable() {
-                @Override
-                public void run() {
-                    new Instrumentation().sendKeyDownUpSync(KEYCODE_DPAD_DOWN);
-                }
-            });
-        } else if ((focusView == null) && (direction == View.FOCUS_LEFT)) {
-            ThreadPoolManager.getInstance().execute(new Runnable() {
-                @Override
-                public void run() {
-                    new Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_DPAD_UP);
-                }
-            });
-            // 到达最左边，焦点下移.
-        }
-        return focusView;
-    }
+//    @Override
+//    public View focusSearch(View focused, int direction) {
+//        View focusView = super.focusSearch(focused, direction);
+//        if ((focusView == null) && (direction == View.FOCUS_RIGHT)) {
+//            // 到达最右边，焦点下移.(注意:建议放到Executors的Runnable里面执行哈，这里简化代码)
+//            ThreadPoolManager.getInstance().execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    new Instrumentation().sendKeyDownUpSync(KEYCODE_DPAD_DOWN);
+//                }
+//            });
+//        } else if ((focusView == null) && (direction == View.FOCUS_LEFT)) {
+//            ThreadPoolManager.getInstance().execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    new Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_DPAD_UP);
+//                }
+//            });
+//            // 到达最左边，焦点下移.
+//        }
+//        return focusView;
+//    }
 }

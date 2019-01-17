@@ -23,6 +23,7 @@ import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
 import com.wt.leanbackutil.fragment.HomeRecommendFragment;
+import com.wt.leanbackutil.fragment.HomeRecommendNewFragment;
 import com.wt.leanbackutil.fragment.HomeSongFragment;
 import com.wt.leanbackutil.fragment.HomeVerticalGridViewFragment;
 import com.wt.leanbackutil.fragment.LeanBackFragment;
@@ -102,7 +103,8 @@ public class HomeActivity extends FragmentActivity {
 //                fragment = new LeanBackFragment();
                 fragment = new CategoryFragment();
             } else if (i == 1) {
-                fragment = new HomeRadioFragment();
+                fragment = new HomeRecommendNewFragment();
+//                fragment = new HomeRadioFragment();
             } else if (i == 2) {
                 fragment = new HomeLoadMoreFragment();
             } else if (i == 3) {

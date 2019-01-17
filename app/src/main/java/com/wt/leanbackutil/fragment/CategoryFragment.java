@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wt.leanbackutil.PlayVlcActivity;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.activity.SearchFocusActivity;
 
@@ -29,11 +30,14 @@ public class CategoryFragment extends BaseFragment {
         return view;
     }
 
-    @OnClick({R.id.category_search_focus})
+    @OnClick({R.id.category_search_focus, R.id.vlc_mv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.category_search_focus:
                 startActivity(new Intent(getContext(), SearchFocusActivity.class));
+                break;
+            case R.id.vlc_mv:
+                startActivity(new Intent(getContext(), PlayVlcActivity.class));
                 break;
             default:
                 break;

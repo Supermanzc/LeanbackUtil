@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.VerticalRadioInfoAdapter;
@@ -57,6 +58,7 @@ public class HomeVerticalGridViewFragment extends BaseFragment {
         verticalRadioInfoAdapter.setData(getRadioInfos(radioResponse));
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
+        verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_PAGE);
         verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.h_20));
         verticalGridView.setAdapter(verticalRadioInfoAdapter);
     }

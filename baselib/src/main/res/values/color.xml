@@ -89,8 +89,8 @@
     <color name="main_reco_content_item_title">#FF404040</color>
     <color name="main_reco_content_item_singer">#FF969696</color>
     <color name="main_reco_content_item_listen_num_bg">#66000000</color>
-    <color name="color_dots_normal">#FFCCCCCC</color>
-    <color name="color_dots_choose">#FF121212</color>
+    <color name="color_dots_normal">#66000000</color>
+    <color name="color_dots_choose">#FF0EAF52</color>
     <color name="banner_bg">#1758829C</color>
     <color name="color_top_shadow">#38000000</color>
     <color name="main_singer_name_item">#FF404040</color>

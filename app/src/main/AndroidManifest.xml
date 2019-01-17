@@ -43,6 +43,7 @@
 
         <activity android:name=".PlayMvActivity" />
         <activity android:name=".activity.SearchFocusActivity" />
+        <activity android:name=".PlayVlcActivity" />
     </application>
 
 </manifest>

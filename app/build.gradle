@@ -59,4 +59,5 @@ dependencies {
     //int notif_color = InternalAccessor.getColor("config_defaultNotificationColor");
     compile 'com.anggrayudi:android-hidden-api:0.0.7'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'de.mrmaffen:libvlc-android:2.1.12@aar'
 }

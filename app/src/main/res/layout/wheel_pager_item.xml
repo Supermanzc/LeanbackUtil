@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wt.leanbackutil.view.WheelRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingLeft="@dimen/w_80"
+    android:paddingRight="@dimen/w_80">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_toRightOf="@+id/button1"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_toRightOf="@+id/button2"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_toRightOf="@+id/button3"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_below="@+id/button1"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_below="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:text="Button"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_below="@+id/button1"
+        android:layout_toRightOf="@+id/button2"
+        android:text="Button"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="@dimen/w_420"
+        android:layout_height="@dimen/h_240"
+        android:layout_below="@+id/button1"
+        android:layout_toRightOf="@+id/button3"
+        android:text="Button"
+        android:visibility="gone"/>
+</com.wt.leanbackutil.view.WheelRelativeLayout>
