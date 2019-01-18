@@ -2,16 +2,14 @@ package com.wt.leanbackutil.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v17.leanback.widget.BaseGridView;
+import android.support.v17.leanback.widget.VerticalGridView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
-import com.open.leanback.widget.BaseGridView;
-import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
-import com.wt.leanbackutil.adapter.RecommendItemCardAdapter;
-import com.wt.leanbackutil.adapter.RecommendItemInfoAdapter;
 import com.wt.leanbackutil.adapter.RecommendItemInfoNewAdapter;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.RecommendResponse;
@@ -40,7 +38,7 @@ public class HomeRecommendNewFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_home_recommend, container, false);
+            view = inflater.inflate(R.layout.fragment_home_recommend_new, container, false);
         }
         ButterKnife.bind(this, view);
         initData();
@@ -64,10 +62,10 @@ public class HomeRecommendNewFragment extends BaseFragment {
         verticalGridView.setAdapter(recommendItemInfoAdapter);
 
         //表示当前焦点是否可以移出去
-        verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
-        verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
-        verticalGridView.getBaseGridViewLayoutManager().setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
-        verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.h_20));
+        verticalGridView.setFocusOutAllowed(true, true);
+        verticalGridView.setFocusOutSideAllowed(false, false);
+        verticalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
+
     }
 
     @Override

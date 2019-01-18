@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':leanback', ':mzbanner', ':tvrecyclerview'
+include ':app', ':baselib', ':leanback', ':mzbanner', ':tvrecyclerview', ':leanback17'

@@ -106,6 +106,7 @@ public class HomeActivity extends FragmentActivity {
                 fragment = new HomeRecommendNewFragment();
 //                fragment = new HomeRadioFragment();
             } else if (i == 2) {
+//                fragment = new HomeConcertFragment();
                 fragment = new HomeLoadMoreFragment();
             } else if (i == 3) {
                 fragment = new ShimmerFragment();

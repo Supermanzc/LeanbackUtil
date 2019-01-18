@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    implementation "com.android.support:support-v4:$rootProject.ext.supportVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
+
+}
+
+//上传系统设置 presenter的 aar到中央仓库.
+def MAVEN_LOCAL_PATH = 'http://172.21.16.247:8081/nexus/content/repositories/XgimiApi'
+def ARTIFACT_ID = 'leanback' // 一般为别名
+def VERSION_NAME = '1.0.1' // 版本号
+def GROUP_ID = 'com.open.leanback' // 统一使用包名
+def ACCOUNT = 'admin'
+def PASSWORD = 'admin123'
+
+//脚本：将Lib打成aar包上传至maven私有库
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_LOCAL_PATH) {
+                authentication(userName: ACCOUNT, password: PASSWORD)
+            }
+            pom.project {
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+                version VERSION_NAME
+                packaging 'aar'
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
