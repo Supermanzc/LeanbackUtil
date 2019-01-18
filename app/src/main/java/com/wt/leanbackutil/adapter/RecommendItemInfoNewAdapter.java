@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.open.leanback.bring.BringToFrontRelative;
 import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.VerticalGridView;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
@@ -15,7 +18,9 @@ import com.wt.leanbackutil.adapter.holder.RecommendMvInfoHolder;
 import com.wt.leanbackutil.fragment.HomeRecommendNewFragment;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.SingItem;
+import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.LogUtil;
+import com.wt.leanbackutil.util.ViewUtils;
 import com.wt.leanbackutil.view.WheelRelativeLayout;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
@@ -93,7 +98,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                         }
                     });
         } else if (recommendInfo.getType() == RecommendInfo.TYPE_TWO) {
-            layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_600);
+            layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_640);
             mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
@@ -117,21 +122,52 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                             };
                         }
                     });
-        } else if(recommendInfo.getType()  == RecommendInfo.TYPE_THREE){
-            layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_600);
+        } else if (recommendInfo.getType() == RecommendInfo.TYPE_THREE) {
+            layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
             mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
                         public MZViewHolder createViewHolder() {
                             return new MZViewHolder() {
+
+                                private WheelRelativeLayout bringToFrontRelative;
+
                                 @Override
                                 public View createView(Context context) {
-                                    return LayoutInflater.from(context).inflate(R.layout.wheel_pager_item, null);
+                                    bringToFrontRelative = (WheelRelativeLayout) LayoutInflater.from(context).inflate(R.layout.wheel_pager_singer, null);
+                                    return bringToFrontRelative;
                                 }
 
                                 @Override
                                 public void onBind(Context context, int position, Object data) {
-
+                                    int childCount = bringToFrontRelative.getChildCount();
+                                    List<SingItem> singItemList = (List<SingItem>) data;
+                                    for (int i = 0; i < childCount; i++) {
+                                        View view = bringToFrontRelative.getChildAt(i);
+                                        if(i > singItemList.size() -1){
+                                            view.setVisibility(View.GONE);
+                                        }else {
+                                            SingItem singItem = singItemList.get(i);
+                                            view.setVisibility(View.VISIBLE);
+                                            TextView titleView = view.findViewById(R.id.title_view);
+                                            TextView descriptionView = view.findViewById(R.id.description_view);
+                                            SimpleDraweeView imageView = view.findViewById(R.id.img_view);
+                                            ViewUtils.onFocus(imageView);
+                                            view.setFocusable(true);
+                                            titleView.setText(singItem.getSong_name());
+                                            descriptionView.setText(singItem.getSinger_name());
+                                            FrescoUtil.getInstance().loadImage(imageView, singItem.getAlbum_pic(), FrescoUtil.TYPE_ONE);
+                                            view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                                                @Override
+                                                public void onFocusChange(View v, boolean hasFocus) {
+                                                    if(hasFocus){
+                                                        v.bringToFront();
+                                                    }
+                                                    ViewUtils.scaleView(v, hasFocus);
+                                                }
+                                            });
+                                        }
+                                    }
                                 }
                             };
                         }

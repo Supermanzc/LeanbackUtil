@@ -28,19 +28,12 @@
             android:orientation="horizontal" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <com.wt.leanbackutil.view.WheelViewPager
+        android:id="@+id/wheel_view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_marginTop="@dimen/h_20"
-        android:clipToPadding="false"
-        android:clipChildren="false">
-
-        <com.wt.leanbackutil.view.WheelViewPager
-            android:id="@+id/wheel_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false" />
-    </RelativeLayout>
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 </RelativeLayout>

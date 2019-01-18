@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.VerticalGridView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.RecommendItemCardAdapter;
@@ -65,6 +66,7 @@ public class HomeRecommendNewFragment extends BaseFragment {
         //表示当前焦点是否可以移出去
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(false, false);
+        verticalGridView.getBaseGridViewLayoutManager().setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ALIGNED);
         verticalGridView.setVerticalMargin(getResources().getDimensionPixelOffset(R.dimen.h_20));
     }
 
