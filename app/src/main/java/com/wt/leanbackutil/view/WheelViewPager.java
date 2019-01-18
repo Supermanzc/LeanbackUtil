@@ -78,7 +78,7 @@ public class WheelViewPager<T> extends ViewPager {
      * @param data
      * @param pageSize
      */
-    public void setData(List<T> data, final RecommendInfo recommendInfo, int pageSize) {
+    public void setData(List<T> data, int pageSize) {
         pagerUtil = PagerUtil.create(data, pageSize);
         addOnPageChangeListener(new OnPageChangeListener() {
             @Override
@@ -90,7 +90,6 @@ public class WheelViewPager<T> extends ViewPager {
 
             @Override
             public void onPageSelected(int position) {
-                recommendInfo.setCurrentIndex(position);
                 mCurrentItem = position;
                 // 切换indicator
                 int realSelectPosition = mCurrentItem % mIndicators.size();
@@ -146,12 +145,11 @@ public class WheelViewPager<T> extends ViewPager {
         mOnPageChangeListener = onPageChangeListener;
     }
 
-    public void setPager(List<T> datas, final RecommendInfo recommendInfo,
-                         int pageSize, LinearLayout linearLayout, MZHolderCreator mzHolderCreator) {
-        if (datas == null || mzHolderCreator == null || recommendInfo == null) {
+    public void setPager(List<T> datas, int pageSize, LinearLayout linearLayout, MZHolderCreator mzHolderCreator) {
+        if (datas == null || mzHolderCreator == null) {
             return;
         }
-        setData(datas, recommendInfo, pageSize);
+        setData(datas, pageSize);
         initIndicator(linearLayout);
         WheelPagerAdapter adapter = new WheelPagerAdapter(mzHolderCreator);
         setAdapter(adapter);

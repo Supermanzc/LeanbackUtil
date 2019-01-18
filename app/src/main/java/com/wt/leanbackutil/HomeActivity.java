@@ -19,6 +19,7 @@ import com.wt.leanbackutil.adapter.TitleGuideAdapter;
 import com.wt.leanbackutil.adapter.listener.AsyncFocusListener;
 import com.wt.leanbackutil.fragment.BaseFragment;
 import com.wt.leanbackutil.fragment.CategoryFragment;
+import com.wt.leanbackutil.fragment.HomeConcertFragment;
 import com.wt.leanbackutil.fragment.HomeLoadMoreFragment;
 import com.wt.leanbackutil.fragment.HomeMvFragment;
 import com.wt.leanbackutil.fragment.HomeRadioFragment;
@@ -103,7 +104,8 @@ public class HomeActivity extends FragmentActivity {
 //                fragment = new LeanBackFragment();
                 fragment = new CategoryFragment();
             } else if (i == 1) {
-                fragment = new HomeRecommendNewFragment();
+                fragment = new HomeConcertFragment();
+//                fragment = new HomeRecommendNewFragment();
 //                fragment = new HomeRadioFragment();
             } else if (i == 2) {
 //                fragment = new HomeConcertFragment();

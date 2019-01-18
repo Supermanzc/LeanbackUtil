@@ -68,7 +68,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
         if (recommendInfo.getType() == RecommendInfo.TYPE_FOUR) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_750);
 
-            mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
+            mvInfoHolder.wheelViewPager.setPager(singItems, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
                         public MZViewHolder createViewHolder() {
@@ -99,7 +99,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                     });
         } else if (recommendInfo.getType() == RecommendInfo.TYPE_TWO) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_640);
-            mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
+            mvInfoHolder.wheelViewPager.setPager(singItems, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
                         public MZViewHolder createViewHolder() {
@@ -124,7 +124,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                     });
         } else if (recommendInfo.getType() == RecommendInfo.TYPE_THREE) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
-            mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
+            mvInfoHolder.wheelViewPager.setPager(singItems, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
                         public MZViewHolder createViewHolder() {
@@ -174,7 +174,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                     });
         }else if(recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIXE){
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
-            mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
+            mvInfoHolder.wheelViewPager.setPager(singItems, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {
                         @Override
                         public MZViewHolder createViewHolder() {
