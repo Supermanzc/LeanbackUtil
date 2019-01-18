@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.wt.leanbackutil.view.WheelViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/h_680"
     android:clipChildren="false"
     android:clipToPadding="false">
 
-</com.wt.leanbackutil.view.WheelViewPager>
+    <com.wt.leanbackutil.view.WheelViewPager
+        android:id="@+id/wheel_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+</RelativeLayout>

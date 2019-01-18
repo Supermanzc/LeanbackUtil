@@ -41,7 +41,7 @@ public class ConcertViewPagerPresenter extends RowPresenter {
     @Override
     protected void onBindRowViewHolder(ViewHolder vh, Object item) {
         super.onBindRowViewHolder(vh, item);
-        WheelViewPager wheelViewPager = (WheelViewPager) vh.view;
+        WheelViewPager wheelViewPager = vh.view.findViewById(R.id.wheel_view_pager);
         ListRow listRow = (ListRow) item;
         ArrayObjectAdapter arrayObjectAdapter = (ArrayObjectAdapter) listRow.getAdapter();
         int size = arrayObjectAdapter.size();

@@ -70,6 +70,7 @@ public class HomeConcertFragment extends BaseFragment {
             HeaderItem settingHeader = new HeaderItem(i, recommendInfo.getName());
             ListRow listRow = new ListRow(recommendInfo.getType(), settingHeader, listRowAdapter);
             arrayObjectAdapter.add(listRow);
+
         }
     }
 
