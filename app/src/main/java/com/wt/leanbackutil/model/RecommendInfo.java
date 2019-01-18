@@ -12,6 +12,8 @@ public class RecommendInfo {
     public static final int TYPE_TWO = 2;
     public static final int TYPE_THREE = 3;
     public static final int TYPE_FOUR = 4;
+    public static final int TYPE_FIVE = 5;
+    public static final int TYPE_SIXE = 6;
 
     private String name;
     private int type;

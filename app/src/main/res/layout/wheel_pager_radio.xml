@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wt.leanbackutil.view.WheelRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingLeft="@dimen/w_80"
+    android:paddingRight="@dimen/w_80">
+
+    <com.wt.leanbackutil.view.WheelRelativeLayout
+        android:id="@+id/wheel_relativeLayout_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/item_1"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/item_2"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_1" />
+
+        <include
+            android:id="@+id/item_3"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_2" />
+
+        <include
+            android:id="@+id/item_4"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_3" />
+    </com.wt.leanbackutil.view.WheelRelativeLayout>
+
+    <com.wt.leanbackutil.view.WheelRelativeLayout
+        android:id="@+id/wheel_relativeLayout_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wheel_relativeLayout_one"
+        android:layout_marginTop="@dimen/h_20">
+
+        <include
+            android:id="@+id/item_5"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/item_6"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_5" />
+
+        <include
+            android:id="@+id/item_7"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_6" />
+
+        <include
+            android:id="@+id/item_8"
+            layout="@layout/wheel_item_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w_20"
+            android:layout_toRightOf="@id/item_7" />
+    </com.wt.leanbackutil.view.WheelRelativeLayout>
+
+</com.wt.leanbackutil.view.WheelRelativeLayout>

@@ -172,6 +172,30 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                             };
                         }
                     });
+        }else if(recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIXE){
+            layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
+            mvInfoHolder.wheelViewPager.setPager(singItems, recommendInfo, 8,
+                    mvInfoHolder.indicatorContainer, new MZHolderCreator() {
+                        @Override
+                        public MZViewHolder createViewHolder() {
+                            return new MZViewHolder() {
+
+                                private WheelRelativeLayout bringToFrontRelative;
+
+                                @Override
+                                public View createView(Context context) {
+                                    bringToFrontRelative = (WheelRelativeLayout) LayoutInflater.from(context).inflate(R.layout.wheel_pager_radio, null);
+                                    return bringToFrontRelative;
+                                }
+
+                                @Override
+                                public void onBind(Context context, int position, Object data) {
+                                    List<SingItem> singItemList = (List<SingItem>) data;
+                                    bringToFrontRelative.findViewById(R.id.wheel_relativeLayout_one);
+                                }
+                            };
+                        }
+                    });
         }
         mvInfoHolder.wheelViewPager.setLayoutParams(layoutParams);
         mvInfoHolder.wheelViewPager.setCurrentItem(recommendInfo.getCurrentIndex());

@@ -69,7 +69,7 @@ public class WheelRelativeLayout<T> extends BringToFrontRelative {
 
     @Override
     public void addFocusables(ArrayList<View> views, int direction, int focusableMode) {
-        if (hasFocus()) {
+        if (hasFocus() &&  (direction == FOCUS_RIGHT || direction == FOCUS_LEFT)) {
             focusedView = getFocusedChild();
         } else {
             if (isFocusable()) {
