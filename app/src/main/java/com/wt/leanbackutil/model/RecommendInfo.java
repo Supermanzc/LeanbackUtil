@@ -13,7 +13,11 @@ public class RecommendInfo {
     public static final int TYPE_THREE = 3;
     public static final int TYPE_FOUR = 4;
     public static final int TYPE_FIVE = 5;
-    public static final int TYPE_SIXE = 6;
+    public static final int TYPE_SIX = 6;
+    /**
+     * 流派
+     */
+    public static final int TYPE_SEVEN = 7;
 
     private String name;
     private int type;

@@ -51,7 +51,7 @@ public class HomeConcertFragment extends BaseFragment {
      */
     private void initData() {
         //数据配置
-        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.recommend_data));
+        String json = FileJsonUtils.inputStreamToString(getResources().openRawResource(R.raw.recommend_data_new));
         RecommendResponse recommendResponse = new Gson().fromJson(json, RecommendResponse.class);
 
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
@@ -68,9 +68,15 @@ public class HomeConcertFragment extends BaseFragment {
             listRowAdapter.addAll(0, recommendInfo.getList());
 
             HeaderItem settingHeader = new HeaderItem(i, recommendInfo.getName());
-            ListRow listRow = new ListRow(recommendInfo.getType(), settingHeader, listRowAdapter);
+            ListRow listRow;
+            if (recommendInfo.getType() == RecommendInfo.TYPE_ONE
+                    || recommendInfo.getType() == RecommendInfo.TYPE_TWO
+                    || recommendInfo.getType() == RecommendInfo.TYPE_SEVEN) {
+                listRow = new ListRow(recommendInfo.getType(), null, listRowAdapter);
+            } else {
+                listRow = new ListRow(recommendInfo.getType(), settingHeader, listRowAdapter);
+            }
             arrayObjectAdapter.add(listRow);
-
         }
     }
 

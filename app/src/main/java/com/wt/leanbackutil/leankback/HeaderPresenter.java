@@ -1,6 +1,5 @@
 package com.wt.leanbackutil.leankback;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,8 @@ public class HeaderPresenter extends RowHeaderPresenter{
         if (null != headerItem) {
             TextView tv = viewHolder.view.findViewById(R.id.title);
             tv.setText(headerItem.getName());
+        }else{
+            viewHolder.view.setVisibility(View.GONE);
         }
     }
 

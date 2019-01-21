@@ -41,15 +41,16 @@ public class WheelConcertHolder extends Presenter.ViewHolder{
         LinearLayout.LayoutParams titleLayoutParams;
         switch (type) {
             case RecommendInfo.TYPE_ONE:
-                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_975),
-                        context.getResources().getDimensionPixelOffset(R.dimen.h_390)));
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_860),
+                        context.getResources().getDimensionPixelOffset(R.dimen.h_400)));
                 titleView.setVisibility(View.GONE);
                 descriptionView.setVisibility(View.GONE);
                 break;
             case RecommendInfo.TYPE_TWO:
-                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_273),
-                        context.getResources().getDimensionPixelOffset(R.dimen.h_273)));
+                frameLayout.setLayoutParams(new LinearLayout.LayoutParams(context.getResources().getDimensionPixelOffset(R.dimen.w_420),
+                        context.getResources().getDimensionPixelOffset(R.dimen.h_195)));
                 titleView.setVisibility(View.GONE);
+                descriptionView.setVisibility(View.GONE);
                 descriptionLayoutParams = (LinearLayout.LayoutParams) descriptionView.getLayoutParams();
                 descriptionLayoutParams.width = context.getResources().getDimensionPixelOffset(R.dimen.w_273);
                 descriptionView.setLayoutParams(descriptionLayoutParams);

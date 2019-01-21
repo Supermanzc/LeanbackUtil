@@ -9,9 +9,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.open.leanback.bring.BringToFrontRelative;
-import com.open.leanback.widget.BaseGridView;
-import com.open.leanback.widget.VerticalGridView;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.adapter.holder.RecommendMvInfoHolder;
@@ -19,7 +16,6 @@ import com.wt.leanbackutil.fragment.HomeRecommendNewFragment;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.SingItem;
 import com.wt.leanbackutil.util.FrescoUtil;
-import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
 import com.wt.leanbackutil.view.WheelRelativeLayout;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
@@ -172,7 +168,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                             };
                         }
                     });
-        }else if(recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIXE){
+        }else if(recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIX){
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
             mvInfoHolder.wheelViewPager.setPager(singItems, 8,
                     mvInfoHolder.indicatorContainer, new MZHolderCreator() {

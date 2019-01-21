@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/h_20"
+    android:paddingLeft="@dimen/w_80"
+    android:paddingRight="@dimen/w_80">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="@dimen/w_332"
+        android:layout_height="@dimen/h_150"
+        android:text="视觉" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@dimen/w_332"
+        android:layout_height="@dimen/h_150"
+        android:layout_marginLeft="@dimen/w_20"
+        android:layout_toRightOf="@+id/button1"
+        android:text="地区" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="@dimen/w_332"
+        android:layout_height="@dimen/h_150"
+        android:layout_marginLeft="@dimen/w_20"
+        android:layout_toRightOf="@+id/button2"
+        android:text="主题" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="@dimen/w_332"
+        android:layout_height="@dimen/h_150"
+        android:layout_marginLeft="@dimen/w_20"
+        android:layout_toRightOf="@+id/button3"
+        android:text="年代" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="@dimen/w_332"
+        android:layout_height="@dimen/h_150"
+        android:layout_marginLeft="@dimen/w_20"
+        android:layout_toRightOf="@+id/button4"
+        android:text="流派" />
+
+</RelativeLayout>
