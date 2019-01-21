@@ -2,6 +2,7 @@ package com.wt.leanbackutil.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.wt.leanbackutil.leankback.seletor.ConcertPresenterSelector;
 import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.RecommendResponse;
 import com.wt.leanbackutil.util.FileJsonUtils;
+import com.wt.leanbackutil.util.LogUtil;
 
 import java.util.List;
 

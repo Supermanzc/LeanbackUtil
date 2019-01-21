@@ -19,6 +19,11 @@ public class RecommendInfo {
      */
     public static final int TYPE_SEVEN = 7;
 
+    /**
+     * 带视频框
+     */
+    public static final int TYPE_EIGHT = 8;
+
     private String name;
     private int type;
     private List<SingItem> list;
