@@ -111,6 +111,15 @@ public class PlayMvManager {
         return ret;
     }
 
+    /**
+     * 暂停
+     */
+    public void pause(){
+        if(playEngine.getPlayState() == PlayState.STARTED){
+            playEngine.pause();
+        }
+    }
+
     public boolean isSeekAble() {
         return playEngine.getPlayState() == PlayState.PAUSED
                 || playEngine.getPlayState() == PlayState.STARTED

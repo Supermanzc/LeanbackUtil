@@ -1,6 +1,5 @@
 package com.wt.leanbackutil.leankback.presenter;
 
-import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -15,14 +14,14 @@ import com.open.leanback.widget.ArrayObjectAdapter;
 import com.open.leanback.widget.ListRow;
 import com.open.leanback.widget.RowPresenter;
 import com.open.leanback.widget.VerticalGridView;
-import com.volokh.danylo.visibility_utils.calculator.DefaultSingleItemCalculatorCallback;
-import com.volokh.danylo.visibility_utils.calculator.ListItemsVisibilityCalculator;
-import com.volokh.danylo.visibility_utils.calculator.SingleListViewItemActiveCalculator;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.SingItem;
+import com.wt.leanbackutil.player.PlayMvManager;
+import com.wt.leanbackutil.player.PlayUiListener;
 import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.ViewUtils;
+import com.wt.leanbackutil.view.MediaBufferView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,37 +41,63 @@ public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolde
     LinearLayout[] views;
     @BindView(R.id.surface_view)
     SurfaceView surfaceView;
+    @BindView(R.id.loading_view)
+    MediaBufferView mLoadingView;
 
     private ViewHolder holder;
     private VerticalGridView verticalGridView;
-
-//    private final ListItemsVisibilityCalculator mListItemVisibilityCalculator =
-//            new SingleListViewItemActiveCalculator(new DefaultSingleItemCalculatorCallback(), mList);
+    private PlayMvManager playMvManager;
 
     @Override
     protected ViewHolder createRowViewHolder(ViewGroup parent) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.concert_view_player,
                 parent, false);
         ButterKnife.bind(this, view);
+        playMvManager = PlayMvManager.getInstance();
+        playMvManager.init();
         holder = new ViewHolder(view);
-        SurfaceHolder holder = surfaceView.getHolder();
-        holder.addCallback(this);
+
+        SurfaceHolder surfaceHolder = surfaceView.getHolder();
+        surfaceHolder.addCallback(this);
         verticalGridView = (VerticalGridView) parent;
         verticalGridView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-//                LogUtil.e("onScrollStateChanged-------------" + surfaceView.isShown() + "      newState=" + newState);
-                if(newState == RecyclerView.SCROLL_STATE_IDLE){
-//                    mListItemVisibilityCalculator.onScrollStateIdle(
-//                            mItemsPositionGetter,
-//                            mLayoutManager.findFirstVisibleItemPosition(),
-//                            mLayoutManager.findLastVisibleItemPosition());
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     LogUtil.e("onScrollStateChanged-------------" + surfaceView.isShown()
                             + "   verticalGridView.getSelectedPosition()" + verticalGridView.getSelectedPosition());
-                    if(surfaceView.isShown() && verticalGridView.getSelectedPosition() == 3){
+                    if (surfaceView.isShown() && verticalGridView.getSelectedPosition() == 3) {
                         //开始处理播放器数据
+                        playMvManager.setDataSourceToEngine("http://110.185.117.12/vcloud1049.tc.qq.com/1049_M01202000048ECCg4CVrWX1001603180.f20.mp4?vkey=30523B4D8D4BE2D8C9905F09C9F83A4BD9934941FF9A30D284AC1F5DAF027A217F873515B487DBEBCD9D51378D960E16E4E41D1921AACC013AEE332AB8B85A30692271366F93F18C6CBF0E4845E9C08F55A9CF7CC2B803E4&stdfrom=1");
+                        playMvManager.setPlayUiListener(new PlayUiListener() {
+                            @Override
+                            public void onUiMediaPlayerPrepared() {
+                                mLoadingView.hide();
+                            }
 
+                            @Override
+                            public void onUiMediaPlayerInfoBufferingStart() {
+                                mLoadingView.show("正在缓冲", true);
+                            }
+
+                            @Override
+                            public void onUiMediaPlayerInfoBufferingEnd() {
+                                mLoadingView.hide();
+                            }
+
+                            @Override
+                            public void onUiMediaPlayerError() {
+                                mLoadingView.hide();
+                            }
+
+                            @Override
+                            public void onUiMediaPlayerPlayComplete() {
+                            }
+                        });
+                        mLoadingView.show("正在缓冲", true);
+                    } else {
+                        playMvManager.pause();
                     }
                 }
             }
@@ -136,6 +161,7 @@ public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolde
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         LogUtil.e("surfaceCreated----------------holder" + holder);
+        playMvManager.setDisplayHolder(holder);
     }
 
     @Override
@@ -147,4 +173,5 @@ public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolde
     public void surfaceDestroyed(SurfaceHolder holder) {
         LogUtil.e("surfaceDestroyed----------------holder" + holder);
     }
+
 }
