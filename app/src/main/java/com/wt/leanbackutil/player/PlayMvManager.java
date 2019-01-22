@@ -2,6 +2,7 @@ package com.wt.leanbackutil.player;
 
 import android.os.Handler;
 import android.os.Message;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 
 import com.wt.leanbackutil.model.MvInfo;
@@ -173,6 +174,10 @@ public class PlayMvManager {
         playEngine.setDisplay(holder);
     }
 
+    public void setSurface(Surface surface){
+        playEngine.setSurface(surface);
+    }
+
     /**
      * 获得播放引擎是否已经出错，用于区分是异常触发播放引擎的onCompletion还是正常退出触发的onCompletion
      *
@@ -336,7 +341,7 @@ public class PlayMvManager {
         @Override
         public void onMediaPlayerInfoBufferingEnd() {
 //            setSeekFinished(true);
-            playEngine.start();
+//            playEngine.start();
             if (playUiListener != null) {
                 playUiListener.onUiMediaPlayerInfoBufferingEnd();
             }

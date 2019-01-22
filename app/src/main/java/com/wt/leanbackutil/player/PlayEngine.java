@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.PowerManager;
 import android.text.TextUtils;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 
 import com.wt.leanbackutil.App;
@@ -37,6 +38,7 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
     private int bufferProgress;
 
     private SurfaceHolder holder;
+    private Surface surface;
 
     public PlayEngine() {
         init();
@@ -45,7 +47,11 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
     private void init() {
         mediaPlayer = new MediaPlayer();
         if (isMv) {
-            mediaPlayer.setDisplay(holder);
+            if(surface != null) {
+                mediaPlayer.setSurface(surface);
+            }else if(holder != null){
+                mediaPlayer.setDisplay(holder);
+            }
         }
         mediaPlayer.setWakeMode(App.getInstance().getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
         mediaPlayer.setScreenOnWhilePlaying(true);
@@ -190,6 +196,15 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
     synchronized public void setDisplay(SurfaceHolder holder) {
         mediaPlayer.setDisplay(holder);
         this.holder = holder;
+    }
+
+    /**
+     * 绘制surface
+     * @param surface
+     */
+    synchronized public void setSurface(Surface surface){
+        mediaPlayer.setSurface(surface);
+        this.surface = surface;
     }
 
     /**

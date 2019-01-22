@@ -6,6 +6,7 @@ import com.open.leanback.widget.PresenterSelector;
 import com.wt.leanbackutil.leankback.HeaderPresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertListRowPresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertPlayerPresenter;
+import com.wt.leanbackutil.leankback.presenter.ConcertTexturePresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertThemePresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertViewPagerPresenter;
 import com.wt.leanbackutil.model.RecommendInfo;
@@ -20,18 +21,23 @@ public class ConcertPresenterSelector extends PresenterSelector {
     private ConcertViewPagerPresenter concertViewPagerPresenter;
     private ConcertThemePresenter concertThemePresenter;
     private ConcertPlayerPresenter concertPlayerPresenter;
+    private ConcertTexturePresenter concertTexturePresenter;
 
     public ConcertPresenterSelector() {
         concertListRowPresenter = new ConcertListRowPresenter();
         concertViewPagerPresenter = new ConcertViewPagerPresenter();
         concertThemePresenter = new ConcertThemePresenter();
         concertPlayerPresenter = new ConcertPlayerPresenter();
+        concertTexturePresenter = new ConcertTexturePresenter();
     }
 
     @Override
     public Presenter[] getPresenters() {
-        return new Presenter[]{concertListRowPresenter,
-                concertViewPagerPresenter, concertThemePresenter};
+        return new Presenter[]{
+                concertListRowPresenter,
+                concertViewPagerPresenter,
+                concertThemePresenter,
+                concertTexturePresenter};
     }
 
     @Override
@@ -43,8 +49,8 @@ public class ConcertPresenterSelector extends PresenterSelector {
         }else if(listRow.getId() == RecommendInfo.TYPE_SEVEN){
             return concertThemePresenter;
         }else if(listRow.getId() == RecommendInfo.TYPE_EIGHT){
-            concertPlayerPresenter.setHeaderPresenter(new HeaderPresenter());
-            return concertPlayerPresenter;
+            concertTexturePresenter.setHeaderPresenter(new HeaderPresenter());
+            return concertTexturePresenter;
         }
         concertListRowPresenter.setHeaderPresenter(new HeaderPresenter());
         return concertListRowPresenter;

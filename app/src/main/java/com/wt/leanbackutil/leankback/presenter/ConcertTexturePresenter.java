@@ -1,9 +1,12 @@
 package com.wt.leanbackutil.leankback.presenter;
 
+import android.graphics.SurfaceTexture;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -35,12 +38,12 @@ import butterknife.ButterKnife;
  *         视频播放框的页面
  */
 
-public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolder.Callback {
+public class ConcertTexturePresenter extends RowPresenter implements TextureView.SurfaceTextureListener {
 
     @BindViews({R.id.item_1, R.id.item_2, R.id.item_3, R.id.item_4})
     LinearLayout[] views;
     @BindView(R.id.surface_view)
-    SurfaceView surfaceView;
+    TextureView surfaceView;
     @BindView(R.id.loading_view)
     MediaBufferView mLoadingView;
     @BindView(R.id.surface_image_view)
@@ -52,15 +55,14 @@ public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolde
 
     @Override
     protected ViewHolder createRowViewHolder(ViewGroup parent) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.concert_view_player,
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.concert_view_texture,
                 parent, false);
         ButterKnife.bind(this, view);
         playMvManager = PlayMvManager.getInstance();
         playMvManager.init();
         holder = new ViewHolder(view);
 
-        SurfaceHolder surfaceHolder = surfaceView.getHolder();
-        surfaceHolder.addCallback(this);
+        surfaceView.setSurfaceTextureListener(this);
         verticalGridView = (VerticalGridView) parent;
         surfaceImageView.setVisibility(View.VISIBLE);
         verticalGridView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -165,19 +167,25 @@ public class ConcertPlayerPresenter extends RowPresenter implements SurfaceHolde
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        LogUtil.e("surfaceCreated----------------holder" + holder);
-        playMvManager.setDisplayHolder(holder);
+    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+        LogUtil.d("onSurfaceTextureAvailable-------------width=" + width + " height=" + height);
+        playMvManager.setSurface(new Surface(surface));
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+    public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+        LogUtil.d("onSurfaceTextureSizeChanged-------------width=" + width + " height=" + height);
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        LogUtil.e("surfaceDestroyed----------------holder" + holder);
+    public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+        LogUtil.d("onSurfaceTextureDestroyed-------------");
+        playMvManager.pause();
+        return false;
     }
 
+    @Override
+    public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+        LogUtil.d("onSurfaceTextureUpdated-------------");
+    }
 }
