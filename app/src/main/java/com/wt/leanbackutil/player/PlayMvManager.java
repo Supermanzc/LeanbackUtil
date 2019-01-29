@@ -121,6 +121,10 @@ public class PlayMvManager {
         }
     }
 
+    public void setLooping(boolean isLooping){
+        playEngine.setLooping(isLooping);
+    }
+
     public boolean isSeekAble() {
         return playEngine.getPlayState() == PlayState.PAUSED
                 || playEngine.getPlayState() == PlayState.STARTED

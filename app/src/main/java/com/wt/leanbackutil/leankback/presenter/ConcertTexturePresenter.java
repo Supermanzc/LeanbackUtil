@@ -60,6 +60,7 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
         ButterKnife.bind(this, view);
         playMvManager = PlayMvManager.getInstance();
         playMvManager.init();
+        playMvManager.setLooping(true);
         holder = new ViewHolder(view);
 
         surfaceView.setSurfaceTextureListener(this);
@@ -75,7 +76,7 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
                     if (surfaceView.isShown() && verticalGridView.getSelectedPosition() == 3) {
                         surfaceImageView.setVisibility(View.GONE);
                         //开始处理播放器数据
-                        playMvManager.setDataSourceToEngine("http://110.185.117.12/vcloud1049.tc.qq.com/1049_M01202000048ECCg4CVrWX1001603180.f20.mp4?vkey=30523B4D8D4BE2D8C9905F09C9F83A4BD9934941FF9A30D284AC1F5DAF027A217F873515B487DBEBCD9D51378D960E16E4E41D1921AACC013AEE332AB8B85A30692271366F93F18C6CBF0E4845E9C08F55A9CF7CC2B803E4&stdfrom=1");
+                        playMvManager.setDataSourceToEngine("http://125.65.241.27/vcloud1049.tc.qq.com/1049_M01039320040zFw53URKeF1001603409.f20.mp4?vkey=167C0A1BF61C27996B9C25F904B6E15C016774BC8C830AF23B0F301CD35B6BFA8D84689AAECC8763E6DFF6547BD0DCA4D2AD57795E408830323CDD9A5837B7E1D80327404C1932D4B78D9A1733B0B3F69A8E465E86776283&stdfrom=1");
                         playMvManager.setPlayUiListener(new PlayUiListener() {
                             @Override
                             public void onUiMediaPlayerPrepared() {

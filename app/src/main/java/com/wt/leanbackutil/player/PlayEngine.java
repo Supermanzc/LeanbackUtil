@@ -47,9 +47,9 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
     private void init() {
         mediaPlayer = new MediaPlayer();
         if (isMv) {
-            if(surface != null) {
+            if (surface != null) {
                 mediaPlayer.setSurface(surface);
-            }else if(holder != null){
+            } else if (holder != null) {
                 mediaPlayer.setDisplay(holder);
             }
         }
@@ -148,6 +148,12 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
         }
     }
 
+    synchronized public void setLooping(boolean isLooping) {
+        if (mediaPlayer != null) {
+            mediaPlayer.setLooping(isLooping);
+        }
+    }
+
     /**
      * 停止播放
      */
@@ -200,9 +206,10 @@ public class PlayEngine implements MediaPlayer.OnPreparedListener, MediaPlayer.O
 
     /**
      * 绘制surface
+     *
      * @param surface
      */
-    synchronized public void setSurface(Surface surface){
+    synchronized public void setSurface(Surface surface) {
         mediaPlayer.setSurface(surface);
         this.surface = surface;
     }

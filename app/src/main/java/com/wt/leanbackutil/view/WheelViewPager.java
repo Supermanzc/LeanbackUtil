@@ -59,7 +59,7 @@ public class WheelViewPager<T> extends ViewPager {
     private void initViewPagerScroll() {
         try {
             Field mScroller = null;
-            mScroller = WheelPagerAdapter.class.getDeclaredField("mScroller");
+            mScroller = WheelViewPager.class.getDeclaredField("mScroller");
             mScroller.setAccessible(true);
             mViewPagerScroller = new ViewPagerScroller(getContext());
             mScroller.set(getContext(), mViewPagerScroller);

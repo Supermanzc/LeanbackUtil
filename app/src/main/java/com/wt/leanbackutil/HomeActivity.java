@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.anggrayudi.hiddenapi.InternalAccessor;
 import com.anggrayudi.hiddenapi.r.Rc;
@@ -30,6 +31,7 @@ import com.wt.leanbackutil.fragment.HomeVerticalGridViewFragment;
 import com.wt.leanbackutil.fragment.LeanBackFragment;
 import com.wt.leanbackutil.fragment.ShimmerFragment;
 import com.wt.leanbackutil.fragment.adapter.GuideFragmentPageAdapter;
+import com.wt.leanbackutil.player.PlayMvManager;
 import com.wt.leanbackutil.util.ImagePipelineConfigUtils;
 import com.wt.leanbackutil.util.LogUtil;
 import com.wt.leanbackutil.util.PermissionHelper;
@@ -87,6 +89,8 @@ public class HomeActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 让屏幕保持高亮状态.
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         App.getRefWatcher(getApplicationContext());
@@ -225,6 +229,9 @@ public class HomeActivity extends FragmentActivity {
     protected void onStop() {
         super.onStop();
         mHandler.removeMessages(FRAGMENT_DELAYED);
+        PlayMvManager.getInstance().setPlayUiListener(null);
+        PlayMvManager.getInstance().stopPlay();
+        PlayMvManager.getInstance().destory();
     }
 
     @Override
