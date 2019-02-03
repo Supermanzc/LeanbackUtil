@@ -9,7 +9,9 @@ import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -74,9 +76,10 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
                     LogUtil.e("onScrollStateChanged-------------" + surfaceView.isShown()
                             + "   verticalGridView.getSelectedPosition()" + verticalGridView.getSelectedPosition());
                     if (surfaceView.isShown() && verticalGridView.getSelectedPosition() == 3) {
-                        surfaceImageView.setVisibility(View.GONE);
+//                        surfaceImageView.setVisibility(View.GONE);
+                        surfaceImageView.setImageResource(0);
                         //开始处理播放器数据
-                        playMvManager.setDataSourceToEngine("http://125.65.241.27/vcloud1049.tc.qq.com/1049_M01039320040zFw53URKeF1001603409.f20.mp4?vkey=167C0A1BF61C27996B9C25F904B6E15C016774BC8C830AF23B0F301CD35B6BFA8D84689AAECC8763E6DFF6547BD0DCA4D2AD57795E408830323CDD9A5837B7E1D80327404C1932D4B78D9A1733B0B3F69A8E465E86776283&stdfrom=1");
+                        playMvManager.setDataSourceToEngine("http://110.185.116.156/vcloud1049.tc.qq.com/1049_M0256000001oz49N0hZZYH1001605092.f20.mp4?vkey=6156F107610AF5550062321F8EEEFE99DF8A376528DA243071B474A195921D31B264FA9C9C5B73103C070F55B27B9F85C14408E71FCD453AE1FC7793301C49425FD2349F0279CE04FD2771D5A433E46E77E74E224AB88EA8&stdfrom=1");
                         playMvManager.setPlayUiListener(new PlayUiListener() {
                             @Override
                             public void onUiMediaPlayerPrepared() {
@@ -106,6 +109,7 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
                     } else {
                         playMvManager.pause();
                         surfaceImageView.setVisibility(View.VISIBLE);
+//                        FrescoUtil.getInstance().loadImage(surfaceImageView, singItems.get(0).getAlbum_pic(), FrescoUtil.TYPE_ONE);
                     }
                 }
             }
@@ -165,6 +169,14 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
             }
         }
         FrescoUtil.getInstance().loadImage(surfaceImageView, singItems.get(0).getAlbum_pic(), FrescoUtil.TYPE_ONE);
+
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) surfaceImageView.getLayoutParams();
+        layoutParams.leftMargin = -surfaceImageView.getPaddingLeft();
+        layoutParams.rightMargin = -surfaceImageView.getPaddingRight();
+        layoutParams.bottomMargin = -surfaceImageView.getPaddingBottom();
+        layoutParams.topMargin = -surfaceImageView.getPaddingTop();
+        surfaceImageView.setLayoutParams(layoutParams);
     }
 
     @Override

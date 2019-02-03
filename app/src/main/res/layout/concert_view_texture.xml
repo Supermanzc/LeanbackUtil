@@ -11,7 +11,16 @@
         android:id="@+id/surface_container"
         android:layout_width="@dimen/w_860"
         android:layout_height="@dimen/h_588"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:focusable="true">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/surface_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_botton_bg_comm"
+            android:duplicateParentState="true"/>
 
         <TextureView
             android:id="@+id/surface_view"
@@ -33,10 +42,6 @@
             app:ringColor="@color/color_green"
             app:ringWidth="@dimen/play_loading_ring_width" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/surface_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </com.wt.leanbackutil.view.SurfaceRelativeLayout>
 
     <include

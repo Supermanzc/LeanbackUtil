@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.ArrayObjectAdapter;
+import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.FocusHighlightHandler;
 import com.open.leanback.widget.ItemBridgeAdapter;
 import com.wt.leanbackutil.R;
@@ -79,6 +80,8 @@ public class LeanBackFragment extends BaseFragment {
 
             }
         });
+//        horizontalGridView.setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+//        horizontalGridView.setNumRows(2);
         horizontalGridView.setHorizontalMargin(getResources().getDimensionPixelOffset(R.dimen.w_20));
         horizontalGridView.setAdapter(itemBridgeAdapter);
 
