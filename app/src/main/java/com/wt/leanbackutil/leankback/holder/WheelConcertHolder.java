@@ -1,4 +1,4 @@
-package com.wt.leanbackutil.adapter.holder;
+package com.wt.leanbackutil.leankback.holder;
 
 import android.content.Context;
 import android.view.View;

@@ -3,6 +3,10 @@ package com.wt.leanbackutil.util;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 数据分页工具类
+ * @param <T> 任意数据类型
+ */
 public class PagerUtil<T> {
     /**
      * 每页显示条数
@@ -13,6 +17,9 @@ public class PagerUtil<T> {
      */
     private List<T> data;
 
+    /**
+     * 总共有多少页
+     */
     private int mTotalPage;
 
     private PagerUtil(List<T> data, int pageSize) {

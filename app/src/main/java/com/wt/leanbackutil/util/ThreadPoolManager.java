@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ThreadPoolManager {
 
-    private static ThreadPoolManager mInstance;
+    volatile static ThreadPoolManager mInstance;
 
     public static ThreadPoolManager getInstance() {
         if (mInstance == null) {

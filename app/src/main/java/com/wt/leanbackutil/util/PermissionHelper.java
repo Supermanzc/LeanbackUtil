@@ -13,9 +13,16 @@ import android.support.v4.content.ContextCompat;
 
 import com.wt.leanbackutil.R;
 
+/**
+ * @author junyan
+ *         权限帮助类
+ */
 public class PermissionHelper {
 
 
+    /**
+     * 文件读写权限返回code码
+     */
     public static final int WRITE_EXTERNAL_STORAGE_CODE = 101;
 
 
@@ -198,7 +205,9 @@ public class PermissionHelper {
     public boolean isAllRequestedPermissionGranted() {
         for (int i = 0; i < permissionModels.length; i++) {
             PermissionModel permissionModel = permissionModels[i];
-            if (permissionModel != null && permissionModel.permission != null && ContextCompat.checkSelfPermission(baseActivity, permissionModel.permission) != PackageManager.PERMISSION_GRANTED) {
+            if (permissionModel != null && permissionModel.permission != null
+                    && ContextCompat.checkSelfPermission(baseActivity, permissionModel.permission)
+                    != PackageManager.PERMISSION_GRANTED) {
                 return false;
             }
         }
@@ -208,7 +217,9 @@ public class PermissionHelper {
     public void applyPermissions() {
         for (int i = 0; i < permissionModels.length; i++) {
             PermissionModel permissionModel = permissionModels[i];
-            if (permissionModel != null && permissionModel.permission != null && ContextCompat.checkSelfPermission(baseActivity, permissionModel.permission) != PackageManager.PERMISSION_GRANTED) {
+            if (permissionModel != null && permissionModel.permission != null
+                    && ContextCompat.checkSelfPermission(baseActivity, permissionModel.permission)
+                    != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(baseActivity, new String[]{permissionModel.permission}, permissionModel.requestCode);
                 return;
             }

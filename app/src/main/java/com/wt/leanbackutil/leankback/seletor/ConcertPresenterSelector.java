@@ -4,6 +4,7 @@ import com.open.leanback.widget.ListRow;
 import com.open.leanback.widget.Presenter;
 import com.open.leanback.widget.PresenterSelector;
 import com.wt.leanbackutil.leankback.HeaderPresenter;
+import com.wt.leanbackutil.leankback.presenter.ConcertHeaderPresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertListRowPresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertPlayerPresenter;
 import com.wt.leanbackutil.leankback.presenter.ConcertTexturePresenter;
@@ -22,6 +23,7 @@ public class ConcertPresenterSelector extends PresenterSelector {
     private ConcertThemePresenter concertThemePresenter;
     private ConcertPlayerPresenter concertPlayerPresenter;
     private ConcertTexturePresenter concertTexturePresenter;
+    private ConcertHeaderPresenter concertHeaderPresenter;
 
     public ConcertPresenterSelector() {
         concertListRowPresenter = new ConcertListRowPresenter();
@@ -29,6 +31,7 @@ public class ConcertPresenterSelector extends PresenterSelector {
         concertThemePresenter = new ConcertThemePresenter();
         concertPlayerPresenter = new ConcertPlayerPresenter();
         concertTexturePresenter = new ConcertTexturePresenter();
+        concertHeaderPresenter = new ConcertHeaderPresenter();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.wt.leanbackutil.model;
 
+import java.util.List;
+
 /**
  * Created by DELL on 2018/8/7.
  *
@@ -24,6 +26,8 @@ public class SingItem {
     private int singer_id;
     private String pic;
     private long id;
+
+    private List<SingItemChildren> itemInfo;
 
     public long getDiss_id() {
         return diss_id;
@@ -159,5 +163,13 @@ public class SingItem {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<SingItemChildren> getItemInfo() {
+        return itemInfo;
+    }
+
+    public void setItemInfo(List<SingItemChildren> itemInfo) {
+        this.itemInfo = itemInfo;
     }
 }

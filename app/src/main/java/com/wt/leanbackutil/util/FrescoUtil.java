@@ -22,7 +22,8 @@ import com.wt.leanbackutil.App;
 import com.wt.leanbackutil.R;
 
 /**
- * Created by DELL on 2018/8/21.
+ * @author junyan
+ *         图片加载工具类
  */
 
 public class FrescoUtil {
@@ -103,7 +104,7 @@ public class FrescoUtil {
         //根据请求路径生成ImageRequest的构造者
         ImageRequestBuilder builder = ImageRequestBuilder.newBuilderWithSource(uri);
         builder.setResizeOptions(new ResizeOptions(App.getInstance().getResources().getDimensionPixelOffset(R.dimen.w_303),
-        App.getInstance().getResources().getDimensionPixelOffset(R.dimen.h_303)));
+                App.getInstance().getResources().getDimensionPixelOffset(R.dimen.h_303)));
         //调整解码图片的大小(结合setDownsampleEnabled配置使用)
         return builder.build();
     }

@@ -189,9 +189,13 @@ public class HomeActivity extends FragmentActivity {
         return super.dispatchKeyEvent(event);
     }
 
+    /**
+     * 初始化权限UI
+     */
     protected void initConfigUi() {
         permissionHelper = new PermissionHelper(this, new PermissionHelper.PermissionModel[]{
-                new PermissionHelper.PermissionModel("存储空间", Manifest.permission.WRITE_EXTERNAL_STORAGE, "我们需要读写存储卡权限以方便我们临时保存一些数据", PermissionHelper.WRITE_EXTERNAL_STORAGE_CODE)
+                new PermissionHelper.PermissionModel("存储空间", Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        "我们需要读写存储卡权限以方便我们临时保存一些数据", PermissionHelper.WRITE_EXTERNAL_STORAGE_CODE)
         });
         permissionHelper.setOnApplyPermissionListener(new PermissionHelper.OnApplyPermissionListener() {
             @Override
