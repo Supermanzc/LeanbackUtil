@@ -16,7 +16,9 @@ import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.model.SingItem;
 import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.ViewUtils;
+import com.wt.leanbackutil.view.WheelHolderCreator;
 import com.wt.leanbackutil.view.WheelRelativeLayout;
+import com.wt.leanbackutil.view.WheelViewHolder;
 import com.wt.leanbackutil.view.WheelViewPager;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
@@ -53,21 +55,22 @@ public class ConcertViewPagerPresenter extends RowPresenter {
         RowHeaderPresenter.ViewHolder headerViewHolder = vh.getHeaderViewHolder();
         LinearLayout linearLayout = headerViewHolder.view.findViewById(R.id.indicator_container);
         wheelViewPager.setPager(singItems, 8,
-                linearLayout, new MZHolderCreator() {
+                linearLayout, new WheelHolderCreator() {
                     @Override
-                    public MZViewHolder createViewHolder() {
-                        return new MZViewHolder() {
+                    public WheelViewHolder createViewHolder() {
+                        return new WheelViewHolder() {
 
                             private WheelRelativeLayout bringToFrontRelative;
 
                             @Override
-                            public View createView(Context context) {
+                            public View createView(Context context, int position) {
                                 bringToFrontRelative = (WheelRelativeLayout) LayoutInflater.from(context).inflate(R.layout.wheel_pager_singer, null);
                                 return bringToFrontRelative;
                             }
 
                             @Override
-                            public void onBind(Context context, int position, Object data) {
+                            public void onBind(Context context, View viewWheel, Object data) {
+                                bringToFrontRelative = (WheelRelativeLayout) viewWheel;
                                 int childCount = bringToFrontRelative.getChildCount();
                                 List<SingItem> singItemList = (List<SingItem>) data;
                                 for (int i = 0; i < childCount; i++) {
@@ -91,9 +94,13 @@ public class ConcertViewPagerPresenter extends RowPresenter {
                                                 if (hasFocus) {
                                                     v.bringToFront();
                                                 }
+                                                v.clearAnimation();
                                                 ViewUtils.scaleView(v, hasFocus);
                                             }
                                         });
+                                        if(view.hasFocus()){
+                                            ViewUtils.scaleView(view, true);
+                                        }
                                     }
                                 }
                             }

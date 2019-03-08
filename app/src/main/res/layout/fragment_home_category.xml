@@ -19,4 +19,11 @@
         android:layout_toRightOf="@+id/category_search_focus"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/update"
+        android:layout_toRightOf="@+id/vlc_mv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_txt"/>
+
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.open.leanback.widget.ArrayObjectAdapter;
+import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.HeaderItem;
 import com.open.leanback.widget.ItemBridgeAdapter;
 import com.open.leanback.widget.ListRow;
@@ -57,6 +58,8 @@ public class HomeConcertFragment extends BaseFragment {
 
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutAllowed(true, true);
         verticalGridView.getBaseGridViewLayoutManager().setFocusOutSideAllowed(true, true);
+        verticalGridView.getBaseGridViewLayoutManager().setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
+
         ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new ConcertPresenterSelector());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(arrayObjectAdapter);
         verticalGridView.setAdapter(itemBridgeAdapter);

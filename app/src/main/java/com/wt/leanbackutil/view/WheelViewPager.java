@@ -39,6 +39,7 @@ public class WheelViewPager<T> extends ViewPager {
     private int mCurrentItem = 0;
     private ViewPagerScroller mViewPagerScroller;
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
+    private WheelHolderCreator wheelHolderCreator;
 
     public WheelViewPager(@NonNull Context context) {
         super(context);
@@ -103,6 +104,17 @@ public class WheelViewPager<T> extends ViewPager {
                     }
                 }
 
+                if(wheelHolderCreator != null){
+                    List<T> pagedList = pagerUtil.getPagedList(position + 1);
+                    WheelViewHolder viewHolder = wheelHolderCreator.createViewHolder();
+                    if (viewHolder == null) {
+                        throw new RuntimeException("can not return a null holder");
+                    }
+                    if (pagedList != null && pagedList.size() > 0) {
+                        viewHolder.onBind(getContext(), findViewById(position), pagedList);
+                    }
+                }
+
                 if (mOnPageChangeListener != null) {
                     mOnPageChangeListener.onPageSelected(position);
                 }
@@ -147,21 +159,22 @@ public class WheelViewPager<T> extends ViewPager {
         mOnPageChangeListener = onPageChangeListener;
     }
 
-    public void setPager(List<T> datas, int pageSize, LinearLayout linearLayout, MZHolderCreator mzHolderCreator) {
-        if (datas == null || mzHolderCreator == null) {
+    public void setPager(List<T> datas, int pageSize, LinearLayout linearLayout, WheelHolderCreator holderCreator) {
+        if (datas == null || holderCreator == null) {
             return;
         }
+        wheelHolderCreator = holderCreator;
         setData(datas, pageSize);
         initIndicator(linearLayout);
-        WheelPagerAdapter adapter = new WheelPagerAdapter(mzHolderCreator);
+        WheelPagerAdapter adapter = new WheelPagerAdapter(holderCreator);
         setAdapter(adapter);
     }
 
     private class WheelPagerAdapter<T> extends PagerAdapter {
 
-        private MZHolderCreator mzHolderCreator;
+        private WheelHolderCreator mzHolderCreator;
 
-        public WheelPagerAdapter(MZHolderCreator mzHolderCreator) {
+        public WheelPagerAdapter(WheelHolderCreator mzHolderCreator) {
             this.mzHolderCreator = mzHolderCreator;
         }
 
@@ -179,19 +192,22 @@ public class WheelViewPager<T> extends ViewPager {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = getView(position, container);
+            view.setId(position);
             container.addView(view);
             return view;
         }
 
         private View getView(int position, ViewGroup container) {
             List<T> pagedList = pagerUtil.getPagedList(position + 1);
-            MZViewHolder viewHolder = mzHolderCreator.createViewHolder();
+            WheelViewHolder viewHolder = mzHolderCreator.createViewHolder();
             if (viewHolder == null) {
                 throw new RuntimeException("can not return a null holder");
             }
-            View view = viewHolder.createView(container.getContext());
-            if (pagedList != null && pagedList.size() > 0) {
-                viewHolder.onBind(container.getContext(), position, pagedList);
+            View view = viewHolder.createView(container.getContext(), position + 1);
+            if(position == 0) {
+                if (pagedList != null && pagedList.size() > 0) {
+                    viewHolder.onBind(container.getContext(), view, pagedList);
+                }
             }
             return view;
         }

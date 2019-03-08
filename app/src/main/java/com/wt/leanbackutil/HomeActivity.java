@@ -105,8 +105,8 @@ public class HomeActivity extends FragmentActivity {
         for (int i = 0; i < mainTabs.length; i++) {
             BaseFragment fragment;
             if (i == 0) {
-                fragment = new LeanBackFragment();
-//                fragment = new CategoryFragment();
+//                fragment = new LeanBackFragment();
+                fragment = new CategoryFragment();
             } else if (i == 1) {
                 fragment = new HomeConcertFragment();
 //                fragment = new HomeRecommendNewFragment();

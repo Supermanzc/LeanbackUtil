@@ -17,7 +17,9 @@ import com.wt.leanbackutil.model.RecommendInfo;
 import com.wt.leanbackutil.model.SingItem;
 import com.wt.leanbackutil.util.FrescoUtil;
 import com.wt.leanbackutil.util.ViewUtils;
+import com.wt.leanbackutil.view.WheelHolderCreator;
 import com.wt.leanbackutil.view.WheelRelativeLayout;
+import com.wt.leanbackutil.view.WheelViewHolder;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
 
@@ -65,21 +67,21 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_750);
 
             mvInfoHolder.wheelViewPager.setPager(singItems, 8,
-                    mvInfoHolder.indicatorContainer, new MZHolderCreator() {
+                    mvInfoHolder.indicatorContainer, new WheelHolderCreator() {
                         @Override
-                        public MZViewHolder createViewHolder() {
-                            return new MZViewHolder() {
+                        public WheelViewHolder createViewHolder() {
+                            return new WheelViewHolder() {
 
                                 private View view;
 
                                 @Override
-                                public View createView(Context context) {
+                                public View createView(Context context, int positon) {
                                     view = LayoutInflater.from(context).inflate(R.layout.wheel_pager_item_mv, null);
                                     return view;
                                 }
 
                                 @Override
-                                public void onBind(Context context, int position, Object data) {
+                                public void onBind(Context context, View view, Object data) {
                                     TvRecyclerView verticalGridView = (TvRecyclerView) view;
                                     verticalGridView.setSpacingWithMargins(mFragment.getResources().getDimensionPixelSize(R.dimen.h_30),
                                             mFragment.getResources().getDimensionPixelSize(R.dimen.w_51));
@@ -96,20 +98,20 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
         } else if (recommendInfo.getType() == RecommendInfo.TYPE_TWO) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_640);
             mvInfoHolder.wheelViewPager.setPager(singItems, 8,
-                    mvInfoHolder.indicatorContainer, new MZHolderCreator() {
+                    mvInfoHolder.indicatorContainer, new WheelHolderCreator() {
                         @Override
-                        public MZViewHolder createViewHolder() {
-                            return new MZViewHolder() {
+                        public WheelViewHolder createViewHolder() {
+                            return new WheelViewHolder() {
                                 private View view;
 
                                 @Override
-                                public View createView(Context context) {
+                                public View createView(Context context, int position) {
                                     view = LayoutInflater.from(context).inflate(R.layout.wheel_pager_item, null);
                                     return view;
                                 }
 
                                 @Override
-                                public void onBind(Context context, int position, Object data) {
+                                public void onBind(Context context, View view, Object data) {
                                     WheelRelativeLayout wheelRelativeLayout = (WheelRelativeLayout) view;
                                     wheelRelativeLayout.setColumnAndRow(4, 2);
                                     wheelRelativeLayout.initView((List<SingItem>) data, context.getResources().getDimensionPixelOffset(R.dimen.w_420),
@@ -121,28 +123,28 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
         } else if (recommendInfo.getType() == RecommendInfo.TYPE_THREE) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
             mvInfoHolder.wheelViewPager.setPager(singItems, 8,
-                    mvInfoHolder.indicatorContainer, new MZHolderCreator() {
+                    mvInfoHolder.indicatorContainer, new WheelHolderCreator() {
                         @Override
-                        public MZViewHolder createViewHolder() {
-                            return new MZViewHolder() {
+                        public WheelViewHolder createViewHolder() {
+                            return new WheelViewHolder() {
 
                                 private WheelRelativeLayout bringToFrontRelative;
 
                                 @Override
-                                public View createView(Context context) {
+                                public View createView(Context context, int position) {
                                     bringToFrontRelative = (WheelRelativeLayout) LayoutInflater.from(context).inflate(R.layout.wheel_pager_singer, null);
                                     return bringToFrontRelative;
                                 }
 
                                 @Override
-                                public void onBind(Context context, int position, Object data) {
+                                public void onBind(Context context, View viewt, Object data) {
                                     int childCount = bringToFrontRelative.getChildCount();
                                     List<SingItem> singItemList = (List<SingItem>) data;
                                     for (int i = 0; i < childCount; i++) {
                                         View view = bringToFrontRelative.getChildAt(i);
-                                        if(i > singItemList.size() -1){
+                                        if (i > singItemList.size() - 1) {
                                             view.setVisibility(View.GONE);
-                                        }else {
+                                        } else {
                                             SingItem singItem = singItemList.get(i);
                                             view.setVisibility(View.VISIBLE);
                                             TextView titleView = view.findViewById(R.id.title_view);
@@ -156,7 +158,7 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                                             view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                                                 @Override
                                                 public void onFocusChange(View v, boolean hasFocus) {
-                                                    if(hasFocus){
+                                                    if (hasFocus) {
                                                         v.bringToFront();
                                                     }
                                                     ViewUtils.scaleView(v, hasFocus);
@@ -168,24 +170,24 @@ public class RecommendItemInfoNewAdapter extends RecyclerView.Adapter {
                             };
                         }
                     });
-        }else if(recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIX){
+        } else if (recommendInfo.getType() == RecommendInfo.TYPE_FIVE || recommendInfo.getType() == RecommendInfo.TYPE_SIX) {
             layoutParams.height = mFragment.getResources().getDimensionPixelOffset(R.dimen.h_680);
             mvInfoHolder.wheelViewPager.setPager(singItems, 8,
-                    mvInfoHolder.indicatorContainer, new MZHolderCreator() {
+                    mvInfoHolder.indicatorContainer, new WheelHolderCreator() {
                         @Override
-                        public MZViewHolder createViewHolder() {
-                            return new MZViewHolder() {
+                        public WheelViewHolder createViewHolder() {
+                            return new WheelViewHolder() {
 
                                 private WheelRelativeLayout bringToFrontRelative;
 
                                 @Override
-                                public View createView(Context context) {
+                                public View createView(Context context, int position) {
                                     bringToFrontRelative = (WheelRelativeLayout) LayoutInflater.from(context).inflate(R.layout.wheel_pager_radio, null);
                                     return bringToFrontRelative;
                                 }
 
                                 @Override
-                                public void onBind(Context context, int position, Object data) {
+                                public void onBind(Context context, View view, Object data) {
                                     List<SingItem> singItemList = (List<SingItem>) data;
                                     bringToFrontRelative.findViewById(R.id.wheel_relativeLayout_one);
                                 }

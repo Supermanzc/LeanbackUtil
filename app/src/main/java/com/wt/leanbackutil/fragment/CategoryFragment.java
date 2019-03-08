@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.wt.leanbackutil.PlayVlcActivity;
 import com.wt.leanbackutil.R;
 import com.wt.leanbackutil.activity.SearchFocusActivity;
+import com.wt.leanbackutil.activity.UpdateActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,7 +31,7 @@ public class CategoryFragment extends BaseFragment {
         return view;
     }
 
-    @OnClick({R.id.category_search_focus, R.id.vlc_mv})
+    @OnClick({R.id.category_search_focus, R.id.vlc_mv, R.id.update})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.category_search_focus:
@@ -38,6 +39,9 @@ public class CategoryFragment extends BaseFragment {
                 break;
             case R.id.vlc_mv:
                 startActivity(new Intent(getContext(), PlayVlcActivity.class));
+                break;
+            case R.id.update:
+                startActivity(new Intent(getContext(), UpdateActivity.class));
                 break;
             default:
                 break;
