@@ -5,9 +5,11 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
+
     <com.wt.leanbackutil.view.FocusRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
         android:descendantFocusability="afterDescendants"
         android:focusable="true">
 
@@ -49,7 +51,9 @@
 
     <com.wt.leanbackutil.view.FocusRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:descendantFocusability="afterDescendants"
+        android:focusable="true">
 
         <Button
             android:id="@+id/button11"

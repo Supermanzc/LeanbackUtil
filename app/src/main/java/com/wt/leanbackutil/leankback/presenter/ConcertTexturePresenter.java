@@ -79,7 +79,7 @@ public class ConcertTexturePresenter extends RowPresenter implements TextureView
 //                        surfaceImageView.setVisibility(View.GONE);
                         surfaceImageView.setImageResource(0);
                         //开始处理播放器数据
-                        playMvManager.setDataSourceToEngine("http://110.185.116.156/vcloud1049.tc.qq.com/1049_M0256000001oz49N0hZZYH1001605092.f20.mp4?vkey=6156F107610AF5550062321F8EEEFE99DF8A376528DA243071B474A195921D31B264FA9C9C5B73103C070F55B27B9F85C14408E71FCD453AE1FC7793301C49425FD2349F0279CE04FD2771D5A433E46E77E74E224AB88EA8&stdfrom=1");
+                        playMvManager.setDataSourceToEngine("http://kltvvod.clouddianshi.com/otv/yfy/F/F0/BB/00001881113/index.m3u8?k=8c96b63aa3ce45e908fdce483a624489&t=5C98815D&UID=5295eb13-8307-44be-b83f-bd0be1be78f2");
                         playMvManager.setPlayUiListener(new PlayUiListener() {
                             @Override
                             public void onUiMediaPlayerPrepared() {

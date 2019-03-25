@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/w_33"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/media_container"
+        android:layout_width="@dimen/w_875"
+        android:layout_height="@dimen/h_492"
+        android:layout_marginLeft="@dimen/w_6"
+        android:focusable="true">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/w_6">
+
+            <TextureView
+                android:id="@+id/surface"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlOne"
+        android:layout_width="@dimen/w_353"
+        android:layout_height="@dimen/h_495"
+        android:layout_marginLeft="@dimen/w_35"
+        android:layout_marginRight="@dimen/w_35"
+        android:layout_toRightOf="@id/media_container"
+        android:focusable="true">
+        <View
+            android:id="@+id/viewOne"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/ivOne"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlTwo"
+        android:layout_width="@dimen/w_353"
+        android:layout_height="@dimen/h_495"
+        android:layout_margin="@dimen/w_6"
+        android:layout_toRightOf="@id/rlOne"
+        android:focusable="true">
+        <View
+            android:id="@+id/viewTwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/ivTwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</RelativeLayout>

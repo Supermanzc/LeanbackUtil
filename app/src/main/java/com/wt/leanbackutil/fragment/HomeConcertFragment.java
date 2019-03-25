@@ -63,6 +63,8 @@ public class HomeConcertFragment extends BaseFragment {
         ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new ConcertPresenterSelector());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(arrayObjectAdapter);
         verticalGridView.setAdapter(itemBridgeAdapter);
+
+
         //有多少种类型就有多少个item
         for (int i = 0; i < recommendResponse.getData().getReco_datas().size(); i++) {
             List<RecommendInfo> recommendInfos = recommendResponse.getData().getReco_datas();

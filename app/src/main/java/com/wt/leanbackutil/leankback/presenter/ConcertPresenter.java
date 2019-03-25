@@ -41,9 +41,9 @@ public class ConcertPresenter extends Presenter {
 //                    parent, false);
 //            viewHolder = new WheelConcertChildrenHolder(view);
 //        } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wheel_item_singer,
-                    parent, false);
-            viewHolder = new WheelConcertHolder(view, parent.getContext(), type);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wheel_item_singer,
+                parent, false);
+        viewHolder = new WheelConcertHolder(view, parent.getContext(), type);
 //        }
         context = parent.getContext();
         return viewHolder;
@@ -56,11 +56,7 @@ public class ConcertPresenter extends Presenter {
         final WheelConcertHolder recommendSingHolder = (WheelConcertHolder) viewHolder;
         switch (recommendSingHolder.type) {
             case RecommendInfo.TYPE_ONE:
-                if (singItem.getType() == 1) {
-
-                } else {
-                    FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getPic(), FrescoUtil.TYPE_ONE);
-                }
+                FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getPic(), FrescoUtil.TYPE_ONE);
                 break;
             case RecommendInfo.TYPE_TWO:
                 FrescoUtil.getInstance().loadImage(recommendSingHolder.imageView, singItem.getPic_url(), FrescoUtil.TYPE_ONE);

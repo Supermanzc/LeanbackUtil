@@ -26,4 +26,11 @@
         android:layout_height="wrap_content"
         android:text="@string/update_txt"/>
 
+    <Button
+        android:id="@+id/texture_play"
+        android:layout_toRightOf="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放"/>
+
 </RelativeLayout>

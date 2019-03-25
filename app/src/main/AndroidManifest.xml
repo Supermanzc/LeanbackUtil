@@ -45,6 +45,7 @@
         <activity android:name=".activity.SearchFocusActivity" />
         <activity android:name=".PlayVlcActivity" />
         <activity android:name=".activity.UpdateActivity" />
+        <activity android:name=".activity.TextureActivity" />
     </application>
 
 </manifest>
